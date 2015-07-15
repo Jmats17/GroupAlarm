@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GroupAlarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,111 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Alarm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLE-3Y-QxK">
+                                <rect key="frame" x="0.0" y="28" width="600" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="8FM-IZ-DUC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="52"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3C-2b-nYW">
+                                <rect key="frame" x="16" y="406" width="568" height="83"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.39000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="zBN-sA-dCf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="RzP-ag-r6E" kind="show" id="CcK-gg-ANV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IE-b9-BAk">
+                                <rect key="frame" x="16" y="497" width="568" height="83"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.39000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="JIz-gE-BCc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="32"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ydr-vU-uq1" kind="show" id="DbY-Oh-Vns"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="90q-SD-Szg">
+                                <rect key="frame" x="200" y="145" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="rWy-gh-TbM"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Y3C-2b-nYW" firstAttribute="leading" secondItem="6IE-b9-BAk" secondAttribute="leading" id="Gsd-hy-OdX"/>
+                            <constraint firstItem="uLE-3Y-QxK" firstAttribute="centerX" secondItem="90q-SD-Szg" secondAttribute="centerX" id="I5p-qY-fxa"/>
+                            <constraint firstAttribute="bottom" secondItem="6IE-b9-BAk" secondAttribute="bottom" constant="20" symbolic="YES" id="Lo7-H5-TVK"/>
+                            <constraint firstItem="6IE-b9-BAk" firstAttribute="trailing" secondItem="Y3C-2b-nYW" secondAttribute="trailing" id="UUZ-yK-lMT"/>
+                            <constraint firstItem="Y3C-2b-nYW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="XDS-wb-vVV"/>
+                            <constraint firstItem="uLE-3Y-QxK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="cCH-nT-X3l"/>
+                            <constraint firstItem="Y3C-2b-nYW" firstAttribute="centerX" secondItem="90q-SD-Szg" secondAttribute="centerX" id="kc1-OD-qPC"/>
+                            <constraint firstItem="uLE-3Y-QxK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oOX-8R-AlF"/>
+                            <constraint firstItem="90q-SD-Szg" firstAttribute="top" secondItem="uLE-3Y-QxK" secondAttribute="bottom" constant="34" id="qO3-WM-f4K"/>
+                            <constraint firstItem="Y3C-2b-nYW" firstAttribute="top" secondItem="90q-SD-Szg" secondAttribute="bottom" constant="61" id="qtf-fh-9Fe"/>
+                            <constraint firstItem="6IE-b9-BAk" firstAttribute="top" secondItem="Y3C-2b-nYW" secondAttribute="bottom" constant="8" symbolic="YES" id="yKu-NR-Sax"/>
+                            <constraint firstAttribute="trailing" secondItem="uLE-3Y-QxK" secondAttribute="trailing" id="z1I-g2-eol"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--LoginViewController-->
+        <scene sceneID="UbK-iS-pZJ">
+            <objects>
+                <viewController id="RzP-ag-r6E" userLabel="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dDF-Ht-8T2"/>
+                        <viewControllerLayoutGuide type="bottom" id="rsg-iY-2vQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Fz-Q5-k6p">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ugl-TR-3pw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="7"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ILa-BY-Z8m">
+            <objects>
+                <viewController id="ydr-vU-uq1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BX6-k3-QRU"/>
+                        <viewControllerLayoutGuide type="bottom" id="2HZ-Zi-kG5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L4x-g0-tKk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ehk-87-8cK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="656"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="clock-icon.png" width="256" height="256"/>
+    </resources>
 </document>
