@@ -28,6 +28,9 @@
 		D0A2C9EB1B56D1CE00D7F7EA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A2C9EA1B56D1CE00D7F7EA /* SystemConfiguration.framework */; };
 		D0A2C9ED1B56D1DC00D7F7EA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A2C9EC1B56D1DC00D7F7EA /* libz.dylib */; };
 		D0A2C9EF1B56D1EA00D7F7EA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A2C9EE1B56D1EA00D7F7EA /* libsqlite3.dylib */; };
+		D0A2C9F11B570B4100D7F7EA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */; };
+		D0A2C9F31B570B4C00D7F7EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9F21B570B4C00D7F7EA /* LoginViewController.swift */; };
+		D0A2C9F51B5812CC00D7F7EA /* MainDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9F41B5812CC00D7F7EA /* MainDashboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		D0A2C9EA1B56D1CE00D7F7EA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D0A2C9EC1B56D1DC00D7F7EA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D0A2C9EE1B56D1EA00D7F7EA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		D0A2C9F21B570B4C00D7F7EA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D0A2C9F41B5812CC00D7F7EA /* MainDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDashboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +127,10 @@
 			isa = PBXGroup;
 			children = (
 				D0A2C9AE1B55B6A500D7F7EA /* AppDelegate.swift */,
+				D0A2C9F41B5812CC00D7F7EA /* MainDashboardViewController.swift */,
+				D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */,
 				D0A2C9B01B55B6A500D7F7EA /* ViewController.swift */,
+				D0A2C9F21B570B4C00D7F7EA /* LoginViewController.swift */,
 				D0A2C9B21B55B6A500D7F7EA /* Main.storyboard */,
 				D0A2C9B51B55B6A500D7F7EA /* Images.xcassets */,
 				D0A2C9B71B55B6A500D7F7EA /* LaunchScreen.xib */,
@@ -289,8 +298,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A2C9F31B570B4C00D7F7EA /* LoginViewController.swift in Sources */,
+				D0A2C9F11B570B4100D7F7EA /* SignupViewController.swift in Sources */,
 				D0A2C9B11B55B6A500D7F7EA /* ViewController.swift in Sources */,
 				D0A2C9AF1B55B6A500D7F7EA /* AppDelegate.swift in Sources */,
+				D0A2C9F51B5812CC00D7F7EA /* MainDashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
