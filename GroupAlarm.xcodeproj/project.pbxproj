@@ -31,6 +31,7 @@
 		D0A2C9F11B570B4100D7F7EA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */; };
 		D0A2C9F31B570B4C00D7F7EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9F21B570B4C00D7F7EA /* LoginViewController.swift */; };
 		D0A2C9F51B5812CC00D7F7EA /* MainDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9F41B5812CC00D7F7EA /* MainDashboardViewController.swift */; };
+		D0D6E3431B59D58E00C64395 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6E3421B59D58E00C64395 /* PageContentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D0A2C9F21B570B4C00D7F7EA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D0A2C9F41B5812CC00D7F7EA /* MainDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDashboardViewController.swift; sourceTree = "<group>"; };
+		D0D6E3421B59D58E00C64395 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */,
 				D0A2C9B01B55B6A500D7F7EA /* ViewController.swift */,
 				D0A2C9F21B570B4C00D7F7EA /* LoginViewController.swift */,
+				D0D6E3421B59D58E00C64395 /* PageContentViewController.swift */,
 				D0A2C9B21B55B6A500D7F7EA /* Main.storyboard */,
 				D0A2C9B51B55B6A500D7F7EA /* Images.xcassets */,
 				D0A2C9B71B55B6A500D7F7EA /* LaunchScreen.xib */,
@@ -301,6 +304,7 @@
 				D0A2C9F31B570B4C00D7F7EA /* LoginViewController.swift in Sources */,
 				D0A2C9F11B570B4100D7F7EA /* SignupViewController.swift in Sources */,
 				D0A2C9B11B55B6A500D7F7EA /* ViewController.swift in Sources */,
+				D0D6E3431B59D58E00C64395 /* PageContentViewController.swift in Sources */,
 				D0A2C9AF1B55B6A500D7F7EA /* AppDelegate.swift in Sources */,
 				D0A2C9F51B5812CC00D7F7EA /* MainDashboardViewController.swift in Sources */,
 			);
@@ -512,6 +516,7 @@
 				D0A2C9CA1B55B6A500D7F7EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0A2C9CB1B55B6A500D7F7EA /* Build configuration list for PBXNativeTarget "GroupAlarmTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +525,7 @@
 				D0A2C9CD1B55B6A500D7F7EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
