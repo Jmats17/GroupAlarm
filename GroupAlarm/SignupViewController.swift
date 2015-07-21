@@ -11,7 +11,7 @@ import UIKit
 import Parse
 import Bolts
 
-class SignupViewController : UIViewController {
+class SignupViewController : UIViewController,UITextFieldDelegate {
     @IBOutlet var passwordTextField : UITextField!
     @IBOutlet var usernameTextField : UITextField!
     @IBOutlet var emailTextField : UITextField!
@@ -25,19 +25,33 @@ class SignupViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTextField.delegate = self
+        usernameTextField.delegate = self
+        emailTextField.delegate = self
+        fulLNameTextField.delegate = self
         invalidEmail.hidden = true
         usernameTaken.hidden = true
         missingField.hidden = true
         emailTaken.hidden = true
+        textFieldShouldReturn(passwordTextField)
+        textFieldShouldReturn(emailTextField)
+        textFieldShouldReturn(usernameTextField)
+        textFieldShouldReturn(fulLNameTextField)
+
     }
     
-    @IBAction func tappedOutside(sender : AnyObject) {
-        
-        passwordTextField.resignFirstResponder()
-        emailTextField.resignFirstResponder()
-        usernameTextField.resignFirstResponder()
-        fulLNameTextField.resignFirstResponder()
-        
+//    @IBAction func tappedOutside(sender : AnyObject) {
+//        
+//        passwordTextField.resignFirstResponder()
+//        emailTextField.resignFirstResponder()
+//        usernameTextField.resignFirstResponder()
+//        fulLNameTextField.resignFirstResponder()
+//        
+//    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func signUp(sender : AnyObject) {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Parse
 import Bolts
-class LoginViewController : UIViewController {
+class LoginViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet var usernameTextField : UITextField!
     @IBOutlet var passwordTextField : UITextField!
     @IBOutlet var invalidCreds : UILabel!
@@ -22,16 +22,22 @@ class LoginViewController : UIViewController {
         
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     override func viewDidLoad() {
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
         invalidCreds.hidden = true
         missingPassword.hidden = true
         missingUsername.hidden = true
+        textFieldShouldReturn(usernameTextField)
+        textFieldShouldReturn(passwordTextField)
     }
     
-    @IBAction func tappedOutside(sender: AnyObject) {
-        usernameTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
-    }
+    
     
     @IBAction func login(sender : AnyObject) {
         var userCreds = usernameTextField.text

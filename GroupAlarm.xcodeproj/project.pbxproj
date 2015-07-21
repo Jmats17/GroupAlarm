@@ -31,7 +31,9 @@
 		D0A2C9F11B570B4100D7F7EA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */; };
 		D0A2C9F31B570B4C00D7F7EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9F21B570B4C00D7F7EA /* LoginViewController.swift */; };
 		D0A2C9F51B5812CC00D7F7EA /* MainDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9F41B5812CC00D7F7EA /* MainDashboardViewController.swift */; };
-		D0D6E3431B59D58E00C64395 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6E3421B59D58E00C64395 /* PageContentViewController.swift */; };
+		D0B51F611B5DACDE00B277B5 /* SetAlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */; };
+		D0B51F631B5EC42000B277B5 /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */; };
+		D0B51F651B5EC62000B277B5 /* CurrentAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +75,9 @@
 		D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D0A2C9F21B570B4C00D7F7EA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D0A2C9F41B5812CC00D7F7EA /* MainDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDashboardViewController.swift; sourceTree = "<group>"; };
-		D0D6E3421B59D58E00C64395 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
+		D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAlarmClockViewController.swift; sourceTree = "<group>"; };
+		D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
+		D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAlarmViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +137,9 @@
 				D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */,
 				D0A2C9B01B55B6A500D7F7EA /* ViewController.swift */,
 				D0A2C9F21B570B4C00D7F7EA /* LoginViewController.swift */,
-				D0D6E3421B59D58E00C64395 /* PageContentViewController.swift */,
+				D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */,
+				D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */,
+				D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */,
 				D0A2C9B21B55B6A500D7F7EA /* Main.storyboard */,
 				D0A2C9B51B55B6A500D7F7EA /* Images.xcassets */,
 				D0A2C9B71B55B6A500D7F7EA /* LaunchScreen.xib */,
@@ -304,8 +310,10 @@
 				D0A2C9F31B570B4C00D7F7EA /* LoginViewController.swift in Sources */,
 				D0A2C9F11B570B4100D7F7EA /* SignupViewController.swift in Sources */,
 				D0A2C9B11B55B6A500D7F7EA /* ViewController.swift in Sources */,
-				D0D6E3431B59D58E00C64395 /* PageContentViewController.swift in Sources */,
+				D0B51F631B5EC42000B277B5 /* PickFriendsViewController.swift in Sources */,
+				D0B51F651B5EC62000B277B5 /* CurrentAlarmViewController.swift in Sources */,
 				D0A2C9AF1B55B6A500D7F7EA /* AppDelegate.swift in Sources */,
+				D0B51F611B5DACDE00B277B5 /* SetAlarmClockViewController.swift in Sources */,
 				D0A2C9F51B5812CC00D7F7EA /* MainDashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
