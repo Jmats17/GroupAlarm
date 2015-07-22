@@ -32,7 +32,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         searchBar.delegate = self
         
         search()
-
+        
     }
     
     
@@ -80,6 +80,8 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, 300.0, 0)
+        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 300.0, 0)
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {

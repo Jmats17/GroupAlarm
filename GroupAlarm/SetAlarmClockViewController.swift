@@ -11,22 +11,52 @@ import UIKit
 import Parse
 import Bolts
 
-class SetAlarmViewController : UIViewController {
+
+
+
+class SetAlarmViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet var myDatePicker : UIDatePicker!
-    @IBOutlet var chosenDate : UILabel!
     var strDate : String!
     var currentUser = PFUser.currentUser()
+    var alarmTextLabel : String!
     var dateFormatter = NSDateFormatter()
-
+    @IBOutlet var alarmLabelTextField : UITextField!
+    @IBOutlet var saveButton : UIBarButtonItem!
     @IBAction func dateAction(sender : AnyObject) {
         dateFormatter.dateFormat = "hh:mm a"
         strDate = dateFormatter.stringFromDate(myDatePicker.date)
-        self.chosenDate.text = strDate
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        alarmLabelTextField.delegate = self
+        
+        textFieldShouldReturn(alarmLabelTextField)
+        
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+      //  saveButton.enabled = true
+        alarmTextLabel = alarmLabelTextField?.text
+        if alarmLabelTextField.text == "" {
+            saveButton.enabled = false
+        }
+        else {
+            saveButton.enabled = true
+        }
+        return true
+    }
+    
     
     @IBAction func addButton(sender : AnyObject) {
         let myAlarm =  dateFormatter.dateFromString(strDate)
-        
+        currentUser!.setObject(alarmTextLabel, forKey: "alarmLabel")
         currentUser!.setObject(myAlarm!, forKey: "alarmTime")
         println("hi")
         println(currentUser?.username)

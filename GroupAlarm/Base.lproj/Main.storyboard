@@ -511,7 +511,7 @@
                                                 <segue destination="59i-rT-epA" kind="show" id="5pM-sd-W1e"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pH9-6s-chd">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="pH9-6s-chd">
                                             <connections>
                                                 <action selector="addButton:" destination="dkk-RC-hQk" id="yZT-Z2-1ry"/>
                                             </connections>
@@ -523,45 +523,34 @@
                                 <rect key="frame" x="0.0" y="234" width="600" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="P04-fd-UWI"/>
+                                    <constraint firstAttribute="height" constant="30" id="ERb-Xh-92T"/>
                                 </constraints>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="yes" returnKeyType="done"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYP-00-0EN">
-                                <rect key="frame" x="212" y="313" width="177" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="177" id="iLg-xi-FAd"/>
-                                    <constraint firstAttribute="height" constant="37" id="xq7-WY-EcX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xrs-VW-rgO" firstAttribute="leading" secondItem="EFy-bB-91M" secondAttribute="leading" id="00x-ff-Nxo"/>
-                            <constraint firstItem="nYP-00-0EN" firstAttribute="centerX" secondItem="LEO-2Q-VL9" secondAttribute="centerX" id="21B-kR-dfT"/>
-                            <constraint firstItem="LEO-2Q-VL9" firstAttribute="top" secondItem="EFy-bB-91M" secondAttribute="bottom" constant="8" symbolic="YES" id="2NV-ZQ-nXh"/>
-                            <constraint firstItem="EFy-bB-91M" firstAttribute="trailing" secondItem="LEO-2Q-VL9" secondAttribute="trailing" id="4Q7-Ep-iMw"/>
-                            <constraint firstAttribute="trailing" secondItem="LEO-2Q-VL9" secondAttribute="trailing" id="9c9-6O-ZkD"/>
-                            <constraint firstItem="nYP-00-0EN" firstAttribute="top" secondItem="LEO-2Q-VL9" secondAttribute="bottom" constant="49" id="HEF-Bk-EB9"/>
-                            <constraint firstItem="xrs-VW-rgO" firstAttribute="trailing" secondItem="EFy-bB-91M" secondAttribute="trailing" id="MCk-G7-p2a"/>
-                            <constraint firstItem="EFy-bB-91M" firstAttribute="leading" secondItem="OeU-ph-MGo" secondAttribute="leading" id="UYc-XZ-OAV"/>
-                            <constraint firstItem="EFy-bB-91M" firstAttribute="trailing" secondItem="OeU-ph-MGo" secondAttribute="trailing" id="WyW-WY-zBB"/>
-                            <constraint firstItem="OeU-ph-MGo" firstAttribute="top" secondItem="ffD-vz-NMv" secondAttribute="bottom" id="bHh-ZC-5lg"/>
-                            <constraint firstItem="EFy-bB-91M" firstAttribute="top" secondItem="xrs-VW-rgO" secondAttribute="top" id="dXj-nh-hzV"/>
-                            <constraint firstItem="EFy-bB-91M" firstAttribute="leading" secondItem="EiA-1v-pj5" secondAttribute="leading" id="ffv-Ud-JrY"/>
-                            <constraint firstItem="EFy-bB-91M" firstAttribute="leading" secondItem="LEO-2Q-VL9" secondAttribute="leading" id="hgf-zE-TGG"/>
-                            <constraint firstItem="xrs-VW-rgO" firstAttribute="bottom" secondItem="60E-Qf-woM" secondAttribute="top" id="k8A-WJ-HlB"/>
-                            <constraint firstItem="EFy-bB-91M" firstAttribute="top" secondItem="OeU-ph-MGo" secondAttribute="bottom" id="oVf-Gr-TOT"/>
+                            <constraint firstItem="xrs-VW-rgO" firstAttribute="trailing" secondItem="LEO-2Q-VL9" secondAttribute="trailing" id="DK3-LY-KsJ"/>
+                            <constraint firstItem="xrs-VW-rgO" firstAttribute="leading" secondItem="EiA-1v-pj5" secondAttribute="leading" id="EKq-1V-Cbx"/>
+                            <constraint firstItem="EFy-bB-91M" firstAttribute="leading" secondItem="LEO-2Q-VL9" secondAttribute="leading" id="IM5-dc-Mxa"/>
+                            <constraint firstItem="EFy-bB-91M" firstAttribute="leading" secondItem="xrs-VW-rgO" secondAttribute="leading" id="Oel-J3-8jM"/>
+                            <constraint firstItem="LEO-2Q-VL9" firstAttribute="top" secondItem="EFy-bB-91M" secondAttribute="bottom" constant="8" symbolic="YES" id="RXM-mY-BBl"/>
+                            <constraint firstItem="xrs-VW-rgO" firstAttribute="top" secondItem="OeU-ph-MGo" secondAttribute="bottom" id="UYe-sH-xZA"/>
+                            <constraint firstItem="LEO-2Q-VL9" firstAttribute="trailing" secondItem="EFy-bB-91M" secondAttribute="trailing" id="aFJ-kQ-4En"/>
+                            <constraint firstItem="OeU-ph-MGo" firstAttribute="trailing" secondItem="EFy-bB-91M" secondAttribute="trailing" id="fYa-3Q-c4e"/>
+                            <constraint firstAttribute="trailing" secondItem="xrs-VW-rgO" secondAttribute="trailing" id="m1n-2T-NZJ"/>
+                            <constraint firstItem="OeU-ph-MGo" firstAttribute="top" secondItem="ffD-vz-NMv" secondAttribute="bottom" id="n88-Hf-4vh"/>
+                            <constraint firstItem="OeU-ph-MGo" firstAttribute="leading" secondItem="EFy-bB-91M" secondAttribute="leading" id="ovV-Gy-tby"/>
+                            <constraint firstItem="xrs-VW-rgO" firstAttribute="bottom" secondItem="60E-Qf-woM" secondAttribute="top" id="pCJ-Ya-3PA"/>
+                            <constraint firstItem="xrs-VW-rgO" firstAttribute="top" secondItem="EFy-bB-91M" secondAttribute="top" id="qk4-j5-FE9"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="chosenDate" destination="nYP-00-0EN" id="v2D-Tt-dgt"/>
+                        <outlet property="alarmLabelTextField" destination="LEO-2Q-VL9" id="mos-db-z3e"/>
                         <outlet property="myDatePicker" destination="EFy-bB-91M" id="zru-tj-Dme"/>
+                        <outlet property="saveButton" destination="pH9-6s-chd" id="ILS-Hj-aff"/>
                         <segue destination="Rjn-w9-aYD" kind="show" identifier="alarmtoFriend" id="tNX-fZ-jYe"/>
                     </connections>
                 </viewController>
@@ -585,7 +574,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Friends" id="sZ4-Td-OhC">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vkG-9i-fzy">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="vkG-9i-fzy">
                                             <connections>
                                                 <action selector="addButton:" destination="dkk-RC-hQk" id="lMD-Lc-XMG"/>
                                                 <segue destination="Sbj-M7-Dem" kind="show" id="RRr-YE-6bb"/>
@@ -596,7 +585,7 @@
                             </navigationBar>
                             <searchBar contentMode="redraw" placeholder="Search for user.." translatesAutoresizingMaskIntoConstraints="NO" id="6lA-OG-3K8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Asi-m1-PHr">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
@@ -710,7 +699,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="6Gd-tS-ekB"/>
         <segue reference="AQ8-Fh-Ode"/>
-        <segue reference="fyK-ir-n8G"/>
+        <segue reference="5pM-sd-W1e"/>
         <segue reference="RRr-YE-6bb"/>
     </inferredMetricsTieBreakers>
 </document>
