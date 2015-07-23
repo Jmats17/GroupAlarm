@@ -16,11 +16,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Parse.enableLocalDatastore()
         Parse.setApplicationId("13N3EMnXOVFVOVAGQB6vuax1u7dNqVX3PFj0us96",
             clientKey: "f7EqC7dH3rxXCLOYRSyvZX4JcKvrLboLXdc3uxTk")
+                var currentUser = PFUser.currentUser()
+                if currentUser != nil {
+        
+                    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+                    var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    
+                    var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! UIViewController
+        
+                    self.window?.rootViewController = initialViewController
+                    self.window?.makeKeyAndVisible()
+                }
+                else {
+                    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+                    var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+                    var initialViewController = storyboard.instantiateViewControllerWithIdentifier("start") as! UIViewController
+                    
+                    self.window?.rootViewController = initialViewController
+                    self.window?.makeKeyAndVisible()
+                }
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)

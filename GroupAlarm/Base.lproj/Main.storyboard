@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--StartViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GroupAlarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="start" title="StartViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="GroupAlarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -81,6 +81,9 @@
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <segue destination="59i-rT-epA" kind="show" identifier="startToHome" id="UPc-t3-zug"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -354,10 +357,10 @@
             </objects>
             <point key="canvasLocation" x="990" y="660"/>
         </scene>
-        <!--Main Dashboard View Controller-->
+        <!--MainDashboardViewController-->
         <scene sceneID="YwH-Ac-qST">
             <objects>
-                <viewController id="59i-rT-epA" customClass="MainDashboardViewController" customModule="GroupAlarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" title="MainDashboardViewController" id="59i-rT-epA" customClass="MainDashboardViewController" customModule="GroupAlarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B4J-zR-iTx"/>
                         <viewControllerLayoutGuide type="bottom" id="aeA-Lu-5oG"/>
@@ -697,9 +700,9 @@
         <image name="clock-icon.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6Gd-tS-ekB"/>
-        <segue reference="AQ8-Fh-Ode"/>
-        <segue reference="5pM-sd-W1e"/>
-        <segue reference="RRr-YE-6bb"/>
+        <segue reference="DbY-Oh-Vns"/>
+        <segue reference="UPc-t3-zug"/>
+        <segue reference="ECu-ut-hSe"/>
+        <segue reference="CcK-gg-ANV"/>
     </inferredMetricsTieBreakers>
 </document>

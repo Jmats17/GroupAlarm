@@ -24,13 +24,15 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     var data:[PFObject]!
     var data1:[PFObject]!
     var filtered:[PFObject]!
+    var selectedRows : NSMutableDictionary!
     
+
     
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        
+       // selectedRows = [[NSMutableDictionary alloc] init]
         search()
         
     }
@@ -39,22 +41,17 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     
     func search(searchTextUsername: String? = nil, searchTextFull : String? = nil){
         let query = PFQuery(className: "_User")
-        let query1 = PFQuery(className: "_User")
 
         if(searchTextUsername != nil){
             query.whereKey("username", containsString: searchTextUsername)
         }
-        if (searchTextUsername != nil) {
-            query1.whereKey("FullName", containsString: searchTextFull)
-        }
+        //query.whereKey("FullName", containsString: searchTextFull)
+
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             self.data = results as? [PFObject]
             self.tableView.reloadData()
         }
-        query1.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-            self.data1 = results as? [PFObject]
-            self.tableView.reloadData()
-        }
+
         
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -76,6 +73,20 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         cell.fullNameLabel.text = obj["FullName"] as? String
         cell.usernameLabel.text = obj["username"] as? String
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)  {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+     //   let obj = self.data[indexPath.row]
+//        if cell?.selected == true {
+//            selectedRows.setValue(obj["username"], forKey: "user")
+//        }
+//        else {
+//            
+//        }
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
