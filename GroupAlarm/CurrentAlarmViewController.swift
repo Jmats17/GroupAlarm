@@ -13,17 +13,27 @@ import Bolts
 
 class CurrentAlarmViewController : UIViewController {
     @IBOutlet var label : UILabel!
-    var  currentUser = PFUser.currentUser()
-    let query = PFObject(className: "Alarm")
+    let query = PFQuery(className: "Alarm")
+    let currentUser = PFUser.currentUser()
     var dateFormatter = NSDateFormatter()
-
+    var alarm : AnyObject!
+    var alarmDate : NSDate!
     override func viewDidLoad() {
         dateFormatter.dateFormat = "hh:mm a"
-
+        println(alarmDate)
         super.viewDidLoad()
-        var alarm : AnyObject! = query["alarmTime"]
+        query.findObjectsInBackgroundWithBlock {
+            (objects, error) -> Void in
+            if error == nil {
+                
+                for object in objects! {
+                     self.alarm = object.objectForKey("alarmTime")
+                    println(object)
+                }
+            
+            }
+        }
         
-        println(alarm)
 //        println(alarm)
 //        let alarmString = dateFormatter.stringFromDate(alarmDate)
 //        label.text = alarmString

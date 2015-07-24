@@ -78,7 +78,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         println(strDate)
         let destinationVC = PickFriendsViewController()
         destinationVC.alarmVar = alarmLabelDate(alarmLabel: alarmTextLabel, alarmDate: myAlarm)
-        
+
         // Let's assume that the segue name is called playerSegue
         // This will perform the segue and pre-load the variable for you to use
         self.performSegueWithIdentifier("alarmToFriend", sender: self)

@@ -25,6 +25,8 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     var alarmVar : alarmLabelDate?
     var filtered:[PFObject]!
     var createdDate : NSDate!
+    var currentUser = PFUser.currentUser()
+    var currentUserId : String!
     var alarmLabel : String!
     var selectedRows : NSMutableDictionary!
     var selectedIndexPaths : NSMutableArray = NSMutableArray()
@@ -37,6 +39,12 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         search()
         createdDate = alarmVar?.alarmDate
         alarmLabel = alarmVar?.alarmLabel
+        currentUserId = currentUser?.objectId
+//        for a in data {
+//            if a == currentUser?.username {
+//               println(a)
+//            }
+//        }
     }
     
     
@@ -45,12 +53,25 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         let query = PFQuery(className: "_User")
 
         if(searchTextUsername != nil){
-            query.whereKey("username", containsString: searchTextUsername)
+          query.whereKey("username", containsString: searchTextUsername)
+            
         }
         //query.whereKey("FullName", containsString: searchTextFull)
 
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
             self.data = results as? [PFObject]
+            
+            var currentUserIndex : Int!
+            
+            for var x = 0; x < self.data.count; x++ {
+                let obj = self.data[x]
+                if (obj["username"] as! String) == self.currentUser?.username {
+                    currentUserIndex = x
+                }
+            }
+            
+            self.data.removeAtIndex(currentUserIndex)
+            
             self.tableView.reloadData()
         }
 
@@ -73,6 +94,9 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         let obj = self.data[indexPath.row]
         cell.fullNameLabel.text = obj["FullName"] as? String
         cell.usernameLabel.text = obj["username"] as? String
+        
+        
+        
         if selectedIndexPaths.containsObject(obj.objectId!) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
@@ -132,6 +156,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         alarmClass.setValue(sendArray, forKey: "alarmUsers")
         alarmClass.setValue(createdDate, forKeyPath: "alarmTime")
         alarmClass.setValue(alarmLabel, forKeyPath: "alarmLabel")
+        sendArray.append(currentUserId)
 //        println(alarmLabel)
 //        println(createdDate)
         alarmClass.saveInBackground()
