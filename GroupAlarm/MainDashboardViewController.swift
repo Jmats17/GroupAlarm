@@ -24,7 +24,7 @@ class MainDashboardViewController : UIViewController {
         printDate(date)
         username = currentUser?.username
         logOutButton.setTitle("Log Out of \(username)", forState: nil)
-        
+        println(currentUser)
     }
     
     @IBAction func logOut(sender : AnyObject) {

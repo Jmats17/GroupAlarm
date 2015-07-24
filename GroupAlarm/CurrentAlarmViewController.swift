@@ -14,16 +14,18 @@ import Bolts
 class CurrentAlarmViewController : UIViewController {
     @IBOutlet var label : UILabel!
     var  currentUser = PFUser.currentUser()
+    let query = PFObject(className: "Alarm")
     var dateFormatter = NSDateFormatter()
 
     override func viewDidLoad() {
         dateFormatter.dateFormat = "hh:mm a"
 
         super.viewDidLoad()
-        var alarm: AnyObject? = currentUser?.objectForKey("alarmTime")
-        let alarmDate = alarm as! NSDate
+        var alarm : AnyObject! = query["alarmTime"]
+        
         println(alarm)
-        let alarmString = dateFormatter.stringFromDate(alarmDate)
-        label.text = alarmString
+//        println(alarm)
+//        let alarmString = dateFormatter.stringFromDate(alarmDate)
+//        label.text = alarmString
     }
 }

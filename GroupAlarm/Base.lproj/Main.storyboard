@@ -554,7 +554,7 @@
                         <outlet property="alarmLabelTextField" destination="LEO-2Q-VL9" id="mos-db-z3e"/>
                         <outlet property="myDatePicker" destination="EFy-bB-91M" id="zru-tj-Dme"/>
                         <outlet property="saveButton" destination="pH9-6s-chd" id="ILS-Hj-aff"/>
-                        <segue destination="Rjn-w9-aYD" kind="show" identifier="alarmtoFriend" id="tNX-fZ-jYe"/>
+                        <segue destination="Rjn-w9-aYD" kind="show" identifier="alarmToFriend" id="hFL-to-xG8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w66-mb-2BB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -564,7 +564,7 @@
         <!--Pick Friends View Controller-->
         <scene sceneID="zYX-4d-9WJ">
             <objects>
-                <viewController id="Rjn-w9-aYD" customClass="PickFriendsViewController" customModule="GroupAlarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pickFriends" id="Rjn-w9-aYD" customClass="PickFriendsViewController" customModule="GroupAlarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wOc-yj-3q6"/>
                         <viewControllerLayoutGuide type="bottom" id="ckW-LT-EWi"/>
@@ -579,8 +579,7 @@
                                     <navigationItem title="Friends" id="sZ4-Td-OhC">
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="vkG-9i-fzy">
                                             <connections>
-                                                <action selector="addButton:" destination="dkk-RC-hQk" id="lMD-Lc-XMG"/>
-                                                <segue destination="Sbj-M7-Dem" kind="show" id="RRr-YE-6bb"/>
+                                                <action selector="doneButton:" destination="Rjn-w9-aYD" id="7qT-Fc-nHJ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -644,6 +643,7 @@
                         <outlet property="searchBar" destination="6lA-OG-3K8" id="SvX-hT-kpM"/>
                         <outlet property="searchDisplayController" destination="0xl-zn-LW2" id="hkV-Kf-pQZ"/>
                         <outlet property="tableView" destination="Asi-m1-PHr" id="gCz-zh-GzQ"/>
+                        <segue destination="Sbj-M7-Dem" kind="show" identifier="friendToCurrent" id="QO0-v7-uwe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BP0-db-Rbk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -656,7 +656,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3082" y="352"/>
+            <point key="canvasLocation" x="3287" y="352"/>
         </scene>
         <!--Current Alarm View Controller-->
         <scene sceneID="cFP-kq-MV2">
@@ -693,16 +693,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUq-0Q-MrI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3729" y="352"/>
+            <point key="canvasLocation" x="4046" y="352"/>
         </scene>
     </scenes>
     <resources>
         <image name="clock-icon.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DbY-Oh-Vns"/>
-        <segue reference="UPc-t3-zug"/>
-        <segue reference="ECu-ut-hSe"/>
         <segue reference="CcK-gg-ANV"/>
+        <segue reference="5pM-sd-W1e"/>
+        <segue reference="DbY-Oh-Vns"/>
+        <segue reference="QO0-v7-uwe"/>
     </inferredMetricsTieBreakers>
 </document>

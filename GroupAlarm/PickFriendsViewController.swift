@@ -22,19 +22,21 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     @IBOutlet var tableView : UITableView!
     var searchActive : Bool = false
     var data:[PFObject]!
-    var data1:[PFObject]!
+    var alarmVar : alarmLabelDate?
     var filtered:[PFObject]!
+    var createdDate : NSDate!
+    var alarmLabel : String!
     var selectedRows : NSMutableDictionary!
-    
-
-    
+    var selectedIndexPaths : NSMutableArray = NSMutableArray()
+    let alarmClass = PFObject(className: "Alarm")
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
        // selectedRows = [[NSMutableDictionary alloc] init]
         search()
-        
+        createdDate = alarmVar?.alarmDate
+        alarmLabel = alarmVar?.alarmLabel
     }
     
     
@@ -69,25 +71,33 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! tableViewCell
         let obj = self.data[indexPath.row]
-
         cell.fullNameLabel.text = obj["FullName"] as? String
         cell.usernameLabel.text = obj["username"] as? String
+        if selectedIndexPaths.containsObject(obj.objectId!) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+        }
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)  {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let obj = self.data[indexPath.row]
 
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-     //   let obj = self.data[indexPath.row]
-//        if cell?.selected == true {
-//            selectedRows.setValue(obj["username"], forKey: "user")
-//        }
-//        else {
-//            
-//        }
+        if selectedIndexPaths.containsObject(obj.objectId!) {
+            cell!.accessoryType = UITableViewCellAccessoryType.None
+            selectedIndexPaths.removeObject(obj.objectId!)
+        } else {
+            cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+            selectedIndexPaths.addObject(obj.objectId!)
+        }
+//        selectedRows.setValue(obj["username"], forKey: "user")
+//        println(selectedRows)
     }
+    
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         searchActive = true
@@ -110,5 +120,22 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         search(searchTextUsername: searchText)
+    }
+    
+    @IBAction func doneButton(sender : AnyObject) {
+        println(selectedIndexPaths)
+        var sendArray:[String] = []
+        for objID in selectedIndexPaths {
+            sendArray.append(objID as! String)
+        }
+        println(sendArray)
+        alarmClass.setValue(sendArray, forKey: "alarmUsers")
+        alarmClass.setValue(createdDate, forKeyPath: "alarmTime")
+        alarmClass.setValue(alarmLabel, forKeyPath: "alarmLabel")
+//        println(alarmLabel)
+//        println(createdDate)
+        alarmClass.saveInBackground()
+
+        self.performSegueWithIdentifier("friendToCurrent", sender: self)
     }
 }
