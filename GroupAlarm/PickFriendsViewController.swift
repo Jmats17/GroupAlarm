@@ -153,10 +153,11 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
             sendArray.append(objID as! String)
         }
        // println(sendArray)
+        sendArray.append(currentUserId)
+
         alarmClass.setValue(sendArray, forKey: "alarmUsers")
         alarmClass.setValue(createdDate, forKeyPath: "alarmTime")
         alarmClass.setValue(alarmLabel, forKeyPath: "alarmLabel")
-        sendArray.append(currentUserId)
 //        println(alarmLabel)
 //        println(createdDate)
         alarmClass.saveInBackground()

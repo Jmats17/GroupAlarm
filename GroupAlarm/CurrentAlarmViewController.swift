@@ -20,7 +20,7 @@ class CurrentAlarmViewController : UIViewController {
     var dateFormatter = NSDateFormatter()
     var alarm : AnyObject!
     var alarmDate : NSDate!
-    var array : NSMutableArray = NSMutableArray()
+    var arrayOfArraysUsers : NSMutableArray = NSMutableArray()
     override func viewDidLoad() {
         dateFormatter.dateFormat = "hh:mm a"
         println(alarmDate)
@@ -31,9 +31,12 @@ class CurrentAlarmViewController : UIViewController {
                 
                 for object in objects! {
                     var alarmUsers = object["alarmUsers"]
-                    self.array.addObject(alarmUsers as! NSArray)
-                    println(alarmUsers)
-                    
+                    self.arrayOfArraysUsers.addObject(alarmUsers as! NSArray)
+                   // println(alarmUsers)
+                    for eachArray in self.arrayOfArraysUsers {
+//                        if currentUser?.objectId == eachArray
+//                        
+                    }
                     self.queryUser.findObjectsInBackgroundWithBlock {
                         (users , error) -> Void in
                         if error == nil {
@@ -46,7 +49,7 @@ class CurrentAlarmViewController : UIViewController {
                     
                     
                 }
-                println(self.array)
+              //  println(self.arrayOfArraysUsers)
             }
         }
 //        println(alarm)
