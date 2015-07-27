@@ -87,6 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="321" y="352"/>
         </scene>
         <!--LoginViewController-->
         <scene sceneID="UbK-iS-pZJ">
@@ -355,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehk-87-8cK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="660"/>
+            <point key="canvasLocation" x="990" y="726"/>
         </scene>
         <!--MainDashboardViewController-->
         <scene sceneID="YwH-Ac-qST">
@@ -559,7 +560,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w66-mb-2BB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2428" y="352"/>
+            <point key="canvasLocation" x="2440" y="7"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fdO-es-GpR">
+            <objects>
+                <viewController id="y9h-cR-f07" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d9p-Ym-Bi0"/>
+                        <viewControllerLayoutGuide type="bottom" id="NyE-sV-ufI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V1z-RW-jan">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rFw-9d-Oxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2773" y="726"/>
         </scene>
         <!--Pick Friends View Controller-->
         <scene sceneID="zYX-4d-9WJ">
@@ -656,7 +675,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3287" y="352"/>
+            <point key="canvasLocation" x="3135" y="7"/>
         </scene>
         <!--Current Alarm View Controller-->
         <scene sceneID="cFP-kq-MV2">
@@ -693,16 +712,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUq-0Q-MrI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4046" y="352"/>
+            <point key="canvasLocation" x="3976" y="352"/>
         </scene>
     </scenes>
     <resources>
         <image name="clock-icon.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CcK-gg-ANV"/>
-        <segue reference="5pM-sd-W1e"/>
         <segue reference="DbY-Oh-Vns"/>
+        <segue reference="UPc-t3-zug"/>
         <segue reference="QO0-v7-uwe"/>
+        <segue reference="AQ8-Fh-Ode"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -75,7 +75,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
 ////            
 ////        }
         let myAlarm =  dateFormatter.dateFromString(strDate)!
-        println(strDate)
+        //println(strDate)
         let destinationVC = PickFriendsViewController()
         destinationVC.alarmVar = alarmLabelDate(alarmLabel: alarmTextLabel, alarmDate: myAlarm)
 

@@ -147,12 +147,12 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func doneButton(sender : AnyObject) {
-        println(selectedIndexPaths)
+      //  println(selectedIndexPaths)
         var sendArray:[String] = []
         for objID in selectedIndexPaths {
             sendArray.append(objID as! String)
         }
-        println(sendArray)
+       // println(sendArray)
         alarmClass.setValue(sendArray, forKey: "alarmUsers")
         alarmClass.setValue(createdDate, forKeyPath: "alarmTime")
         alarmClass.setValue(alarmLabel, forKeyPath: "alarmLabel")
