@@ -11,16 +11,27 @@ import UIKit
 import Parse
 import Bolts
 
-class CurrentAlarmViewController : UIViewController {
+class AlarmViewCell : UITableViewCell {
+    @IBOutlet var timeLabel : UILabel!
+    @IBOutlet var alarmLabel : UILabel!
+}
+
+class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITableViewDataSource  {
+   
+    @IBOutlet var tableView : UITableView!
+
     let query = PFQuery(className: "Alarm")
     let queryUser = PFQuery(className: "_User")
-
+    
     let currentUser = PFUser.currentUser()
     var dateFormatter = NSDateFormatter()
     var alarm : AnyObject!
     var alarmDate : NSDate!
     var arrayOfArraysUsers : NSMutableArray = NSMutableArray()
     override func viewDidLoad() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         dateFormatter.dateFormat = "hh:mm a"
       //  println(alarmDate)
         super.viewDidLoad()
@@ -29,35 +40,43 @@ class CurrentAlarmViewController : UIViewController {
             if error == nil {
                 
                 for object in objects! {
-                    var alarmUsers = object["alarmUsers"]
-                    self.arrayOfArraysUsers.addObject(alarmUsers as! NSArray)
+                    var alarmUsers : AnyObject? = object.objectForKey("alarmUsers")
+                    var arrayOfAlarmUsers : NSArray = alarmUsers as! NSArray
                    // println(alarmUsers)
-                    for eachArray in self.arrayOfArraysUsers {
-                        println(eachArray)
-                        for element in (eachArray as! NSArray) {
-                            println(element)
-                            if (element as! String) == self.currentUser?.objectId! {
-                                println("working bitches")
+                    for userId in arrayOfAlarmUsers {
+                        if (userId as! String) == self.currentUser?.objectId! {
+                           // println("working :') ")
+                            self.arrayOfArraysUsers.addObject(arrayOfAlarmUsers)
+                            for eachArray in self.arrayOfArraysUsers {
+                                
                             }
                         }
                     }
-                    self.queryUser.findObjectsInBackgroundWithBlock {
-                        (users , error) -> Void in
-                        if error == nil {
-                            let listOfUsers = users as! [PFObject]
-                            for user in listOfUsers {
-                                let userUsername: AnyObject? = user["username"]
-                            }
-                        }
-                    }
+                   // println(self.arrayOfArraysUsers)
                     
                     
                 }
               //  println(self.arrayOfArraysUsers)
             }
         }
+
 //        println(alarm)
 //        let alarmString = dateFormatter.stringFromDate(alarmDate)
 //        label.text = alarmString
     }
+    
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
+
+        return cell
+    }
+
+    
 }
