@@ -12,7 +12,6 @@ import Parse
 import Bolts
 
 class CurrentAlarmViewController : UIViewController {
-    @IBOutlet var label : UILabel!
     let query = PFQuery(className: "Alarm")
     let queryUser = PFQuery(className: "_User")
 
@@ -23,7 +22,7 @@ class CurrentAlarmViewController : UIViewController {
     var arrayOfArraysUsers : NSMutableArray = NSMutableArray()
     override func viewDidLoad() {
         dateFormatter.dateFormat = "hh:mm a"
-        println(alarmDate)
+      //  println(alarmDate)
         super.viewDidLoad()
         query.findObjectsInBackgroundWithBlock {
             (objects, error) -> Void in
@@ -34,8 +33,13 @@ class CurrentAlarmViewController : UIViewController {
                     self.arrayOfArraysUsers.addObject(alarmUsers as! NSArray)
                    // println(alarmUsers)
                     for eachArray in self.arrayOfArraysUsers {
-//                        if currentUser?.objectId == eachArray
-//                        
+                        println(eachArray)
+                        for element in (eachArray as! NSArray) {
+                            println(element)
+                            if (element as! String) == self.currentUser?.objectId! {
+                                println("working bitches")
+                            }
+                        }
                     }
                     self.queryUser.findObjectsInBackgroundWithBlock {
                         (users , error) -> Void in

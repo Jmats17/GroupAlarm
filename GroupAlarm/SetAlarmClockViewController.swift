@@ -94,10 +94,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         destinationVC.alarmVar = newVarAlarm
     
 }
-    
-    @IBAction func cancelButton(sender : AnyObject) {
-        
-    }
+  
     
     
 }
