@@ -730,8 +730,17 @@
                                                 <constraint firstItem="kVE-GG-fyZ" firstAttribute="leading" secondItem="Otw-ze-7Lx" secondAttribute="leadingMargin" id="ZFw-r2-a7H"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="alarmLabel" destination="kVE-GG-fyZ" id="dSf-TU-LNn"/>
+                                            <outlet property="numOfUsersLabel" destination="xws-76-umJ" id="yAJ-bm-orq"/>
+                                            <outlet property="timeLabel" destination="kVE-GG-fyZ" id="5VK-qZ-cHI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Sbj-M7-Dem" id="8in-Ee-mt5"/>
+                                    <outlet property="delegate" destination="Sbj-M7-Dem" id="3q6-RL-hWu"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

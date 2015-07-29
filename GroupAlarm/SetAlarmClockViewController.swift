@@ -72,7 +72,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
 ////            else {
 ////                
 ////            }
-////            
+////
 ////        }
         let myAlarm =  dateFormatter.dateFromString(strDate)!
         //println(strDate)
