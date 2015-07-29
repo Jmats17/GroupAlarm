@@ -31,6 +31,8 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     var selectedRows : NSMutableDictionary!
     var selectedIndexPaths : NSMutableArray = NSMutableArray()
     let alarmClass = PFObject(className: "Alarm")
+    //let userAlarmClass = PFObject(className: "UserAlarmRole")
+
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -97,7 +99,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         
         
         
-        if selectedIndexPaths.containsObject(obj.objectId!) {
+        if selectedIndexPaths.containsObject(obj) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
@@ -111,12 +113,15 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         let obj = self.data[indexPath.row]
 
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        if selectedIndexPaths.containsObject(obj.objectId!) {
+        if selectedIndexPaths.containsObject(obj) {
+            //if user is checked..and currentuser taps them again, this code will uncheck them and remove from array
             cell!.accessoryType = UITableViewCellAccessoryType.None
-            selectedIndexPaths.removeObject(obj.objectId!)
+            selectedIndexPaths.removeObject(obj)
         } else {
+            //if user is not checked..and currentuser taps them, this code will check them and add them to array
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-            selectedIndexPaths.addObject(obj.objectId!)
+            
+            selectedIndexPaths.addObject(obj)
         }
 //        selectedRows.setValue(obj["username"], forKey: "user")
 //        println(selectedRows)
@@ -148,20 +153,28 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     
     @IBAction func doneButton(sender : AnyObject) {
       //  println(selectedIndexPaths)
-        var sendArray:[String] = []
-        for objID in selectedIndexPaths {
-            sendArray.append(objID as! String)
-        }
-       // println(sendArray)
-        sendArray.append(currentUserId)
+      //  var sendArray:[String] = []
+        selectedIndexPaths.addObject(currentUser!)
+//        for objID in selectedIndexPaths {
+//       //     sendArray.append(objID as! String)
+//            println(objID)
+//        }
 
-        alarmClass.setValue(sendArray, forKey: "alarmUsers")
+        //alarmClass.setValue(sendArray, forKey: "alarmUsers")
         alarmClass.setValue(createdDate, forKeyPath: "alarmTime")
         alarmClass.setValue(alarmLabel, forKeyPath: "alarmLabel")
 //        println(alarmLabel)
 //        println(createdDate)
-        alarmClass.saveInBackground()
+        alarmClass.saveInBackgroundWithBlock {
+            (result, error) -> Void in
+            for objID in self.selectedIndexPaths {
+                var newUserAlarm = PFObject(className: "UserAlarmRole")
+                newUserAlarm.setObject(objID, forKey: "user")
+                newUserAlarm.setObject(self.alarmClass, forKey: "alarm")
+                newUserAlarm.save()
+            }
 
+        }
         self.performSegueWithIdentifier("friendToCurrent", sender: self)
     }
 }

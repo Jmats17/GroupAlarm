@@ -22,25 +22,22 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
    
     @IBOutlet var tableView : UITableView!
 
-    let query = PFQuery(className: "Alarm")
+    let queryAlarm = PFQuery(className: "Alarm")
     let queryUser = PFQuery(className: "_User")
-    
+    let queryUserAlarm = PFQuery(className: "UserAlarmRole")
     let currentUser = PFUser.currentUser()
     var dateFormatter = NSDateFormatter()
     var alarm : AnyObject!
     var alarmDate : NSDate!
     var arrayOfArraysUsers : NSMutableArray = NSMutableArray()
     override func viewDidLoad() {
+        super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
         dateFormatter.dateFormat = "hh:mm a"
-      //  println(alarmDate)
-        super.viewDidLoad()
-      
-//        println(alarm)
-//        let alarmString = dateFormatter.stringFromDate(alarmDate)
-//        label.text = alarmString
+        querying(queryUserAlarm)
+
+
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -52,35 +49,53 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         return 3
     }
     
+    func querying(query : PFQuery) {
+        query.findObjectsInBackgroundWithBlock {
+            (objects, error) -> Void in
+            if error == nil {
+               for object in objects! {
+                var objId = object.objectId!
+                println(objId)
+   //                   //println(object["alarm"]!)
+////                    println(query.whereKey("user", equalTo: PFObject(withoutDataWithClassName: "UserAlarmRole", objectId: "DtwJMBeccu" )))
+////                    if (object["user"] as! String) == self.currentUser?.objectId {
+////                        //var correspondingAlarm : AnyObject? = object.objectForKey("alarm")
+////                        println("right")
+////                    }
+                }
+          }
+    }
+}
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
         let alarmString : String!
         
-        query.findObjectsInBackgroundWithBlock {
-            (objects, error) -> Void in
-            if error == nil {
-                
-                for object in objects! {
-                    var alarmUsers : AnyObject? = object.objectForKey("alarmUsers")
-                    var alarmDate : NSDate? = (object.objectForKey("alarmTime") as! NSDate)
-                    var theAlarmLabel : String? = (object.objectForKey("alarmLabel") as! String)
-                    
-                    var arrayOfAlarmUsers : NSArray = alarmUsers as! NSArray
-                    // println(alarmUsers)
-                    for userId in arrayOfAlarmUsers {
-                        if (userId as! String) == self.currentUser?.objectId! {
-                            // println("working :') ")
-                            self.arrayOfArraysUsers.addObject(arrayOfAlarmUsers)
-                            for eachArray in self.arrayOfArraysUsers {
-                                cell.timeLabel.text = self.dateFormatter.stringFromDate(alarmDate!)
-                                cell.alarmLabel.text = theAlarmLabel
-                                cell.numOfUsersLabel.text = String(self.arrayOfArraysUsers.count) + "Friends"
-                            }
-                        }
-                    }
-                }
-            }
-        }
+//        query.findObjectsInBackgroundWithBlock {
+//            (objects, error) -> Void in
+//            if error == nil {
+//                
+//                for object in objects! {
+//                    var alarmUsers : AnyObject? = object.objectForKey("alarmUsers")
+//                    var alarmDate : NSDate? = (object.objectForKey("alarmTime") as! NSDate)
+//                    var theAlarmLabel : String? = (object.objectForKey("alarmLabel") as! String)
+//                    
+//                    var arrayOfAlarmUsers : NSArray = alarmUsers as! NSArray
+//                    // println(alarmUsers)
+//                    for userId in arrayOfAlarmUsers {
+//                        if (userId as! String) == self.currentUser?.objectId! {
+//                            // println("working :') ")
+//                            self.arrayOfArraysUsers.addObject(arrayOfAlarmUsers)
+//                            for eachArray in self.arrayOfArraysUsers {
+//                                cell.timeLabel.text = self.dateFormatter.stringFromDate(alarmDate!)
+//                                cell.alarmLabel.text = theAlarmLabel
+//                                cell.numOfUsersLabel.text = String(self.arrayOfArraysUsers.count) + "Friends"
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
 
         return cell
     }
