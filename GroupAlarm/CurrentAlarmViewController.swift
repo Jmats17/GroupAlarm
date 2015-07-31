@@ -29,15 +29,20 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     var dateFormatter = NSDateFormatter()
     var alarm : AnyObject!
     var alarmDate : NSDate!
-    var arrayOfArraysUsers : NSMutableArray = NSMutableArray()
+    var corrAlarm : PFObject!
+    var users : PFObject!
+    var dictOfLabelTime : NSMutableDictionary = NSMutableDictionary()
+    var currentUserAlarms : NSMutableArray = NSMutableArray()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         dateFormatter.dateFormat = "hh:mm a"
+     
+    }
+    override func viewDidAppear(animated: Bool) {
         querying(queryUserAlarm)
-
-
+        tableView.reloadData()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -46,7 +51,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        return 3
+        return currentUserAlarms.count
     }
     
     func querying(query : PFQuery) {
@@ -54,50 +59,42 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             (objects, error) -> Void in
             if error == nil {
                for object in objects! {
-                var objId = object.objectId!
-                println(objId)
-   //                   //println(object["alarm"]!)
-////                    println(query.whereKey("user", equalTo: PFObject(withoutDataWithClassName: "UserAlarmRole", objectId: "DtwJMBeccu" )))
-////                    if (object["user"] as! String) == self.currentUser?.objectId {
-////                        //var correspondingAlarm : AnyObject? = object.objectForKey("alarm")
-////                        println("right")
-////                    }
+                    var objId = object.objectId!
+                    self.users = (object["user"] as! PFObject)
+                    // println(a?.objectId as String!)
+                
+                    if (self.users?.objectId as String!) == self.currentUser?.objectId {
+                        self.corrAlarm = object["alarm"] as! PFObject
+                        self.corrAlarm.fetchInBackgroundWithBlock {
+                        (results, error) -> Void in
+                        var alarmTimes : AnyObject? = results?.valueForKey("alarmTime")
+                        var alarmLabels : AnyObject? = results?.valueForKey("alarmLabel")
+                       // println(alarmTimes)
+                        self.currentUserAlarms.addObject(results! as PFObject)
+                       // println(self.currentUserAlarms)
+                        self.tableView.reloadData()
+                         //   println(results)
+                            
+                        }
+                    }
                 }
-          }
+            }
+        }
     }
-}
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
-        let alarmString : String!
-        
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects, error) -> Void in
-//            if error == nil {
-//                
-//                for object in objects! {
-//                    var alarmUsers : AnyObject? = object.objectForKey("alarmUsers")
-//                    var alarmDate : NSDate? = (object.objectForKey("alarmTime") as! NSDate)
-//                    var theAlarmLabel : String? = (object.objectForKey("alarmLabel") as! String)
-//                    
-//                    var arrayOfAlarmUsers : NSArray = alarmUsers as! NSArray
-//                    // println(alarmUsers)
-//                    for userId in arrayOfAlarmUsers {
-//                        if (userId as! String) == self.currentUser?.objectId! {
-//                            // println("working :') ")
-//                            self.arrayOfArraysUsers.addObject(arrayOfAlarmUsers)
-//                            for eachArray in self.arrayOfArraysUsers {
-//                                cell.timeLabel.text = self.dateFormatter.stringFromDate(alarmDate!)
-//                                cell.alarmLabel.text = theAlarmLabel
-//                                cell.numOfUsersLabel.text = String(self.arrayOfArraysUsers.count) + "Friends"
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
+            let alarmString : String!
+            // println(currentUserAlarms)
 
-        return cell
+            let object = self.currentUserAlarms[indexPath.row] as! PFObject
+            var alarmLabelString  = object["alarmLabel"]! as? String
+            var timeLabelString = object["alarmTime"]! as? NSDate
+            let stringDate = dateFormatter.stringFromDate(timeLabelString!)
+            cell.alarmLabel.text = alarmLabelString
+            cell.timeLabel.text = stringDate
+   
+            return cell
     }
 
     

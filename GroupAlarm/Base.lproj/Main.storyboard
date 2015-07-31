@@ -731,7 +731,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="alarmLabel" destination="kVE-GG-fyZ" id="dSf-TU-LNn"/>
+                                            <outlet property="alarmLabel" destination="XIL-zC-IEP" id="4uk-qU-qwh"/>
                                             <outlet property="numOfUsersLabel" destination="xws-76-umJ" id="yAJ-bm-orq"/>
                                             <outlet property="timeLabel" destination="kVE-GG-fyZ" id="5VK-qZ-cHI"/>
                                         </connections>
