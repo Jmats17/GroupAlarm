@@ -31,8 +31,11 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     var selectedRows : NSMutableDictionary!
     var selectedIndexPaths : NSMutableArray = NSMutableArray()
     let alarmClass = PFObject(className: "Alarm")
-    //let userAlarmClass = PFObject(className: "UserAlarmRole")
+    let userAlarmClass = PFObject(className: "UserAlarmRole")
 
+    //let userAlarmClass = PFObject(className: "UserAlarmRole")
+    let numOfUsers : Int = 0
+    
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -154,6 +157,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     @IBAction func doneButton(sender : AnyObject) {
       //  println(selectedIndexPaths)
       //  var sendArray:[String] = []
+        alarmClass.setObject(self.selectedIndexPaths.count, forKey: "numOfUsers")
         selectedIndexPaths.addObject(currentUser!)
 //        for objID in selectedIndexPaths {
 //       //     sendArray.append(objID as! String)
@@ -173,8 +177,8 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
                 newUserAlarm.setObject(self.alarmClass, forKey: "alarm")
                 newUserAlarm.save()
             }
-
         }
+        
         self.performSegueWithIdentifier("friendToCurrent", sender: self)
     }
 }

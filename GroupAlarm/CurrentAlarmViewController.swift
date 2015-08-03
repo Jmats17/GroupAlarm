@@ -29,18 +29,20 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     var alarmDate : NSDate!
     var corrAlarm : PFObject!
     var users : PFObject!
-    var dictOfLabelTime : NSMutableDictionary = NSMutableDictionary()
-    var currentUserAlarms : NSMutableArray = NSMutableArray()
+    var currentUserAlarms: NSMutableArray = NSMutableArray()
+    var userAlarmRoleObjectIds: [String] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         dateFormatter.dateFormat = "hh:mm a"
-     
     }
     override func viewDidAppear(animated: Bool) {
         queryForUsersAlarms(queryUserAlarm)
+
         tableView.reloadData()
+  
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -50,13 +52,6 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         return currentUserAlarms.count
-    }
-    
-    func queryForUsersFriends(query : PFQuery) {
-        
-        
-        
-        
     }
     
     
@@ -71,25 +66,30 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
                     var objId = row.objectId!
                     var alarmInfo = row["alarm"] as! PFObject
                     self.currentUserAlarms.addObject(alarmInfo)
+                    
+                    
                 }
-               
                 self.tableView.reloadData()
-     
+                
             }
         }
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
             let alarmString : String!
-            // println(currentUserAlarms)
+
         
             let object = self.currentUserAlarms[indexPath.row] as! PFObject
             var alarmLabelString  = object["alarmLabel"]! as? String
             var timeLabelString = object["alarmTime"]! as? NSDate
+            var numOfUsers = object["numOfUsers"] as? NSNumber
             let stringDate = dateFormatter.stringFromDate(timeLabelString!)
+            var numOfUsersString : String = String(format: "%i", numOfUsers!.integerValue)
             cell.alarmLabel.text = alarmLabelString
             cell.timeLabel.text = stringDate
+            cell.numOfUsersLabel.text = numOfUsersString + " Friends"
         
             return cell
     }
