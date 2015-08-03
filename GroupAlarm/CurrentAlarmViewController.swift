@@ -22,12 +22,10 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
    
     @IBOutlet var tableView : UITableView!
 
-    let queryAlarm = PFQuery(className: "Alarm")
     let queryUser = PFQuery(className: "_User")
     let queryUserAlarm = PFQuery(className: "UserAlarmRole")
     let currentUser = PFUser.currentUser()
     var dateFormatter = NSDateFormatter()
-    var alarm : AnyObject!
     var alarmDate : NSDate!
     var corrAlarm : PFObject!
     var users : PFObject!
@@ -41,7 +39,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
      
     }
     override func viewDidAppear(animated: Bool) {
-        querying(queryUserAlarm)
+        queryForUsersAlarms(queryUserAlarm)
         tableView.reloadData()
     }
     
@@ -54,30 +52,29 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         return currentUserAlarms.count
     }
     
-    func querying(query : PFQuery) {
+    func queryForUsersFriends(query : PFQuery) {
+        
+        
+        
+        
+    }
+    
+    
+    func queryForUsersAlarms(query : PFQuery) {
+        query.whereKey("user", equalTo: (currentUser!))
+        query.selectKeys(["alarm"])
+        query.includeKey("alarm")
         query.findObjectsInBackgroundWithBlock {
             (objects, error) -> Void in
             if error == nil {
-               for object in objects! {
-                    var objId = object.objectId!
-                    self.users = (object["user"] as! PFObject)
-                    // println(a?.objectId as String!)
-                
-                    if (self.users?.objectId as String!) == self.currentUser?.objectId {
-                        self.corrAlarm = object["alarm"] as! PFObject
-                        self.corrAlarm.fetchInBackgroundWithBlock {
-                        (results, error) -> Void in
-                        var alarmTimes : AnyObject? = results?.valueForKey("alarmTime")
-                        var alarmLabels : AnyObject? = results?.valueForKey("alarmLabel")
-                       // println(alarmTimes)
-                        self.currentUserAlarms.addObject(results! as PFObject)
-                       // println(self.currentUserAlarms)
-                        self.tableView.reloadData()
-                         //   println(results)
-                            
-                        }
-                    }
+                for row in objects! {
+                    var objId = row.objectId!
+                    var alarmInfo = row["alarm"] as! PFObject
+                    self.currentUserAlarms.addObject(alarmInfo)
                 }
+               
+                self.tableView.reloadData()
+     
             }
         }
     }
@@ -86,14 +83,14 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
             let alarmString : String!
             // println(currentUserAlarms)
-
+        
             let object = self.currentUserAlarms[indexPath.row] as! PFObject
             var alarmLabelString  = object["alarmLabel"]! as? String
             var timeLabelString = object["alarmTime"]! as? NSDate
             let stringDate = dateFormatter.stringFromDate(timeLabelString!)
             cell.alarmLabel.text = alarmLabelString
             cell.timeLabel.text = stringDate
-   
+        
             return cell
     }
 
