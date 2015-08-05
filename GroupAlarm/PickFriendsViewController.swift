@@ -45,15 +45,10 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         createdDate = alarmVar?.alarmDate
         alarmLabel = alarmVar?.alarmLabel
         currentUserId = currentUser?.objectId
-//        for a in data {
-//            if a == currentUser?.username {
-//               println(a)
-//            }
-//        }
+        
     }
     
-    
-    
+
     func search(searchTextUsername: String? = nil, searchTextFull : String? = nil){
         let query = PFQuery(className: "_User")
 
@@ -126,8 +121,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
             
             selectedIndexPaths.addObject(obj)
         }
-//        selectedRows.setValue(obj["username"], forKey: "user")
-//        println(selectedRows)
+
     }
     
     
@@ -154,25 +148,23 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         search(searchTextUsername: searchText)
     }
     
+    
+
+    
     @IBAction func doneButton(sender : AnyObject) {
-      //  println(selectedIndexPaths)
-      //  var sendArray:[String] = []
+
         alarmClass.setObject(self.selectedIndexPaths.count, forKey: "numOfUsers")
         selectedIndexPaths.addObject(currentUser!)
-//        for objID in selectedIndexPaths {
-//       //     sendArray.append(objID as! String)
-//            println(objID)
-//        }
 
-        //alarmClass.setValue(sendArray, forKey: "alarmUsers")
         alarmClass.setValue(createdDate, forKeyPath: "alarmTime")
         alarmClass.setValue(alarmLabel, forKeyPath: "alarmLabel")
-//        println(alarmLabel)
-//        println(createdDate)
+
         alarmClass.saveInBackgroundWithBlock {
             (result, error) -> Void in
             for objID in self.selectedIndexPaths {
+                var pushNotif : PFPush = PFPush.alloc()
                 var newUserAlarm = PFObject(className: "UserAlarmRole")
+                pushNotif.
                 newUserAlarm.setObject(objID, forKey: "user")
                 newUserAlarm.setObject(self.alarmClass, forKey: "alarm")
                 newUserAlarm.save()
@@ -180,5 +172,6 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         }
         
         self.performSegueWithIdentifier("friendToCurrent", sender: self)
+
     }
 }

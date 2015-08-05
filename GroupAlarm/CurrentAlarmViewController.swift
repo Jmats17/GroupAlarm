@@ -54,6 +54,12 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         return currentUserAlarms.count
     }
     
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+
+    }
     
     func queryForUsersAlarms(query : PFQuery) {
         query.whereKey("user", equalTo: (currentUser!))
@@ -89,8 +95,12 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             var numOfUsersString : String = String(format: "%i", numOfUsers!.integerValue)
             cell.alarmLabel.text = alarmLabelString
             cell.timeLabel.text = stringDate
-            cell.numOfUsersLabel.text = numOfUsersString + " Friends"
-        
+                if numOfUsers!.integerValue == 1 {
+                    cell.numOfUsersLabel.text = numOfUsersString + " Friend"
+                }
+                else {
+                    cell.numOfUsersLabel.text = numOfUsersString + " Friends"
+                }
             return cell
     }
 

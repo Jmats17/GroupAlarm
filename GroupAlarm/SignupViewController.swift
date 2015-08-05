@@ -20,7 +20,6 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
     @IBOutlet var emailTaken : UILabel!
     @IBOutlet var missingField : UILabel!
     @IBOutlet var invalidEmail : UILabel!
-
     
     
     override func viewDidLoad() {
@@ -37,7 +36,7 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         textFieldShouldReturn(emailTextField)
         textFieldShouldReturn(usernameTextField)
         textFieldShouldReturn(fulLNameTextField)
-
+        
     }
     
 //    @IBAction func tappedOutside(sender : AnyObject) {
@@ -53,6 +52,10 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    
+  
+
     
     @IBAction func signUp(sender : AnyObject) {
         
@@ -88,6 +91,7 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
                 (succeeded ,error) -> Void in
                 if error == nil {
                     println("user signed up")
+               
                     self.performSegueWithIdentifier("signUpToLogIn", sender: self)
                     savedUser.setObject(user.isAuthenticated() == true, forKey: "authenticated")
                     savedUser.signUp()

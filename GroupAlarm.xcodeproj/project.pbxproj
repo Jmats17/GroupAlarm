@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D06713E51B708D5B001B2FC1 /* GroupCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06713E41B708D5B001B2FC1 /* GroupCurrentViewController.swift */; };
 		D0A2C9AF1B55B6A500D7F7EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9AE1B55B6A500D7F7EA /* AppDelegate.swift */; };
 		D0A2C9B11B55B6A500D7F7EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9B01B55B6A500D7F7EA /* ViewController.swift */; };
 		D0A2C9B41B55B6A500D7F7EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A2C9B21B55B6A500D7F7EA /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D06713E41B708D5B001B2FC1 /* GroupCurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCurrentViewController.swift; sourceTree = "<group>"; };
 		D0A2C9A91B55B6A500D7F7EA /* GroupAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A2C9AD1B55B6A500D7F7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A2C9AE1B55B6A500D7F7EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */,
 				D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */,
 				D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */,
+				D06713E41B708D5B001B2FC1 /* GroupCurrentViewController.swift */,
 				D0A2C9B21B55B6A500D7F7EA /* Main.storyboard */,
 				D0A2C9B51B55B6A500D7F7EA /* Images.xcassets */,
 				D0A2C9B71B55B6A500D7F7EA /* LaunchScreen.xib */,
@@ -309,6 +312,7 @@
 			files = (
 				D0A2C9F31B570B4C00D7F7EA /* LoginViewController.swift in Sources */,
 				D0A2C9F11B570B4100D7F7EA /* SignupViewController.swift in Sources */,
+				D06713E51B708D5B001B2FC1 /* GroupCurrentViewController.swift in Sources */,
 				D0A2C9B11B55B6A500D7F7EA /* ViewController.swift in Sources */,
 				D0B51F631B5EC42000B277B5 /* PickFriendsViewController.swift in Sources */,
 				D0B51F651B5EC62000B277B5 /* CurrentAlarmViewController.swift in Sources */,
@@ -373,6 +377,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -395,6 +400,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -418,6 +424,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -433,6 +440,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -443,7 +451,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -452,6 +460,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "014022b4-9e7f-44ef-8fba-6ff1d1dc1556";
 			};
 			name = Debug;
 		};
@@ -459,7 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -468,6 +477,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "014022b4-9e7f-44ef-8fba-6ff1d1dc1556";
 			};
 			name = Release;
 		};
