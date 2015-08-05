@@ -36,7 +36,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.dateFormat = "MMMM d, yyyy hh:mm a"
     }
     override func viewDidAppear(animated: Bool) {
         queryForUsersAlarms(queryUserAlarm)

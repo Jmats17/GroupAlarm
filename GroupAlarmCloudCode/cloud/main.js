@@ -36,14 +36,14 @@ Parse.Cloud.define('schedulePushNotification', function (request, response) {
      var schedulePushNotificationToUsers = function (users, alarm) {
 
          var dateToSent = alarm.get('alarmTime');
-
+		 var labelToSent = alarm.get('alarmLabel');
          var query = new Parse.Query(Parse.Installation);
          query.containedIn('user', users);
 
          return Parse.Push.send({
              where: query,
              data: {
-                 alert: 'Group! Time to wake up!'
+                 alert: labelToSent,
 				 sound: 'sound.wav'
              },
              push_time: dateToSent,

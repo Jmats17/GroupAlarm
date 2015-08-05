@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D06713E51B708D5B001B2FC1 /* GroupCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06713E41B708D5B001B2FC1 /* GroupCurrentViewController.swift */; };
+		D06713E71B72A1DD001B2FC1 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = D06713E61B72A1DC001B2FC1 /* clock.png */; };
 		D0A2C9AF1B55B6A500D7F7EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9AE1B55B6A500D7F7EA /* AppDelegate.swift */; };
 		D0A2C9B11B55B6A500D7F7EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9B01B55B6A500D7F7EA /* ViewController.swift */; };
 		D0A2C9B41B55B6A500D7F7EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A2C9B21B55B6A500D7F7EA /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		D06713E41B708D5B001B2FC1 /* GroupCurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCurrentViewController.swift; sourceTree = "<group>"; };
+		D06713E61B72A1DC001B2FC1 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		D0A2C9A91B55B6A500D7F7EA /* GroupAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A2C9AD1B55B6A500D7F7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A2C9AE1B55B6A500D7F7EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		D0A2C9CE1B55BC9C00D7F7EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D06713E61B72A1DC001B2FC1 /* clock.png */,
 				D0A2C9D31B55C11400D7F7EA /* clock-icon.png */,
 				D0A2C9D11B55BCEF00D7F7EA /* clouds.jpg */,
 			);
@@ -288,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D06713E71B72A1DD001B2FC1 /* clock.png in Resources */,
 				D0A2C9B41B55B6A500D7F7EA /* Main.storyboard in Resources */,
 				D0A2C9B91B55B6A500D7F7EA /* LaunchScreen.xib in Resources */,
 				D0A2C9D41B55C11400D7F7EA /* clock-icon.png in Resources */,
