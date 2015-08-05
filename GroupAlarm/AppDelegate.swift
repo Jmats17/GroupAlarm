@@ -25,6 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var currentUser = PFUser.currentUser()
                 if currentUser != nil {
         
+                    let currentInstallation = PFInstallation.currentInstallation()
+                    
+                    if currentInstallation["user"] == nil {
+                        
+                        currentInstallation["user"] = PFUser.currentUser()!
+                        
+                        currentInstallation.saveInBackgroundWithBlock { (didSave, error) -> Void in
+                        }
+                        
+                    }
+                    
                     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
                     var storyboard = UIStoryboard(name: "Main", bundle: nil)

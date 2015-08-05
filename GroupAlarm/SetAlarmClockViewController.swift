@@ -27,7 +27,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet var alarmLabelTextField : UITextField!
     @IBOutlet var saveButton : UIBarButtonItem!
     @IBAction func dateAction(sender : AnyObject) {
-        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm a"
     }
     
     override func viewDidLoad() {

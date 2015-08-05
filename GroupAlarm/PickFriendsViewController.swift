@@ -158,17 +158,25 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
 
         alarmClass.setValue(createdDate, forKeyPath: "alarmTime")
         alarmClass.setValue(alarmLabel, forKeyPath: "alarmLabel")
+        
+        
 
+        
+        
         alarmClass.saveInBackgroundWithBlock {
             (result, error) -> Void in
             for objID in self.selectedIndexPaths {
                 var pushNotif : PFPush = PFPush.alloc()
                 var newUserAlarm = PFObject(className: "UserAlarmRole")
-                pushNotif.
                 newUserAlarm.setObject(objID, forKey: "user")
                 newUserAlarm.setObject(self.alarmClass, forKey: "alarm")
                 newUserAlarm.save()
             }
+            PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": self.alarmClass.objectId!], block: { success, error in
+                
+                println(success)
+                println(error)
+            })
         }
         
         self.performSegueWithIdentifier("friendToCurrent", sender: self)
