@@ -30,6 +30,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         dateFormatter.dateFormat = "MM-dd-yyyy hh:mm a"
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         alarmLabelTextField.delegate = self
@@ -42,6 +43,8 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
     override func viewDidAppear(animated: Bool) {
         
     }
+    
+  
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -86,6 +89,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
     
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
         let myAlarm =  dateFormatter.dateFromString(strDate)!
 
         var newVarAlarm = alarmLabelDate(alarmLabel: alarmTextLabel, alarmDate: myAlarm)

@@ -44,7 +44,7 @@ Parse.Cloud.define('schedulePushNotification', function (request, response) {
              where: query,
              data: {
                  alert: labelToSent,
-				 sound: 'sound.wav'
+				 sound: 'sound.m4a'
              },
              push_time: dateToSent,
          });

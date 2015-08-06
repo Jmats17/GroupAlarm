@@ -36,6 +36,7 @@
 		D0B51F611B5DACDE00B277B5 /* SetAlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */; };
 		D0B51F631B5EC42000B277B5 /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */; };
 		D0B51F651B5EC62000B277B5 /* CurrentAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */; };
+		D0E155F11B73EACA005D6640 /* sound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D0E155F01B73EAC5005D6640 /* sound.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAlarmClockViewController.swift; sourceTree = "<group>"; };
 		D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
 		D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAlarmViewController.swift; sourceTree = "<group>"; };
+		D0E155F01B73EAC5005D6640 /* sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 		D0A2C9CE1B55BC9C00D7F7EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D0E155F01B73EAC5005D6640 /* sound.m4a */,
 				D06713E61B72A1DC001B2FC1 /* clock.png */,
 				D0A2C9D31B55C11400D7F7EA /* clock-icon.png */,
 				D0A2C9D11B55BCEF00D7F7EA /* clouds.jpg */,
@@ -291,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E155F11B73EACA005D6640 /* sound.m4a in Resources */,
 				D06713E71B72A1DD001B2FC1 /* clock.png in Resources */,
 				D0A2C9B41B55B6A500D7F7EA /* Main.storyboard in Resources */,
 				D0A2C9B91B55B6A500D7F7EA /* LaunchScreen.xib in Resources */,
