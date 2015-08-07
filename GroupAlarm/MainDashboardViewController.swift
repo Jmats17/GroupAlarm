@@ -25,6 +25,9 @@ class MainDashboardViewController : UIViewController {
         username = currentUser?.username
         logOutButton.setTitle("Log Out of \(username)", forState: nil)
        // println(currentUser)
+        
+//        let currentInstallation = PFInstallation(className: "Installation")
+//        currentInstallation.setObject(currentUser!, forKey: "user")
     }
     
     @IBAction func logOut(sender : AnyObject) {

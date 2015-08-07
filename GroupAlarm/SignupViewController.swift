@@ -22,40 +22,30 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
     @IBOutlet var invalidEmail : UILabel!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordTextField.delegate = self
-        usernameTextField.delegate = self
-        emailTextField.delegate = self
-        fulLNameTextField.delegate = self
         invalidEmail.hidden = true
         usernameTaken.hidden = true
         missingField.hidden = true
         emailTaken.hidden = true
+        passwordTextField.delegate = self
+        usernameTextField.delegate = self
+        emailTextField.delegate = self
+        fulLNameTextField.delegate = self
+
         textFieldShouldReturn(passwordTextField)
-        textFieldShouldReturn(emailTextField)
         textFieldShouldReturn(usernameTextField)
+        textFieldShouldReturn(emailTextField)
         textFieldShouldReturn(fulLNameTextField)
-        
     }
     
-//    @IBAction func tappedOutside(sender : AnyObject) {
-//        
-//        passwordTextField.resignFirstResponder()
-//        emailTextField.resignFirstResponder()
-//        usernameTextField.resignFirstResponder()
-//        fulLNameTextField.resignFirstResponder()
-//        
-//    }
+    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
-    
-  
-
     
     @IBAction func signUp(sender : AnyObject) {
         
@@ -69,6 +59,8 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         user.email = emailEntered
         var savedUser = PFUser(className: "_User")
         
+        
+        
         func userSignUp() {
             
             [user .setObject(fullNameEntered, forKey: "FullName")]
@@ -76,7 +68,7 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
             savedUser.setObject(passEntered, forKey: "password")
             savedUser.setObject(fullNameEntered, forKey: "FullName")
             
-          
+            
             savedUser.saveInBackgroundWithBlock { (succeeded , error) -> Void in
                 if error == nil {
                     println("saved!")
@@ -86,12 +78,14 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
                 }
             }
             
-           
+            
             user.signUpInBackgroundWithBlock {
                 (succeeded ,error) -> Void in
                 if error == nil {
                     println("user signed up")
-               
+                   
+
+                    
                     self.performSegueWithIdentifier("signUpToLogIn", sender: self)
                     savedUser.setObject(user.isAuthenticated() == true, forKey: "authenticated")
                     savedUser.signUp()
@@ -149,8 +143,9 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         }
         
     }
-
+    
+    
+    
 }
-
 
     
