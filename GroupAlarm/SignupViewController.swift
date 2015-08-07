@@ -20,7 +20,7 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
     @IBOutlet var emailTaken : UILabel!
     @IBOutlet var missingField : UILabel!
     @IBOutlet var invalidEmail : UILabel!
-    
+
     
     
     override func viewDidLoad() {
@@ -78,17 +78,17 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
                 }
             }
             
-            
+            user.setObject(user.isAuthenticated() == true, forKey: "authenticated")
             user.signUpInBackgroundWithBlock {
                 (succeeded ,error) -> Void in
                 if error == nil {
                     println("user signed up")
-                   
-
-                    
-                    self.performSegueWithIdentifier("signUpToLogIn", sender: self)
-                    savedUser.setObject(user.isAuthenticated() == true, forKey: "authenticated")
-                    savedUser.signUp()
+                    var currentInstallation = PFInstallation.currentInstallation()
+                    currentInstallation["user"] = PFUser.currentUser()!
+                    currentInstallation.saveInBackground()
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.performSegueWithIdentifier("signUpToLogIn", sender: self)
+                    })
                     
                     //   savedUser.save()
                     

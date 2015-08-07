@@ -55,18 +55,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window?.rootViewController = initialViewController
                     self.window?.makeKeyAndVisible()
                 }
+      
+        
+        
         
         // Register for Push Notitications
         if application.applicationState != UIApplicationState.Background {
             // Track an app open here if we launch with a push, unless
             // "content_available" was used to trigger a background push (introduced in iOS 7).
             // In that case, we skip tracking here to avoid double counting the app-open.
-            
+        
             let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
             let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
             var pushPayload = false
             if let options = launchOptions {
                 pushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                
+                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! UIViewController
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
             }
             if (preBackgroundPush || oldPushHandlerOnly || pushPayload) {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
@@ -101,10 +112,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    
+    
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         PFPush.handlePush(userInfo)
         if application.applicationState == UIApplicationState.Inactive {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+            
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            
+            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! UIViewController
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
         }
     }
     

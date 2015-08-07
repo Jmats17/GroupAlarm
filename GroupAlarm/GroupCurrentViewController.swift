@@ -12,5 +12,7 @@ import Parse
 import Bolts
 
 class GroupCurrentAlarmViewController : UIViewController {
-    
+    override func viewDidLoad() {
+        
+    }
 }
