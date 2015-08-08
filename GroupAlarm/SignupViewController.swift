@@ -33,17 +33,63 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         usernameTextField.delegate = self
         emailTextField.delegate = self
         fulLNameTextField.delegate = self
-
-        textFieldShouldReturn(passwordTextField)
-        textFieldShouldReturn(usernameTextField)
-        textFieldShouldReturn(emailTextField)
+        fulLNameTextField.becomeFirstResponder()
         textFieldShouldReturn(fulLNameTextField)
+        textFieldShouldReturn(emailTextField)
+        textFieldShouldReturn(usernameTextField)
+        textFieldShouldReturn(passwordTextField)
+        textFieldDidBeginEditing(passwordTextField)
+        textFieldDidEndEditing(passwordTextField)
     }
     
     
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        //move textfields up
+        let myScreenRect: CGRect = UIScreen.mainScreen().bounds
+        let keyboardHeight : CGFloat = 216
+        
+        UIView.beginAnimations( "animateView", context: nil)
+        var movementDuration:NSTimeInterval = 0.35
+        var needToMove: CGFloat = 0
+        
+        var frame : CGRect = self.view.frame
+        if (textField.frame.origin.y + textField.frame.size.height + /*self.navigationController.navigationBar.frame.size.height + */UIApplication.sharedApplication().statusBarFrame.size.height > (myScreenRect.size.height - keyboardHeight)) {
+            needToMove = (textField.frame.origin.y + textField.frame.size.height + /*self.navigationController.navigationBar.frame.size.height +*/ UIApplication.sharedApplication().statusBarFrame.size.height) - (myScreenRect.size.height - keyboardHeight);
+        }
+        
+        frame.origin.y = -needToMove
+        self.view.frame = frame
+        UIView.commitAnimations()
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        //move textfields back down
+        UIView.beginAnimations( "animateView", context: nil)
+        var movementDuration:NSTimeInterval = 0.35
+        var frame : CGRect = self.view.frame
+        frame.origin.y = 0
+        self.view.frame = frame
+        UIView.commitAnimations()
+    
+    }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        if textField == self.fulLNameTextField {
+            textField.resignFirstResponder()
+            emailTextField.becomeFirstResponder()
+        }
+        if textField == self.emailTextField {
+            textField.resignFirstResponder()
+            usernameTextField.becomeFirstResponder()
+        }
+        if textField == self.usernameTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        }
+        if textField == self.passwordTextField {
+            textField.resignFirstResponder()
+        }
         return true
     }
     

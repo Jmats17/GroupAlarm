@@ -67,10 +67,11 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
                 let obj = self.data[x]
                 if (obj["username"] as! String) == self.currentUser?.username {
                     currentUserIndex = x
+                    self.data.removeAtIndex(currentUserIndex)
+
                 }
             }
             
-            self.data.removeAtIndex(currentUserIndex)
             
             self.tableView.reloadData()
         }
