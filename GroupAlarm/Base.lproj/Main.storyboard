@@ -576,7 +576,8 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="0Gd-Vb-5WK"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <color key="textColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALARM LABEL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEo-Zp-cNz" userLabel="FullnameLabel">
@@ -677,6 +678,9 @@
                                     <navigationItem id="Dvv-pz-gQO">
                                         <barButtonItem key="leftBarButtonItem" image="Back.png" id="ssc-0u-wWG">
                                             <color key="tintColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="Sbj-M7-Dem" kind="show" id="C5O-1U-Usj"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -688,7 +692,7 @@
                                     <constraint firstAttribute="width" constant="568" id="kNY-hu-fCG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
-                                <color key="textColor" red="0.1215686275" green="0.1215686275" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:33 am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMc-M1-1mp" userLabel="FullnameLabel">
@@ -742,14 +746,6 @@
                                     <outlet property="delegate" destination="y9h-cR-f07" id="Zh9-6J-m24"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendsBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="vbt-Bi-rv1">
-                                <rect key="frame" x="0.0" y="312" width="600" height="58"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="2dY-JB-LYM"/>
-                                    <constraint firstAttribute="height" constant="58" id="m2z-9c-ovV"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday, August 15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jow-VP-iMn" userLabel="FullnameLabel">
                                 <rect key="frame" x="16" y="237" width="568" height="48"/>
                                 <constraints>
@@ -760,6 +756,22 @@
                                 <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendsBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="vbt-Bi-rv1">
+                                <rect key="frame" x="0.0" y="304" width="600" height="64"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="2dY-JB-LYM"/>
+                                    <constraint firstAttribute="height" constant="64" id="fn5-hk-BXt"/>
+                                    <constraint firstAttribute="height" constant="58" id="m2z-9c-ovV"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2dY-JB-LYM"/>
+                                        <exclude reference="fn5-hk-BXt"/>
+                                        <exclude reference="m2z-9c-ovV"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -769,15 +781,15 @@
                             <constraint firstItem="VMc-M1-1mp" firstAttribute="leading" secondItem="V1z-RW-jan" secondAttribute="leadingMargin" id="B4G-B7-w8f"/>
                             <constraint firstItem="VMc-M1-1mp" firstAttribute="trailing" secondItem="V1z-RW-jan" secondAttribute="trailingMargin" id="IdJ-ly-Kbd"/>
                             <constraint firstItem="rKk-MD-j3m" firstAttribute="trailing" secondItem="V1z-RW-jan" secondAttribute="trailingMargin" id="Jgu-S0-2GW"/>
-                            <constraint firstItem="ogW-Fk-cKn" firstAttribute="top" secondItem="vbt-Bi-rv1" secondAttribute="bottom" constant="-2" id="PmH-in-kU6"/>
-                            <constraint firstItem="vbt-Bi-rv1" firstAttribute="top" secondItem="Jow-VP-iMn" secondAttribute="bottom" constant="27" id="VdB-Zn-BUK"/>
+                            <constraint firstItem="ogW-Fk-cKn" firstAttribute="top" secondItem="vbt-Bi-rv1" secondAttribute="bottom" id="PmH-in-kU6"/>
+                            <constraint firstItem="vbt-Bi-rv1" firstAttribute="top" secondItem="Jow-VP-iMn" secondAttribute="bottom" constant="19" id="VdB-Zn-BUK"/>
                             <constraint firstItem="7Jy-as-wjI" firstAttribute="leading" secondItem="V1z-RW-jan" secondAttribute="leadingMargin" constant="-16" id="Wbt-vk-4MQ"/>
                             <constraint firstItem="Jow-VP-iMn" firstAttribute="trailing" secondItem="V1z-RW-jan" secondAttribute="trailingMargin" id="Wuc-ST-MQH"/>
                             <constraint firstItem="VMc-M1-1mp" firstAttribute="top" secondItem="rKk-MD-j3m" secondAttribute="bottom" constant="8" id="XJA-LN-rR6"/>
                             <constraint firstItem="Jow-VP-iMn" firstAttribute="leading" secondItem="V1z-RW-jan" secondAttribute="leadingMargin" id="e3I-26-jW1"/>
                             <constraint firstItem="7Jy-as-wjI" firstAttribute="top" secondItem="d9p-Ym-Bi0" secondAttribute="bottom" id="fPC-4f-UEa"/>
                             <constraint firstItem="rKk-MD-j3m" firstAttribute="leading" secondItem="V1z-RW-jan" secondAttribute="leadingMargin" id="gCz-0I-dOS"/>
-                            <constraint firstItem="NyE-sV-ufI" firstAttribute="top" secondItem="vbt-Bi-rv1" secondAttribute="bottom" constant="230" id="gOC-cm-wdE"/>
+                            <constraint firstItem="NyE-sV-ufI" firstAttribute="top" secondItem="vbt-Bi-rv1" secondAttribute="bottom" constant="232" id="gOC-cm-wdE"/>
                             <constraint firstItem="Jow-VP-iMn" firstAttribute="top" secondItem="VMc-M1-1mp" secondAttribute="bottom" constant="8" id="gf0-s9-U1N"/>
                             <constraint firstItem="NyE-sV-ufI" firstAttribute="top" secondItem="ogW-Fk-cKn" secondAttribute="bottom" id="giS-qo-qar"/>
                             <constraint firstItem="rKk-MD-j3m" firstAttribute="top" secondItem="7Jy-as-wjI" secondAttribute="bottom" constant="22" id="jyO-FC-zbM"/>
@@ -1106,6 +1118,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="AQ8-Fh-Ode"/>
         <segue reference="Ydj-Wb-J0w"/>
-        <segue reference="o3r-w9-0ZI"/>
+        <segue reference="C5O-1U-Usj"/>
     </inferredMetricsTieBreakers>
 </document>
