@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D06713E51B708D5B001B2FC1 /* GroupCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06713E41B708D5B001B2FC1 /* GroupCurrentViewController.swift */; };
 		D06713E71B72A1DD001B2FC1 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = D06713E61B72A1DC001B2FC1 /* clock.png */; };
 		D0A2C9AF1B55B6A500D7F7EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9AE1B55B6A500D7F7EA /* AppDelegate.swift */; };
 		D0A2C9B11B55B6A500D7F7EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9B01B55B6A500D7F7EA /* ViewController.swift */; };
@@ -42,6 +41,8 @@
 		D0DD4FB61B781ADF00C2A217 /* addfriend.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FB51B781ADF00C2A217 /* addfriend.png */; };
 		D0DD4FBE1B7829A000C2A217 /* friendsimage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FBD1B7829A000C2A217 /* friendsimage.png */; };
 		D0DD4FCC1B78593B00C2A217 /* friendsBar.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FCB1B78593B00C2A217 /* friendsBar.png */; };
+		D0DD4FCE1B788E7F00C2A217 /* GroupCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */; };
+		D0DD4FD01B788E8B00C2A217 /* MainDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FCF1B788E8B00C2A217 /* MainDashboardViewController.swift */; };
 		D0E155F11B73EACA005D6640 /* sound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D0E155F01B73EAC5005D6640 /* sound.m4a */; };
 		D0E39B7E1B7552AE0083A46B /* alarmclocklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E39B7D1B7552AE0083A46B /* alarmclocklogo.png */; };
 		D0E39B801B7555390083A46B /* LoginIn.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E39B7F1B7555390083A46B /* LoginIn.png */; };
@@ -61,7 +62,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D06713E41B708D5B001B2FC1 /* GroupCurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCurrentViewController.swift; sourceTree = "<group>"; };
 		D06713E61B72A1DC001B2FC1 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		D0A2C9A91B55B6A500D7F7EA /* GroupAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A2C9AD1B55B6A500D7F7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,6 +100,8 @@
 		D0DD4FB51B781ADF00C2A217 /* addfriend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addfriend.png; sourceTree = "<group>"; };
 		D0DD4FBD1B7829A000C2A217 /* friendsimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendsimage.png; sourceTree = "<group>"; };
 		D0DD4FCB1B78593B00C2A217 /* friendsBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendsBar.png; sourceTree = "<group>"; };
+		D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCurrentViewController.swift; sourceTree = "<group>"; };
+		D0DD4FCF1B788E8B00C2A217 /* MainDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDashboardViewController.swift; sourceTree = "<group>"; };
 		D0E155F01B73EAC5005D6640 /* sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.m4a; sourceTree = "<group>"; };
 		D0E39B7D1B7552AE0083A46B /* alarmclocklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarmclocklogo.png; sourceTree = "<group>"; };
 		D0E39B7F1B7555390083A46B /* LoginIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginIn.png; sourceTree = "<group>"; };
@@ -161,13 +163,14 @@
 			isa = PBXGroup;
 			children = (
 				D0A2C9AE1B55B6A500D7F7EA /* AppDelegate.swift */,
-				D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */,
 				D0A2C9B01B55B6A500D7F7EA /* ViewController.swift */,
+				D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */,
 				D0A2C9F21B570B4C00D7F7EA /* LoginViewController.swift */,
-				D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */,
+				D0DD4FCF1B788E8B00C2A217 /* MainDashboardViewController.swift */,
 				D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */,
+				D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */,
 				D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */,
-				D06713E41B708D5B001B2FC1 /* GroupCurrentViewController.swift */,
+				D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */,
 				D0A2C9B21B55B6A500D7F7EA /* Main.storyboard */,
 				D0A2C9B51B55B6A500D7F7EA /* Images.xcassets */,
 				D0A2C9B71B55B6A500D7F7EA /* LaunchScreen.xib */,
@@ -365,9 +368,10 @@
 			files = (
 				D0A2C9F31B570B4C00D7F7EA /* LoginViewController.swift in Sources */,
 				D0A2C9F11B570B4100D7F7EA /* SignupViewController.swift in Sources */,
-				D06713E51B708D5B001B2FC1 /* GroupCurrentViewController.swift in Sources */,
 				D0A2C9B11B55B6A500D7F7EA /* ViewController.swift in Sources */,
+				D0DD4FD01B788E8B00C2A217 /* MainDashboardViewController.swift in Sources */,
 				D0B51F631B5EC42000B277B5 /* PickFriendsViewController.swift in Sources */,
+				D0DD4FCE1B788E7F00C2A217 /* GroupCurrentViewController.swift in Sources */,
 				D0B51F651B5EC62000B277B5 /* CurrentAlarmViewController.swift in Sources */,
 				D0A2C9AF1B55B6A500D7F7EA /* AppDelegate.swift in Sources */,
 				D0B51F611B5DACDE00B277B5 /* SetAlarmClockViewController.swift in Sources */,

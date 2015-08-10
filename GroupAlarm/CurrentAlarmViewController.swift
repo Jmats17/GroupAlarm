@@ -16,7 +16,7 @@ class AlarmViewCell : UITableViewCell {
     @IBOutlet var alarmLabel : UILabel!
     @IBOutlet var numOfUsersLabel : UILabel!
     @IBOutlet var dateLabel : UILabel!
-
+    var alarmObject : PFObject!
 }
 
 
@@ -61,6 +61,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     var alarmLabelToAlarm : String!
     var alarmDateToAlarm : String!
     var alarmTimeToAlarm : NSDate!
+    var alarmPfObjectToAlarm : PFObject!
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let indexPath = tableView.indexPathForSelectedRow()
@@ -68,9 +69,11 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         
         alarmLabelToAlarm = selectedCell.alarmLabel.text
         alarmDateToAlarm = selectedCell.dateLabel.text
-        var alarmTimeAsNsDate = dateFormatterTime.dateFromString(selectedCell.timeLabel.text!)
         
+        var alarmTimeAsNsDate = dateFormatterTime.dateFromString(selectedCell.timeLabel.text!)
         alarmTimeToAlarm = alarmTimeAsNsDate
+        
+        alarmPfObjectToAlarm = selectedCell.alarmObject
         
         self.performSegueWithIdentifier("alarmDashboardToAlarm", sender: self)
     }
@@ -85,6 +88,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             groupAlarmViewController.groupAlarmLabel = alarmLabelToAlarm
             groupAlarmViewController.groupAlarmTime = alarmTimeToAlarm
             groupAlarmViewController.groupAlarmDate = alarmDateToAlarm
+            groupAlarmViewController.groupAlarmObject = alarmPfObjectToAlarm
         }
         
     }
@@ -122,6 +126,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
 
         
             let object = self.currentUserAlarms[indexPath.row] as! PFObject
+        
             var alarmLabelString  = object["alarmLabel"]! as? String
             var timeLabelString = object["alarmTime"]! as? NSDate
             var numOfUsers = object["numOfUsers"] as? NSNumber
@@ -132,6 +137,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             cell.alarmLabel.text = alarmLabelString
             cell.timeLabel.text = stringTime
             cell.dateLabel.text = stringDate
+            cell.alarmObject = object
                 if numOfUsers!.integerValue == 1 {
                     cell.numOfUsersLabel.text = numOfUsersString
                 }
