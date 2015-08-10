@@ -74,12 +74,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 
                 var storyboard = UIStoryboard(name: "Main", bundle: nil)
-                
-                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! UIViewController
 //                var destVC = FriendTableViewCell()
 //                var statusCircle = destVC.statusCircle
 //                var statusImage = UIImage(named: "greenCircle.png")
 //                statusCircle = UIImageView(image: statusImage!)
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! GroupCurrentAlarmViewController
+               
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
             }

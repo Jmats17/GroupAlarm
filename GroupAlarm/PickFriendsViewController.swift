@@ -168,9 +168,18 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         alarmClass.saveInBackgroundWithBlock {
             (result, error) -> Void in
             for objID in self.selectedIndexPaths {
+//                let push : PFPush = PFPush()
+//                let pushQuery = PFInstallation.query()!
+//                let userQuery = PFUser.query()
+//                userQuery?.whereKey("user", equalTo: objID)
+//                //pushQuery.whereKey("user", equalTo: objID)
+//                pushQuery.whereKey("user", equalTo: userQuery!)
                 var newUserAlarm = PFObject(className: "UserAlarmRole")
                 newUserAlarm.setObject(objID, forKey: "user")
+//                push.setQuery(pushQuery)
+//                push.sendPushInBackground()
                 newUserAlarm.setObject(self.alarmClass, forKey: "alarm")
+                newUserAlarm.setObject(false, forKey: "checkIn")
                 newUserAlarm.save()
             }
             PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": self.alarmClass.objectId!], block: { success, error in

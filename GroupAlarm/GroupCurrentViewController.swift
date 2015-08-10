@@ -38,7 +38,7 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     var editControllerAlarmTime : String!
     var editControllerAlarmDate : String!
     var editControllerAsPrevious : Bool = false
-    
+    var appdelControllerAsPrevious : Bool = false
     override func didReceiveMemoryWarning() {
         
     }
@@ -51,6 +51,7 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        var alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -61,8 +62,15 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
             alarmTime.text = editControllerAlarmTime
             alarmLabel.text = editControllerAlarmLabel
         }
+        else if appdelControllerAsPrevious == true {
+
+            alarmDate.text = groupAlarmDate
+            alarmTime.text = alarmTimeString
+            alarmLabel.text = groupAlarmLabel
+            
+            
+        }
         else {
-            var alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
 
             alarmDate.text = groupAlarmDate
             alarmTime.text = alarmTimeString
@@ -130,6 +138,7 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
             var userFullName = object["FullName"]! as? String
             cell.friendName.text = userFullName
         }
+        
       
         return cell
 
