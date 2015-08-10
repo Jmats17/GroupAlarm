@@ -74,8 +74,8 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         alarmTimeToAlarm = alarmTimeAsNsDate
         
         alarmPfObjectToAlarm = selectedCell.alarmObject
-        
         self.performSegueWithIdentifier("alarmDashboardToAlarm", sender: self)
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

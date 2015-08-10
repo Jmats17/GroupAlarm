@@ -376,7 +376,7 @@
                                 <rect key="frame" x="16" y="417" width="568" height="46"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6v-EK-YbT" userLabel="LoginButton">
                                 <rect key="frame" x="128" y="491" width="344" height="71"/>
@@ -580,8 +580,8 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALARM LABEL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEo-Zp-cNz" userLabel="FullnameLabel">
-                                        <rect key="frame" x="16" y="69" width="211" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALARM TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEo-Zp-cNz" userLabel="FullnameLabel">
+                                        <rect key="frame" x="16" y="69" width="193" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="J0K-SR-XgK"/>
                                         </constraints>
@@ -676,10 +676,16 @@
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="Dvv-pz-gQO">
-                                        <barButtonItem key="leftBarButtonItem" image="Back.png" id="ssc-0u-wWG">
+                                        <barButtonItem key="leftBarButtonItem" image="homebutton.png" id="ssc-0u-wWG">
                                             <color key="tintColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="Sbj-M7-Dem" kind="show" id="C5O-1U-Usj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="WHi-ZE-5qi">
+                                            <color key="tintColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="editButton:" destination="y9h-cR-f07" id="awc-xa-XqL"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -814,11 +820,114 @@
                         <outlet property="alarmLabel" destination="rKk-MD-j3m" id="6ZW-xi-s5r"/>
                         <outlet property="alarmTime" destination="VMc-M1-1mp" id="zEB-ep-COJ"/>
                         <outlet property="tableView" destination="ogW-Fk-cKn" id="H6S-8D-Vqk"/>
+                        <segue destination="MPY-sL-9Fm" kind="show" identifier="groupAlarmToEdit" id="xSu-L8-fLL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFw-9d-Oxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3295" y="-308"/>
+        </scene>
+        <!--Edit Alarm View Controller-->
+        <scene sceneID="uFS-eF-Ypv">
+            <objects>
+                <viewController id="MPY-sL-9Fm" customClass="EditAlarmViewController" customModule="GroupAlarm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P7j-uL-p8l"/>
+                        <viewControllerLayoutGuide type="bottom" id="wgi-IY-O8I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f3N-CH-0G0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5k-0M-Qwc">
+                                <rect key="frame" x="0.0" y="64" width="600" height="580"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5in-QM-dmO">
+                                        <rect key="frame" x="16" y="162" width="568" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Going to the beach tomorrow" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="je4-3k-13M" userLabel="alarmLabelTextfield">
+                                        <rect key="frame" x="16" y="117" width="568" height="46"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="DCf-dd-LGX"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALARM TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GU-vm-1CH" userLabel="FullnameLabel">
+                                        <rect key="frame" x="16" y="69" width="193" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="fJw-nV-g6I"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="34"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="5GU-vm-1CH" firstAttribute="top" secondItem="P5k-0M-Qwc" secondAttribute="top" constant="69" id="Leh-bR-MFf"/>
+                                    <constraint firstItem="5GU-vm-1CH" firstAttribute="leading" secondItem="P5k-0M-Qwc" secondAttribute="leading" constant="16" id="MI3-Jg-4rz"/>
+                                    <constraint firstItem="5in-QM-dmO" firstAttribute="top" secondItem="5GU-vm-1CH" secondAttribute="bottom" constant="53" id="Qba-J4-MR5"/>
+                                    <constraint firstItem="je4-3k-13M" firstAttribute="centerX" secondItem="P5k-0M-Qwc" secondAttribute="centerX" id="Qd7-1J-dtq"/>
+                                    <constraint firstItem="5GU-vm-1CH" firstAttribute="leading" secondItem="5in-QM-dmO" secondAttribute="leading" id="e9L-ac-yy3"/>
+                                    <constraint firstItem="je4-3k-13M" firstAttribute="leading" secondItem="5in-QM-dmO" secondAttribute="leading" id="jui-BI-Nlf"/>
+                                    <constraint firstItem="5in-QM-dmO" firstAttribute="trailing" secondItem="je4-3k-13M" secondAttribute="trailing" id="r0X-hk-vfD"/>
+                                    <constraint firstItem="je4-3k-13M" firstAttribute="bottom" secondItem="5in-QM-dmO" secondAttribute="bottom" id="rNW-KO-nfF"/>
+                                    <constraint firstItem="je4-3k-13M" firstAttribute="top" secondItem="5GU-vm-1CH" secondAttribute="bottom" constant="8" symbolic="YES" id="ul1-bw-sZu"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ki6-Cw-JEN">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem id="RdV-Tn-K5H">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="op0-D7-iVx">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="cancelButton:" destination="MPY-sL-9Fm" id="eUL-96-vWC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="a6K-bF-N6N">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="saveButton:" destination="MPY-sL-9Fm" id="jDI-1i-nKn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ki6-Cw-JEN" secondAttribute="trailing" id="6Tb-SE-VV7"/>
+                            <constraint firstItem="P5k-0M-Qwc" firstAttribute="top" secondItem="Ki6-Cw-JEN" secondAttribute="bottom" id="IUt-am-JDy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ki6-Cw-JEN" secondAttribute="trailing" id="Ipi-Yd-605"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="P5k-0M-Qwc" secondAttribute="bottom" constant="-44" id="JM8-SI-DpG"/>
+                            <constraint firstItem="P5k-0M-Qwc" firstAttribute="leading" secondItem="Ki6-Cw-JEN" secondAttribute="leading" id="U6Y-31-5nk"/>
+                            <constraint firstItem="Ki6-Cw-JEN" firstAttribute="leading" secondItem="f3N-CH-0G0" secondAttribute="leading" id="aei-ro-Ypn"/>
+                            <constraint firstItem="Ki6-Cw-JEN" firstAttribute="leading" secondItem="f3N-CH-0G0" secondAttribute="leadingMargin" id="e8u-YB-EgP"/>
+                            <constraint firstItem="Ki6-Cw-JEN" firstAttribute="trailing" secondItem="P5k-0M-Qwc" secondAttribute="trailing" id="mNA-g8-Odq"/>
+                            <constraint firstItem="Ki6-Cw-JEN" firstAttribute="top" secondItem="P7j-uL-p8l" secondAttribute="bottom" id="ovD-qu-BbG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ipi-Yd-605"/>
+                                <exclude reference="e8u-YB-EgP"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="alarmLabelTextField" destination="je4-3k-13M" id="SMh-vl-K3v"/>
+                        <segue destination="y9h-cR-f07" kind="show" identifier="editToGroupCurrent" id="Kw7-X0-QhL"/>
+                        <segue destination="y9h-cR-f07" kind="show" identifier="editCancelToGroupAlarm" id="rjs-1f-f47"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="asj-Z6-0mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3992" y="-308"/>
         </scene>
         <!--Pick Friends View Controller-->
         <scene sceneID="zYX-4d-9WJ">
@@ -844,7 +953,7 @@
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IV6-Zt-jM8">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <segue destination="Sbj-M7-Dem" kind="show" id="dHy-48-THz"/>
+                                                <action selector="cancelButton:" destination="Rjn-w9-aYD" id="Tuz-Ol-sLV"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="MJa-xE-bfC">
@@ -946,6 +1055,7 @@
                         <outlet property="searchDisplayController" destination="0xl-zn-LW2" id="hkV-Kf-pQZ"/>
                         <outlet property="tableView" destination="Asi-m1-PHr" id="gCz-zh-GzQ"/>
                         <segue destination="Sbj-M7-Dem" kind="show" identifier="friendToCurrent" id="QO0-v7-uwe"/>
+                        <segue destination="dkk-RC-hQk" kind="show" identifier="friendToAlarmPick" id="ga4-Bn-BTT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BP0-db-Rbk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1120,17 +1230,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back.png" width="73" height="21"/>
         <image name="Line.png" width="300" height="1"/>
         <image name="addfriend.png" width="30" height="26"/>
         <image name="alarmclocklogo.png" width="282" height="282"/>
         <image name="friendicon.png" width="229" height="175"/>
         <image name="friendsBar.png" width="522" height="50"/>
+        <image name="homebutton.png" width="58" height="14"/>
         <image name="redCircle.png" width="18" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AQ8-Fh-Ode"/>
         <segue reference="Ydj-Wb-J0w"/>
+        <segue reference="ga4-Bn-BTT"/>
+        <segue reference="rjs-1f-f47"/>
         <segue reference="C5O-1U-Usj"/>
     </inferredMetricsTieBreakers>
 </document>

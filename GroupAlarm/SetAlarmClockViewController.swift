@@ -34,9 +34,9 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         alarmLabelTextField.delegate = self
-        
+        let date : NSDate = NSDate()
         textFieldShouldReturn(alarmLabelTextField)
-        
+        myDatePicker.minimumDate = date
         
     }
     

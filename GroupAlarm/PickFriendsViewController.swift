@@ -150,8 +150,9 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     }
     
     
-
-    
+    @IBAction func cancelButton(sender : AnyObject) {
+        self.performSegueWithIdentifier("friendToAlarmPick", sender: self)
+    }
     @IBAction func doneButton(sender : AnyObject) {
 
         alarmClass.setObject(self.selectedIndexPaths.count, forKey: "numOfUsers")
