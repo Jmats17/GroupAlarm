@@ -17,7 +17,6 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
     @IBOutlet var emailTextField : UITextField!
     @IBOutlet var fulLNameTextField : UITextField!
     @IBOutlet var usernameTaken : UILabel!
-    @IBOutlet var emailTaken : UILabel!
     @IBOutlet var missingField : UILabel!
     @IBOutlet var invalidEmail : UILabel!
 
@@ -26,9 +25,8 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         invalidEmail.hidden = true
-        usernameTaken.hidden = true
         missingField.hidden = true
-        emailTaken.hidden = true
+        usernameTaken.hidden = true
         passwordTextField.delegate = self
         usernameTextField.delegate = self
         emailTextField.delegate = self
@@ -143,28 +141,28 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
                     var errorcode = error!.code
                     
                     if (errorcode == 125 && errorcode == 202) {
+                        self.invalidEmail.text = "Invalid Email"
                         self.invalidEmail.hidden = false
-                        self.emailTaken.hidden = true
                         self.usernameTaken.hidden = false
                     }
                     else if (errorcode == 202 && errorcode == 203) {
-                        self.invalidEmail.hidden = true
-                        self.emailTaken.hidden = false
+                        self.invalidEmail.text = "Email in use"
+                        self.invalidEmail.hidden = false
                         self.usernameTaken.hidden = false
                     }
                     else if errorcode == 125 {
+                        self.invalidEmail.text = "Invalid Email"
                         self.invalidEmail.hidden = false
-                        self.emailTaken.hidden = true
                         self.usernameTaken.hidden = true
                     }
                     else if errorcode == 202 {
+                        self.invalidEmail.text = "Invalid Email"
                         self.invalidEmail.hidden = true
-                        self.emailTaken.hidden = true
                         self.usernameTaken.hidden = false
                     }
                     else if errorcode == 203 {
-                        self.invalidEmail.hidden = true
-                        self.emailTaken.hidden = false
+                        self.invalidEmail.text = "Email in use"
+                        self.invalidEmail.hidden = false
                         self.usernameTaken.hidden = true
                     }
                         

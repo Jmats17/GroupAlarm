@@ -94,7 +94,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! tableViewCell
         let obj = self.data[indexPath.row]
         cell.fullNameLabel.text = obj["FullName"] as? String
-        cell.usernameLabel.text = obj["username"] as? String
+        cell.usernameLabel.text = "@" + (obj["username"] as? String)!
         
         
         

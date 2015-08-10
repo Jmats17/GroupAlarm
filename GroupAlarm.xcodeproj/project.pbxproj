@@ -36,13 +36,18 @@
 		D0B51F631B5EC42000B277B5 /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */; };
 		D0B51F651B5EC62000B277B5 /* CurrentAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */; };
 		D0DB61B51B76030B00B95B71 /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DB61B41B76030B00B95B71 /* Back.png */; };
+		D0DB61B71B77261B00B95B71 /* addbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DB61B61B77261B00B95B71 /* addbutton.png */; };
+		D0DB61B91B772E7400B95B71 /* addbutton2.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DB61B81B772E7400B95B71 /* addbutton2.png */; };
+		D0DD4FB01B77D0F100C2A217 /* createbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FAF1B77D0F100C2A217 /* createbutton.png */; };
+		D0DD4FB61B781ADF00C2A217 /* addfriend.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FB51B781ADF00C2A217 /* addfriend.png */; };
+		D0DD4FBE1B7829A000C2A217 /* friendsimage.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FBD1B7829A000C2A217 /* friendsimage.png */; };
+		D0DD4FCA1B78586000C2A217 /* friendsBar.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FC91B78586000C2A217 /* friendsBar.png */; };
 		D0E155F11B73EACA005D6640 /* sound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D0E155F01B73EAC5005D6640 /* sound.m4a */; };
 		D0E39B7E1B7552AE0083A46B /* alarmclocklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E39B7D1B7552AE0083A46B /* alarmclocklogo.png */; };
 		D0E39B801B7555390083A46B /* LoginIn.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E39B7F1B7555390083A46B /* LoginIn.png */; };
 		D0E39B821B7557140083A46B /* Line.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E39B811B7557140083A46B /* Line.png */; };
 		D0E39B841B756BE20083A46B /* friendicon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E39B831B756BE20083A46B /* friendicon.png */; };
 		D0E39B861B756CC10083A46B /* Contact Add.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E39B851B756CC10083A46B /* Contact Add.png */; };
-		D0E39B8A1B75703E0083A46B /* addfriend.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E39B891B75703E0083A46B /* addfriend.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,13 +94,18 @@
 		D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
 		D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAlarmViewController.swift; sourceTree = "<group>"; };
 		D0DB61B41B76030B00B95B71 /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
+		D0DB61B61B77261B00B95B71 /* addbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addbutton.png; sourceTree = "<group>"; };
+		D0DB61B81B772E7400B95B71 /* addbutton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addbutton2.png; sourceTree = "<group>"; };
+		D0DD4FAF1B77D0F100C2A217 /* createbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createbutton.png; sourceTree = "<group>"; };
+		D0DD4FB51B781ADF00C2A217 /* addfriend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addfriend.png; sourceTree = "<group>"; };
+		D0DD4FBD1B7829A000C2A217 /* friendsimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendsimage.png; sourceTree = "<group>"; };
+		D0DD4FC91B78586000C2A217 /* friendsBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendsBar.png; sourceTree = "<group>"; };
 		D0E155F01B73EAC5005D6640 /* sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.m4a; sourceTree = "<group>"; };
 		D0E39B7D1B7552AE0083A46B /* alarmclocklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarmclocklogo.png; sourceTree = "<group>"; };
 		D0E39B7F1B7555390083A46B /* LoginIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginIn.png; sourceTree = "<group>"; };
 		D0E39B811B7557140083A46B /* Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Line.png; sourceTree = "<group>"; };
 		D0E39B831B756BE20083A46B /* friendicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendicon.png; sourceTree = "<group>"; };
 		D0E39B851B756CC10083A46B /* Contact Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Contact Add.png"; sourceTree = "<group>"; };
-		D0E39B891B75703E0083A46B /* addfriend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addfriend.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,13 +207,18 @@
 			isa = PBXGroup;
 			children = (
 				D0E39B7F1B7555390083A46B /* LoginIn.png */,
-				D0E39B891B75703E0083A46B /* addfriend.png */,
+				D0DB61B61B77261B00B95B71 /* addbutton.png */,
 				D0DB61B41B76030B00B95B71 /* Back.png */,
+				D0DD4FAF1B77D0F100C2A217 /* createbutton.png */,
+				D0DD4FC91B78586000C2A217 /* friendsBar.png */,
 				D0E39B831B756BE20083A46B /* friendicon.png */,
 				D0E39B811B7557140083A46B /* Line.png */,
+				D0DB61B81B772E7400B95B71 /* addbutton2.png */,
+				D0DD4FBD1B7829A000C2A217 /* friendsimage.png */,
 				D0E39B7D1B7552AE0083A46B /* alarmclocklogo.png */,
 				D0E39B851B756CC10083A46B /* Contact Add.png */,
 				D0E155F01B73EAC5005D6640 /* sound.m4a */,
+				D0DD4FB51B781ADF00C2A217 /* addfriend.png */,
 				D06713E61B72A1DC001B2FC1 /* clock.png */,
 				D0A2C9D31B55C11400D7F7EA /* clock-icon.png */,
 				D0A2C9D11B55BCEF00D7F7EA /* clouds.jpg */,
@@ -317,15 +332,20 @@
 				D06713E71B72A1DD001B2FC1 /* clock.png in Resources */,
 				D0E39B861B756CC10083A46B /* Contact Add.png in Resources */,
 				D0A2C9B41B55B6A500D7F7EA /* Main.storyboard in Resources */,
+				D0DD4FBE1B7829A000C2A217 /* friendsimage.png in Resources */,
+				D0DB61B71B77261B00B95B71 /* addbutton.png in Resources */,
 				D0A2C9B91B55B6A500D7F7EA /* LaunchScreen.xib in Resources */,
+				D0DD4FCA1B78586000C2A217 /* friendsBar.png in Resources */,
 				D0A2C9D41B55C11400D7F7EA /* clock-icon.png in Resources */,
+				D0DB61B91B772E7400B95B71 /* addbutton2.png in Resources */,
 				D0A2C9B61B55B6A500D7F7EA /* Images.xcassets in Resources */,
+				D0DD4FB61B781ADF00C2A217 /* addfriend.png in Resources */,
+				D0DD4FB01B77D0F100C2A217 /* createbutton.png in Resources */,
 				D0DB61B51B76030B00B95B71 /* Back.png in Resources */,
 				D0E39B801B7555390083A46B /* LoginIn.png in Resources */,
 				D0E39B821B7557140083A46B /* Line.png in Resources */,
 				D0A2C9D21B55BCEF00D7F7EA /* clouds.jpg in Resources */,
 				D0E39B7E1B7552AE0083A46B /* alarmclocklogo.png in Resources */,
-				D0E39B8A1B75703E0083A46B /* addfriend.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

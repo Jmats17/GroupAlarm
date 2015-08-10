@@ -15,8 +15,10 @@ class AlarmViewCell : UITableViewCell {
     @IBOutlet var timeLabel : UILabel!
     @IBOutlet var alarmLabel : UILabel!
     @IBOutlet var numOfUsersLabel : UILabel!
+    @IBOutlet var dateLabel : UILabel!
 
 }
+
 
 class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITableViewDataSource  {
    
@@ -25,18 +27,20 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     let queryUser = PFQuery(className: "_User")
     let queryUserAlarm = PFQuery(className: "UserAlarmRole")
     let currentUser = PFUser.currentUser()
-    var dateFormatter = NSDateFormatter()
+    var dateFormatterTime = NSDateFormatter()
+    var dateFormatterDate = NSDateFormatter()
     var alarmDate : NSDate!
     var corrAlarm : PFObject!
     var users : PFObject!
-    var currentUserAlarms: NSMutableArray = NSMutableArray()
+     var currentUserAlarms: NSMutableArray = NSMutableArray()
     var userAlarmRoleObjectIds: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        dateFormatter.dateFormat = "MMMM d, yyyy hh:mm a"
+        dateFormatterTime.dateFormat = "h:mm a"
+        dateFormatterDate.dateFormat = "EEEE, MMMM d"
     }
     override func viewDidAppear(animated: Bool) {
         queryForUsersAlarms(queryUserAlarm)
@@ -54,11 +58,35 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         return currentUserAlarms.count
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-
+    var alarmLabelToAlarm : String!
+    var alarmDateToAlarm : String!
+    var alarmTimeToAlarm : NSDate!
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow()
+        let selectedCell = tableView.cellForRowAtIndexPath(indexPath!) as! AlarmViewCell
+        
+        alarmLabelToAlarm = selectedCell.alarmLabel.text
+        alarmDateToAlarm = selectedCell.dateLabel.text
+        var alarmTimeAsNsDate = dateFormatterTime.dateFromString(selectedCell.timeLabel.text!)
+        
+        alarmTimeToAlarm = alarmTimeAsNsDate
+        
+        self.performSegueWithIdentifier("alarmDashboardToAlarm", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        if (segue.identifier == "alarmDashboardToAlarm") {
+            
+            // initialize new view controller and cast it as your view controller
+            var groupAlarmViewController = segue.destinationViewController as! GroupCurrentAlarmViewController
+            // your new view controller should have property that will store passed value
+            groupAlarmViewController.groupAlarmLabel = alarmLabelToAlarm
+            groupAlarmViewController.groupAlarmTime = alarmTimeToAlarm
+            groupAlarmViewController.groupAlarmDate = alarmDateToAlarm
+        }
+        
     }
     
     func queryForUsersAlarms(query : PFQuery) {
@@ -82,6 +110,12 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         
     }
     
+    @IBAction func unwindToCurrentAlarmViewController(segue : UIStoryboardSegue, sender : AnyObject) {
+        
+    }
+    
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
             let alarmString : String!
@@ -91,17 +125,26 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             var alarmLabelString  = object["alarmLabel"]! as? String
             var timeLabelString = object["alarmTime"]! as? NSDate
             var numOfUsers = object["numOfUsers"] as? NSNumber
-            let stringDate = dateFormatter.stringFromDate(timeLabelString!)
+            let stringTime = dateFormatterTime.stringFromDate(timeLabelString!).lowercaseString
+            let stringDate = dateFormatterDate.stringFromDate(timeLabelString!).lowercaseString
+
             var numOfUsersString : String = String(format: "%i", numOfUsers!.integerValue)
             cell.alarmLabel.text = alarmLabelString
-            cell.timeLabel.text = stringDate
+            cell.timeLabel.text = stringTime
+            cell.dateLabel.text = stringDate
                 if numOfUsers!.integerValue == 1 {
-                    cell.numOfUsersLabel.text = numOfUsersString + " Friend"
+                    cell.numOfUsersLabel.text = numOfUsersString
                 }
                 else {
-                    cell.numOfUsersLabel.text = numOfUsersString + " Friends"
+                    cell.numOfUsersLabel.text = numOfUsersString 
                 }
             return cell
+    }
+    
+    @IBAction func signOut(sender : AnyObject) {
+        PFUser.logOut()
+        var currentUser = PFUser.currentUser()
+        self.performSegueWithIdentifier("currentToStart", sender: self)
     }
 
     

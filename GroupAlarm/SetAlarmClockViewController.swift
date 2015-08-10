@@ -25,7 +25,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
     var alarmTextLabel : String!
     var dateFormatter = NSDateFormatter()
     @IBOutlet var alarmLabelTextField : UITextField!
-    @IBOutlet var saveButton : UIButton!
+    @IBOutlet var saveButton : UIBarButtonItem!
     @IBAction func dateAction(sender : AnyObject) {
         dateFormatter.dateFormat = "MM-dd-yyyy hh:mm a"
     }
@@ -55,28 +55,16 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         }
         else {
             saveButton.enabled = true
+
         }
         return true
     }
     
     
+    
     @IBAction func addButton(sender : AnyObject) {
         strDate = dateFormatter.stringFromDate(myDatePicker.date)
-//
-//        let myAlarm =  dateFormatter.dateFromString(strDate)
-//        query.setValue(alarmTextLabel, forKey: "alarmLabel")
-//        query.setValue(myAlarm!, forKey: "alarmTime")
-//        println("hi")
-////        query.saveInBackgroundWithBlock {
-////            (succeeded, error) ->  Void in
-////            if error == nil {
-////                println("saved!")
-////            }
-////            else {
-////                
-////            }
-////
-////        }
+
         let myAlarm =  dateFormatter.dateFromString(strDate)!
         //println(strDate)
         let destinationVC = PickFriendsViewController()
@@ -84,19 +72,22 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
 
         // Let's assume that the segue name is called playerSegue
         // This will perform the segue and pre-load the variable for you to use
-
+        
         self.performSegueWithIdentifier("alarmToFriend", sender: self)
     
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
-        let myAlarm =  dateFormatter.dateFromString(strDate)!
-
-        var newVarAlarm = alarmLabelDate(alarmLabel: alarmTextLabel, alarmDate: myAlarm)
-        
-        // Create a new variable to store the instance of PlayerTableViewController
-        let destinationVC = segue.destinationViewController as! PickFriendsViewController
-        destinationVC.alarmVar = newVarAlarm
+        if segue.identifier == "alarmToFriend" {
+            let myAlarm =  dateFormatter.dateFromString(strDate)!
+            
+            var newVarAlarm = alarmLabelDate(alarmLabel: alarmTextLabel, alarmDate: myAlarm)
+            
+            // Create a new variable to store the instance of PlayerTableViewController
+            let destinationVC = segue.destinationViewController as! PickFriendsViewController
+            destinationVC.alarmVar = newVarAlarm
+        }
+    
     
 }
   
