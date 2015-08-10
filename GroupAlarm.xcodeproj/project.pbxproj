@@ -43,6 +43,8 @@
 		D0DD4FCC1B78593B00C2A217 /* friendsBar.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FCB1B78593B00C2A217 /* friendsBar.png */; };
 		D0DD4FCE1B788E7F00C2A217 /* GroupCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */; };
 		D0DD4FD01B788E8B00C2A217 /* MainDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FCF1B788E8B00C2A217 /* MainDashboardViewController.swift */; };
+		D0DD4FD31B78924C00C2A217 /* redCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FD11B78924C00C2A217 /* redCircle.png */; };
+		D0DD4FD41B78924C00C2A217 /* greenCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FD21B78924C00C2A217 /* greenCircle.png */; };
 		D0E155F11B73EACA005D6640 /* sound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D0E155F01B73EAC5005D6640 /* sound.m4a */; };
 		D0E39B7E1B7552AE0083A46B /* alarmclocklogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E39B7D1B7552AE0083A46B /* alarmclocklogo.png */; };
 		D0E39B801B7555390083A46B /* LoginIn.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E39B7F1B7555390083A46B /* LoginIn.png */; };
@@ -102,6 +104,8 @@
 		D0DD4FCB1B78593B00C2A217 /* friendsBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendsBar.png; sourceTree = "<group>"; };
 		D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCurrentViewController.swift; sourceTree = "<group>"; };
 		D0DD4FCF1B788E8B00C2A217 /* MainDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDashboardViewController.swift; sourceTree = "<group>"; };
+		D0DD4FD11B78924C00C2A217 /* redCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redCircle.png; sourceTree = "<group>"; };
+		D0DD4FD21B78924C00C2A217 /* greenCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenCircle.png; sourceTree = "<group>"; };
 		D0E155F01B73EAC5005D6640 /* sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.m4a; sourceTree = "<group>"; };
 		D0E39B7D1B7552AE0083A46B /* alarmclocklogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarmclocklogo.png; sourceTree = "<group>"; };
 		D0E39B7F1B7555390083A46B /* LoginIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginIn.png; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 		D0A2C9CE1B55BC9C00D7F7EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D0DD4FD11B78924C00C2A217 /* redCircle.png */,
+				D0DD4FD21B78924C00C2A217 /* greenCircle.png */,
 				D0E39B7F1B7555390083A46B /* LoginIn.png */,
 				D0DB61B61B77261B00B95B71 /* addbutton.png */,
 				D0DB61B41B76030B00B95B71 /* Back.png */,
@@ -332,6 +338,7 @@
 			files = (
 				D0E39B841B756BE20083A46B /* friendicon.png in Resources */,
 				D0E155F11B73EACA005D6640 /* sound.m4a in Resources */,
+				D0DD4FD41B78924C00C2A217 /* greenCircle.png in Resources */,
 				D06713E71B72A1DD001B2FC1 /* clock.png in Resources */,
 				D0E39B861B756CC10083A46B /* Contact Add.png in Resources */,
 				D0A2C9B41B55B6A500D7F7EA /* Main.storyboard in Resources */,
@@ -343,6 +350,7 @@
 				D0DB61B91B772E7400B95B71 /* addbutton2.png in Resources */,
 				D0A2C9B61B55B6A500D7F7EA /* Images.xcassets in Resources */,
 				D0DD4FB61B781ADF00C2A217 /* addfriend.png in Resources */,
+				D0DD4FD31B78924C00C2A217 /* redCircle.png in Resources */,
 				D0DD4FB01B77D0F100C2A217 /* createbutton.png in Resources */,
 				D0DB61B51B76030B00B95B71 /* Back.png in Resources */,
 				D0E39B801B7555390083A46B /* LoginIn.png in Resources */,

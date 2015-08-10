@@ -13,7 +13,7 @@ import Bolts
 
 class FriendTableViewCell : UITableViewCell {
     @IBOutlet var friendName : UILabel!
-
+    @IBOutlet var statusCircle : UIImageView!
 }
 
 class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
