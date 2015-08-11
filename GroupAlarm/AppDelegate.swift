@@ -1,4 +1,4 @@
-//
+    //
 //  AppDelegate.swift
 //  GroupAlarm
 //
@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                var statusCircle = destVC.statusCircle
 //                var statusImage = UIImage(named: "greenCircle.png")
 //                statusCircle = UIImageView(image: statusImage!)
-                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! GroupCurrentAlarmViewController
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! UIViewController
                
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()

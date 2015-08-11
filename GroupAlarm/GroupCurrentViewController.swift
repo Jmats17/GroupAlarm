@@ -44,6 +44,8 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     }
     
     override func viewDidAppear(animated: Bool) {
+        querying(queryUserAlarm)
+
         tableView.reloadData()
 
     }
@@ -78,7 +80,6 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
         }
 
         println(groupAlarmObject)
-        querying(queryUserAlarm)
         newGroupAlarmObject = groupAlarmObject
         
     }
@@ -131,7 +132,8 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FriendTableViewCell
         let object = self.usersFriends[indexPath.row] as! PFObject
         if object.objectId == currentUser?.objectId {
-            
+            var userFullName = object["FullName"]! as? String
+            cell.friendName.text = userFullName! + " (me)"
         }
         else {
             

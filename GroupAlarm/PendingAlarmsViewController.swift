@@ -11,6 +11,174 @@ import UIKit
 import Parse
 import Bolts
 
-class PendingAlarmsViewController : UIViewController {
+class PendingAlarmCell : UITableViewCell {
+    @IBOutlet var alarmLabelandCreator : UILabel!
+    @IBOutlet var alarmDate : UILabel!
+    @IBOutlet var alarmTime : UILabel!
+    
+}
+
+class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet var tableView : UITableView!
+    var currentUser = PFUser.currentUser()
+    var users : PFObject!
+    //var currentUserAlarms: NSMutableArray = NSMutableArray()
+    //var creatorArray : NSMutableArray = NSMutableArray()
+    var boolArray : NSMutableArray = NSMutableArray()
+    var userAlarmRoleObjectIds: [String] = []
+    var dateFormatterTime = NSDateFormatter()
+    var dateFormatterDate = NSDateFormatter()
+    var alarmDate : NSDate!
+    let alarmClass = PFObject(className: "Alarm")
+    let queryUser = PFQuery(className: "_User")
+    let queryUserAlarm = PFQuery(className: "UserAlarmRole")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        dateFormatterTime.dateFormat = "h:mm a"
+        dateFormatterDate.dateFormat = "EEEE, MMMM d"
+        queryForUsersAlarms(queryUserAlarm)
+
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+       // queryForUsersAlarms(queryUserAlarm)
+        
+        tableView.reloadData()
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return boolArray.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 144
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! PendingAlarmCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        let obj = self.boolArray[indexPath.row] as! PFObject
+        var newBool = obj["toShowRow"] as! NSNumber
+        var newNewBool = newBool.boolValue
+        var currUser = obj["user"] as! PFObject
+        var alarm = obj["alarm"] as! PFObject
+        var creator = obj["creator"] as! String
+        alarm.fetchIfNeeded()
+        //var alrmLabel = alarm["alarmLabel"]! as? String
+        var timeLabelString = alarm["alarmTime"]! as? NSDate
+        let stringTime = dateFormatterTime.stringFromDate(timeLabelString!).lowercaseString
+        let stringDate = dateFormatterDate.stringFromDate(timeLabelString!).lowercaseString
+        cell.alarmLabelandCreator.text = creator + " " + "wants to add you!"
+        cell.alarmTime.text = stringTime
+        cell.alarmDate.text = stringDate
+       // }
+       
+
+        return cell
+    }
+    
+    
+    func queryForUsersAlarms(query : PFQuery) {
+        query.whereKey("user", equalTo: (currentUser!))
+       // query.selectKeys(["alarm", "alarmActivated","toShowRow"])
+        query.whereKey("toShowRow", equalTo: true)
+        query.findObjectsInBackgroundWithBlock {
+            (objects, error) -> Void in
+            if error == nil {
+                for row in objects! {
+
+                self.boolArray.addObject(row)
+
+                    
+               
+                }
+                self.tableView.reloadData()
+                
+            }
+        }
+        
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        let accept = UITableViewRowAction(style: .Normal, title: "Accept") { action, index in
+            println("accept button tapped")
+            let object = self.boolArray[indexPath.row] as! PFObject
+            var alarmObject = object["alarm"] as! PFObject
+            let boolTrue = true
+            let boolFalse = true
+            let boolTrueNum = NSNumber(bool: boolTrue)
+            let boolFalseNum = NSNumber(bool: boolFalse)
+            object.setObject(true, forKey: "alarmActivated")
+            object.setObject(false, forKey: "toShowRow")
+            object.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if error == nil {
+                    println("hooray")
+                }
+                
+            })
+            PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": alarmObject.objectId!], block: { success, error in
+                if error == nil {
+                println(success)
+                }
+                else {
+                println(error)
+                }
+            })
+            self.boolArray.removeObjectAtIndex(indexPath.row)
+            
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left )
+            self.tableView.reloadData()
+            if self.boolArray.count == 0 {
+                self.performSegueWithIdentifier("pendingToHome", sender: self)
+            }
+        }
+        accept.backgroundColor = UIColor.greenColor()
+        
+        let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
+            println("Decline button tapped")
+            let object = self.boolArray[indexPath.row] as! PFObject
+            object.setObject(false, forKey: "alarmActivated")
+            object.setObject(false, forKey: "rowToShow")
+            object.saveInBackgroundWithBlock({ (success, error) -> Void in
+                
+            })
+            self.boolArray.removeObjectAtIndex(indexPath.row)
+            
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tableView.reloadData()
+            if self.boolArray.count == 0 {
+                self.performSegueWithIdentifier("pendingToHome", sender: self)
+            }
+        }
+        decline.backgroundColor = UIColor.redColor()
+        
+        return [accept,decline]
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // the cells you would like the actions to appear needs to be editable
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     
+
+    }
+
     
 }

@@ -32,7 +32,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     var selectedIndexPaths : NSMutableArray = NSMutableArray()
     let alarmClass = PFObject(className: "Alarm")
     let userAlarmClass = PFObject(className: "UserAlarmRole")
-
+    var currentUserFullName : String = String()
     //let userAlarmClass = PFObject(className: "UserAlarmRole")
     let numOfUsers : Int = 0
     
@@ -45,7 +45,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         createdDate = alarmVar?.alarmDate
         alarmLabel = alarmVar?.alarmLabel
         currentUserId = currentUser?.objectId
-        
+        currentUserFullName = currentUser?.objectForKey("FullName") as! String
     }
     
 
@@ -168,25 +168,32 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         alarmClass.saveInBackgroundWithBlock {
             (result, error) -> Void in
             for objID in self.selectedIndexPaths {
-//                let push : PFPush = PFPush()
-//                let pushQuery = PFInstallation.query()!
-//                let userQuery = PFUser.query()
-//                userQuery?.whereKey("user", equalTo: objID)
-//                //pushQuery.whereKey("user", equalTo: objID)
-//                pushQuery.whereKey("user", equalTo: userQuery!)
                 var newUserAlarm = PFObject(className: "UserAlarmRole")
                 newUserAlarm.setObject(objID, forKey: "user")
-//                push.setQuery(pushQuery)
-//                push.sendPushInBackground()
                 newUserAlarm.setObject(self.alarmClass, forKey: "alarm")
                 newUserAlarm.setObject(false, forKey: "checkIn")
+                newUserAlarm.setObject(self.currentUserFullName, forKey: "creator")
+                if self.currentUser == (objID as! PFObject) {
+                    newUserAlarm.setObject(false, forKey: "toShowRow")
+                    newUserAlarm.setObject(true, forKey: "alarmActivated")
+                    PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": self.alarmClass.objectId!], block: { success, error in
+                    
+                        println(success)
+                        println(error)
+                    })
+                }
+                else {
+                    newUserAlarm.setObject(true, forKey: "toShowRow")
+                    newUserAlarm.setObject(false, forKey: "alarmActivated")
+
+                }
                 newUserAlarm.save()
             }
-            PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": self.alarmClass.objectId!], block: { success, error in
-        
-                println(success)
-                println(error)
-            })
+//            PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": self.alarmClass.objectId!], block: { success, error in
+//        
+//                println(success)
+//                println(error)
+//            })
         }
         
         self.performSegueWithIdentifier("friendToCurrent", sender: self)

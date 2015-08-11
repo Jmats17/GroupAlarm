@@ -2,7 +2,7 @@
 //  SignupViewController.swift
 //  GroupAlarm
 //
-//  Created by Justin Matsnev on 7/15/15.
+//  Created by Justi/n Matsnev on 7/15/15. 
 //  Copyright (c) 2015 Justin Matsnev. All rights reserved.
 //
 

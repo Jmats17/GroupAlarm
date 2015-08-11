@@ -23,7 +23,7 @@ class AlarmViewCell : UITableViewCell {
 class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITableViewDataSource  {
    
     @IBOutlet var tableView : UITableView!
-
+    @IBOutlet var pendingAlarmButton : UIButton!
     let queryUser = PFQuery(className: "_User")
     let queryUserAlarm = PFQuery(className: "UserAlarmRole")
     let currentUser = PFUser.currentUser()
@@ -41,6 +41,8 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         dateFormatterTime.dateFormat = "h:mm a"
         dateFormatterDate.dateFormat = "EEEE, MMMM d"
+        pendingAlarmButton.layer.borderWidth = 1.0
+        pendingAlarmButton.layer.borderColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0).CGColor
     }
     override func viewDidAppear(animated: Bool) {
         queryForUsersAlarms(queryUserAlarm)
@@ -95,15 +97,22 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     
     func queryForUsersAlarms(query : PFQuery) {
         query.whereKey("user", equalTo: (currentUser!))
-        query.selectKeys(["alarm"])
+        query.selectKeys(["alarm", "alarmActivated"])
         query.includeKey("alarm")
         query.findObjectsInBackgroundWithBlock {
             (objects, error) -> Void in
             if error == nil {
                 for row in objects! {
-                    var objId = row.objectId!
-                    var alarmInfo = row["alarm"] as! PFObject
-                    self.currentUserAlarms.addObject(alarmInfo)
+                    var boolRow = row.objectForKey("alarmActivated") as! Bool
+                    if boolRow == true {
+                        var objId = row.objectId!
+                        var alarmInfo = row["alarm"] as! PFObject
+                        self.currentUserAlarms.addObject(alarmInfo)
+                    }
+                    else {
+                        
+                    }
+                    
                     
                     
                 }
@@ -118,6 +127,11 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         
     }
     
+    @IBAction func pendingAlarmButton(sender : AnyObject) {
+        self.performSegueWithIdentifier("currentToPending", sender: self)
+    }
+    
+   
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
