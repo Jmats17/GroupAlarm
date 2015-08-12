@@ -740,7 +740,7 @@
                                                 <segue destination="atT-it-dmF" kind="unwind" unwindAction="unwindToCurrentAlarmViewController:sender:" id="dnc-kE-HdL"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" image="addfriend.png" id="sRC-Sf-sRJ">
+                                        <barButtonItem key="rightBarButtonItem" image="friendadd.png" id="sRC-Sf-sRJ">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="addButton:" destination="dkk-RC-hQk" id="gn6-2K-abN"/>
@@ -794,7 +794,7 @@
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="Dvv-pz-gQO">
-                                        <barButtonItem key="leftBarButtonItem" image="homebutton.png" id="ssc-0u-wWG">
+                                        <barButtonItem key="leftBarButtonItem" image="home60.png" style="plain" id="ssc-0u-wWG">
                                             <color key="tintColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="Sbj-M7-Dem" kind="show" id="C5O-1U-Usj"/>
@@ -846,7 +846,7 @@
                                                     <color key="textColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redCircle.png" translatesAutoresizingMaskIntoConstraints="NO" id="W1h-iv-pCs">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redstatusbutton.png" translatesAutoresizingMaskIntoConstraints="NO" id="W1h-iv-pCs">
                                                     <rect key="frame" x="576" y="16" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="16" id="690-9B-KRd"/>
@@ -886,7 +886,7 @@
                                 <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendsBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="vbt-Bi-rv1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendsImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="vbt-Bi-rv1">
                                 <rect key="frame" x="0.0" y="304" width="600" height="64"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1233,7 +1233,7 @@
                                                     <color key="textColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendicon.png" translatesAutoresizingMaskIntoConstraints="NO" id="fV2-cI-M0N">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friendicon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="fV2-cI-M0N">
                                                     <rect key="frame" x="563" y="110" width="29" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="29" id="eUa-G7-7gH"/>
@@ -1309,8 +1309,16 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem id="xfK-8J-8Gk">
-                                        <barButtonItem key="leftBarButtonItem" image="signoutButton.png" id="x0T-Zf-YhS"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fkq-tF-OD0"/>
+                                        <barButtonItem key="leftBarButtonItem" image="signoutbutton.png" id="x0T-Zf-YhS">
+                                            <connections>
+                                                <action selector="signOut:" destination="Sbj-M7-Dem" id="K3D-ET-9VW"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fkq-tF-OD0">
+                                            <connections>
+                                                <segue destination="dkk-RC-hQk" kind="show" id="oC5-JO-oDj"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -1360,17 +1368,19 @@
     </scenes>
     <resources>
         <image name="Line.png" width="300" height="1"/>
-        <image name="addfriend.png" width="30" height="26"/>
         <image name="alarmclocklogo.png" width="282" height="282"/>
         <image name="backarrow.png" width="13" height="21"/>
-        <image name="friendicon.png" width="229" height="175"/>
-        <image name="friendsBar.png" width="522" height="50"/>
+        <image name="friendadd.png" width="30" height="26"/>
+        <image name="friendicon2.png" width="29" height="24"/>
+        <image name="friendsImage.png" width="600" height="64"/>
+        <image name="home60.png" width="40" height="40"/>
         <image name="homebutton.png" width="20" height="20"/>
-        <image name="redCircle.png" width="18" height="18"/>
-        <image name="signoutButton.png" width="23" height="23"/>
+        <image name="redstatusbutton.png" width="16" height="16"/>
+        <image name="signoutbutton.png" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8P3-0Z-2dL"/>
+        <segue reference="C5O-1U-Usj"/>
+        <segue reference="oC5-JO-oDj"/>
         <segue reference="Ydj-Wb-J0w"/>
         <segue reference="AQ8-Fh-Ode"/>
     </inferredMetricsTieBreakers>
