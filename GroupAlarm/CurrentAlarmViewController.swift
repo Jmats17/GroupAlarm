@@ -11,17 +11,20 @@ import UIKit
 import Parse
 import Bolts
 
+
+
 class AlarmViewCell : UITableViewCell {
     @IBOutlet var timeLabel : UILabel!
     @IBOutlet var alarmLabel : UILabel!
     @IBOutlet var numOfUsersLabel : UILabel!
     @IBOutlet var dateLabel : UILabel!
     var alarmObject : PFObject!
+    @IBOutlet var deleteAlarmArrow : UIImageView!
+
 }
 
 
 class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITableViewDataSource  {
-   
     @IBOutlet var tableView : UITableView!
     @IBOutlet var pendingAlarmButton : UIButton!
     let queryUser = PFQuery(className: "_User")
@@ -34,7 +37,6 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     var users : PFObject!
      var currentUserAlarms: NSMutableArray = NSMutableArray()
     var userAlarmRoleObjectIds: [String] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -43,7 +45,11 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         dateFormatterDate.dateFormat = "EEEE, MMMM d"
         pendingAlarmButton.layer.borderWidth = 1.0
         pendingAlarmButton.layer.borderColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0).CGColor
+    
     }
+    
+   
+    
     override func viewDidAppear(animated: Bool) {
         queryForUsersAlarms(queryUserAlarm)
 
@@ -95,8 +101,30 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         
     }
     
+    func queryToDelete(query : PFQuery, object : PFObject) {
+        query.whereKey("alarm", equalTo: object)
+        query.findObjectsInBackgroundWithBlock {
+            (objects, error) -> Void in
+            if error == nil {
+                for row in objects! {
+                    let result = row as! PFObject
+                    result.deleteInBackgroundWithBlock({ (success, error) -> Void in
+                        if error == nil {
+                            println("success")
+                        }
+                    })
+                }
+                
+            }
+        }
+        
+    }
+    
+    
+    
     func queryForUsersAlarms(query : PFQuery) {
         query.whereKey("user", equalTo: (currentUser!))
+        query.whereKey("alarmActivated", equalTo: true)
         query.selectKeys(["alarm", "alarmActivated"])
         query.includeKey("alarm")
         query.findObjectsInBackgroundWithBlock {
@@ -138,7 +166,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
             let alarmString : String!
 
-        
+
             let object = self.currentUserAlarms[indexPath.row] as! PFObject
         
             var alarmLabelString  = object["alarmLabel"]! as? String
@@ -146,19 +174,73 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             var numOfUsers = object["numOfUsers"] as? NSNumber
             let stringTime = dateFormatterTime.stringFromDate(timeLabelString!).lowercaseString
             let stringDate = dateFormatterDate.stringFromDate(timeLabelString!).lowercaseString
-
-            var numOfUsersString : String = String(format: "%i", numOfUsers!.integerValue)
             cell.alarmLabel.text = alarmLabelString
             cell.timeLabel.text = stringTime
             cell.dateLabel.text = stringDate
             cell.alarmObject = object
-                if numOfUsers!.integerValue == 1 {
-                    cell.numOfUsersLabel.text = numOfUsersString
-                }
-                else {
-                    cell.numOfUsersLabel.text = numOfUsersString 
-                }
+
+                var numOfUsersString : String? = String(format: "%i", numOfUsers!.integerValue)
+
+                cell.numOfUsersLabel.text = numOfUsersString
+
+            //}
+    
             return cell
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        let object = self.currentUserAlarms[indexPath.row] as! PFObject
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
+
+        var alarmDate = object["alarmTime"]! as! NSDate
+        if alarmDate.timeIntervalSinceNow.isSignMinus {
+            cell.deleteAlarmArrow.hidden = false
+            
+            let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
+                
+                let alertController = UIAlertController(title: "Delete Alarm", message:
+                    "Are you sure you want to delete the alarm?", preferredStyle: UIAlertControllerStyle.Alert)
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+                alertController.addAction(UIAlertAction(title: "yes", style: .Default, handler: { action in
+                    self.queryToDelete(self.queryUserAlarm, object: object)
+
+                    object.deleteInBackgroundWithBlock({ (success, error) -> Void in
+                        
+                    })
+                    self.currentUserAlarms.removeObjectAtIndex(indexPath.row)
+                    self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                   
+                    self.tableView.reloadData()
+                    
+                }))
+                alertController.addAction(UIAlertAction(title: "no", style: .Default, handler: { action in
+                    tableView.editing = false
+                    
+                }))
+                println("delete button tapped")
+                
+            }
+            delete.backgroundColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0) /* #f27c7c */
+
+            return [delete]
+        } else {
+            cell.deleteAlarmArrow.hidden = true
+
+            return []
+
+        }
+      
+
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+
     }
     
     @IBAction func signOut(sender : AnyObject) {

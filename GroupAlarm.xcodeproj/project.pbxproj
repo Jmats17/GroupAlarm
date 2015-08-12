@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D00BA7E01B7B06A50099C616 /* homebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7DF1B7B06A50099C616 /* homebutton.png */; };
+		D00BA7E61B7B10F70099C616 /* notifButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7E51B7B10F70099C616 /* notifButton.png */; };
+		D00BA7EA1B7B13830099C616 /* signoutbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7E91B7B13830099C616 /* signoutbutton.png */; };
 		D06713E71B72A1DD001B2FC1 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = D06713E61B72A1DC001B2FC1 /* clock.png */; };
 		D0A2C9AF1B55B6A500D7F7EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9AE1B55B6A500D7F7EA /* AppDelegate.swift */; };
 		D0A2C9B11B55B6A500D7F7EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2C9B01B55B6A500D7F7EA /* ViewController.swift */; };
@@ -45,7 +48,6 @@
 		D0DD4FCE1B788E7F00C2A217 /* GroupCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */; };
 		D0DD4FD31B78924C00C2A217 /* redCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FD11B78924C00C2A217 /* redCircle.png */; };
 		D0DD4FD41B78924C00C2A217 /* greenCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FD21B78924C00C2A217 /* greenCircle.png */; };
-		D0DD4FDA1B791B7800C2A217 /* homebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FD91B791B7800C2A217 /* homebutton.png */; };
 		D0DD4FDC1B791BEE00C2A217 /* EditAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FDB1B791BEE00C2A217 /* EditAlarmViewController.swift */; };
 		D0DD4FDE1B795FCF00C2A217 /* tutorialCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = D0DD4FDD1B795FCF00C2A217 /* tutorialCircle.png */; };
 		D0DD4FE01B79681800C2A217 /* PendingAlarmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FDF1B79681800C2A217 /* PendingAlarmsViewController.swift */; };
@@ -72,6 +74,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D00BA7DF1B7B06A50099C616 /* homebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homebutton.png; sourceTree = "<group>"; };
+		D00BA7E51B7B10F70099C616 /* notifButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notifButton.png; sourceTree = "<group>"; };
+		D00BA7E91B7B13830099C616 /* signoutbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signoutbutton.png; sourceTree = "<group>"; };
 		D06713E61B72A1DC001B2FC1 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		D0A2C9A91B55B6A500D7F7EA /* GroupAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A2C9AD1B55B6A500D7F7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,7 +119,6 @@
 		D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCurrentViewController.swift; sourceTree = "<group>"; };
 		D0DD4FD11B78924C00C2A217 /* redCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redCircle.png; sourceTree = "<group>"; };
 		D0DD4FD21B78924C00C2A217 /* greenCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenCircle.png; sourceTree = "<group>"; };
-		D0DD4FD91B791B7800C2A217 /* homebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homebutton.png; sourceTree = "<group>"; };
 		D0DD4FDB1B791BEE00C2A217 /* EditAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAlarmViewController.swift; sourceTree = "<group>"; };
 		D0DD4FDD1B795FCF00C2A217 /* tutorialCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorialCircle.png; sourceTree = "<group>"; };
 		D0DD4FDF1B79681800C2A217 /* PendingAlarmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingAlarmsViewController.swift; sourceTree = "<group>"; };
@@ -235,13 +239,15 @@
 				D0DD4FE71B796D2400C2A217 /* declineButton.png */,
 				D0E39B7F1B7555390083A46B /* LoginIn.png */,
 				D0DD4FE51B796C8300C2A217 /* acceptButton.png */,
+				D00BA7E51B7B10F70099C616 /* notifButton.png */,
 				D0DB61B61B77261B00B95B71 /* addbutton.png */,
+				D00BA7DF1B7B06A50099C616 /* homebutton.png */,
 				D0DD4FE91B79706D00C2A217 /* createAlarmButton.png */,
+				D00BA7E91B7B13830099C616 /* signoutbutton.png */,
 				D0DD4FEB1B798C9D00C2A217 /* alarmadd.png */,
 				D0D5404B1B7A920400233946 /* backarrow.png */,
 				D0DB61B41B76030B00B95B71 /* Back.png */,
 				D0DD4FDD1B795FCF00C2A217 /* tutorialCircle.png */,
-				D0DD4FD91B791B7800C2A217 /* homebutton.png */,
 				D0DD4FCB1B78593B00C2A217 /* friendsBar.png */,
 				D0DD4FAF1B77D0F100C2A217 /* createbutton.png */,
 				D0E39B831B756BE20083A46B /* friendicon.png */,
@@ -362,7 +368,6 @@
 			files = (
 				D0E39B841B756BE20083A46B /* friendicon.png in Resources */,
 				D0E155F11B73EACA005D6640 /* sound.m4a in Resources */,
-				D0DD4FDA1B791B7800C2A217 /* homebutton.png in Resources */,
 				D0DD4FEA1B79706D00C2A217 /* createAlarmButton.png in Resources */,
 				D0DD4FD41B78924C00C2A217 /* greenCircle.png in Resources */,
 				D06713E71B72A1DD001B2FC1 /* clock.png in Resources */,
@@ -378,15 +383,18 @@
 				D0A2C9D41B55C11400D7F7EA /* clock-icon.png in Resources */,
 				D0DB61B91B772E7400B95B71 /* addbutton2.png in Resources */,
 				D0A2C9B61B55B6A500D7F7EA /* Images.xcassets in Resources */,
+				D00BA7EA1B7B13830099C616 /* signoutbutton.png in Resources */,
 				D0DD4FB61B781ADF00C2A217 /* addfriend.png in Resources */,
 				D0DD4FD31B78924C00C2A217 /* redCircle.png in Resources */,
 				D0DD4FB01B77D0F100C2A217 /* createbutton.png in Resources */,
 				D0DB61B51B76030B00B95B71 /* Back.png in Resources */,
 				D0E39B801B7555390083A46B /* LoginIn.png in Resources */,
 				D0E39B821B7557140083A46B /* Line.png in Resources */,
+				D00BA7E01B7B06A50099C616 /* homebutton.png in Resources */,
 				D0A2C9D21B55BCEF00D7F7EA /* clouds.jpg in Resources */,
 				D0E39B7E1B7552AE0083A46B /* alarmclocklogo.png in Resources */,
 				D0DD4FE61B796C8300C2A217 /* acceptButton.png in Resources */,
+				D00BA7E61B7B10F70099C616 /* notifButton.png in Resources */,
 				D0DD4FE81B796D2400C2A217 /* declineButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

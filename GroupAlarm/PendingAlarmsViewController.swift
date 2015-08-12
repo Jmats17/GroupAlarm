@@ -95,7 +95,6 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
     
     func queryForUsersAlarms(query : PFQuery) {
         query.whereKey("user", equalTo: (currentUser!))
-       // query.selectKeys(["alarm", "alarmActivated","toShowRow"])
         query.whereKey("toShowRow", equalTo: true)
         query.findObjectsInBackgroundWithBlock {
             (objects, error) -> Void in
@@ -119,12 +118,15 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
             println("accept button tapped")
             let object = self.boolArray[indexPath.row] as! PFObject
             var alarmObject = object["alarm"] as! PFObject
-            let boolTrue = true
-            let boolFalse = true
-            let boolTrueNum = NSNumber(bool: boolTrue)
-            let boolFalseNum = NSNumber(bool: boolFalse)
             object.setObject(true, forKey: "alarmActivated")
             object.setObject(false, forKey: "toShowRow")
+            var numOfUsers = alarmObject["numOfUsers"] as! Int
+            alarmObject.setObject(numOfUsers + 1, forKey: "numOfUsers")
+            alarmObject.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if error == nil {
+                    println("success")
+                }
+            })
             object.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     println("hooray")
@@ -147,15 +149,20 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
                 self.performSegueWithIdentifier("pendingToHome", sender: self)
             }
         }
-        accept.backgroundColor = UIColor.greenColor()
+        accept.backgroundColor = UIColor(red: 0/255, green: 204/255, blue: 102/255, alpha: 1.0) 
+
+
         
         let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
             println("Decline button tapped")
             let object = self.boolArray[indexPath.row] as! PFObject
+            var alarmObject = object["alarm"] as! PFObject
             object.setObject(false, forKey: "alarmActivated")
-            object.setObject(false, forKey: "rowToShow")
+            object.setObject(false, forKey: "toShowRow")
             object.saveInBackgroundWithBlock({ (success, error) -> Void in
-                
+                if error == nil {
+                    "hooray"
+                }
             })
             self.boolArray.removeObjectAtIndex(indexPath.row)
             
@@ -165,7 +172,9 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
                 self.performSegueWithIdentifier("pendingToHome", sender: self)
             }
         }
-        decline.backgroundColor = UIColor.redColor()
+        decline.backgroundColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0) /* #f27c7c */
+
+
         
         return [accept,decline]
     }

@@ -155,12 +155,12 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     }
     @IBAction func doneButton(sender : AnyObject) {
 
-        alarmClass.setObject(self.selectedIndexPaths.count, forKey: "numOfUsers")
+        //alarmClass.setObject(self.selectedIndexPaths.count, forKey: "numOfUsers")
         selectedIndexPaths.addObject(currentUser!)
 
         alarmClass.setValue(createdDate, forKeyPath: "alarmTime")
         alarmClass.setValue(alarmLabel, forKeyPath: "alarmLabel")
-        
+        alarmClass.setValue(0, forKey: "numOfUsers")
         
         
         

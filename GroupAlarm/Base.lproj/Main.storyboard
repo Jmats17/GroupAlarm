@@ -800,12 +800,6 @@
                                                 <segue destination="Sbj-M7-Dem" kind="show" id="C5O-1U-Usj"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="WHi-ZE-5qi">
-                                            <color key="tintColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="editButton:" destination="y9h-cR-f07" id="awc-xa-XqL"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -938,7 +932,6 @@
                         <outlet property="alarmLabel" destination="rKk-MD-j3m" id="6ZW-xi-s5r"/>
                         <outlet property="alarmTime" destination="VMc-M1-1mp" id="zEB-ep-COJ"/>
                         <outlet property="tableView" destination="ogW-Fk-cKn" id="H6S-8D-Vqk"/>
-                        <segue destination="MPY-sL-9Fm" kind="show" identifier="groupAlarmToEdit" id="xSu-L8-fLL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFw-9d-Oxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1039,8 +1032,6 @@
                     </view>
                     <connections>
                         <outlet property="alarmLabelTextField" destination="je4-3k-13M" id="SMh-vl-K3v"/>
-                        <segue destination="y9h-cR-f07" kind="show" identifier="editToGroupCurrent" id="Kw7-X0-QhL"/>
-                        <segue destination="y9h-cR-f07" kind="show" identifier="editCancelToGroupAlarm" id="rjs-1f-f47"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asj-Z6-0mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1257,6 +1248,12 @@
                                                     <color key="textColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backarrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="KtQ-dW-rAT">
+                                                    <rect key="frame" x="579" y="61" width="13" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="yD1-yt-vXl"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="kVE-GG-fyZ" firstAttribute="leading" secondItem="e3w-ES-RHP" secondAttribute="leading" id="AnX-hs-7zf"/>
@@ -1265,12 +1262,14 @@
                                                 <constraint firstItem="xws-76-umJ" firstAttribute="bottom" secondItem="fV2-cI-M0N" secondAttribute="bottom" id="Ots-9Y-2Qm"/>
                                                 <constraint firstItem="e3w-ES-RHP" firstAttribute="leading" secondItem="Otw-ze-7Lx" secondAttribute="leadingMargin" id="Q6Y-MP-D7J"/>
                                                 <constraint firstItem="xws-76-umJ" firstAttribute="top" secondItem="fV2-cI-M0N" secondAttribute="top" id="QiG-Xh-HlH"/>
+                                                <constraint firstAttribute="centerY" secondItem="KtQ-dW-rAT" secondAttribute="centerY" id="TWZ-YG-5EN"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="e3w-ES-RHP" secondAttribute="trailing" constant="349" id="aMT-Xi-6gj"/>
                                                 <constraint firstItem="kVE-GG-fyZ" firstAttribute="leading" secondItem="XIL-zC-IEP" secondAttribute="leading" id="cOC-7V-FP9"/>
                                                 <constraint firstItem="e3w-ES-RHP" firstAttribute="bottom" secondItem="Otw-ze-7Lx" secondAttribute="bottomMargin" id="el6-bi-AT4"/>
                                                 <constraint firstItem="kVE-GG-fyZ" firstAttribute="top" secondItem="Otw-ze-7Lx" secondAttribute="topMargin" constant="30" id="erb-eO-TTy"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="XIL-zC-IEP" secondAttribute="trailing" constant="23" id="gPH-uD-UoY"/>
                                                 <constraint firstItem="XIL-zC-IEP" firstAttribute="top" secondItem="Otw-ze-7Lx" secondAttribute="topMargin" id="hhT-Bl-YPt"/>
+                                                <constraint firstItem="KtQ-dW-rAT" firstAttribute="trailing" secondItem="Otw-ze-7Lx" secondAttribute="trailingMargin" id="jt1-za-7Re"/>
                                                 <constraint firstItem="kVE-GG-fyZ" firstAttribute="leading" secondItem="Otw-ze-7Lx" secondAttribute="leadingMargin" id="lRC-H8-lcz"/>
                                                 <constraint firstItem="fV2-cI-M0N" firstAttribute="top" secondItem="XIL-zC-IEP" secondAttribute="bottom" constant="71" id="pCz-3h-u5a"/>
                                                 <constraint firstItem="XIL-zC-IEP" firstAttribute="leading" secondItem="Otw-ze-7Lx" secondAttribute="leadingMargin" id="r2g-7d-cAL"/>
@@ -1280,6 +1279,7 @@
                                         <connections>
                                             <outlet property="alarmLabel" destination="XIL-zC-IEP" id="4uk-qU-qwh"/>
                                             <outlet property="dateLabel" destination="e3w-ES-RHP" id="eCU-cq-vA5"/>
+                                            <outlet property="deleteAlarmArrow" destination="KtQ-dW-rAT" id="yFw-vR-b6m"/>
                                             <outlet property="numOfUsersLabel" destination="xws-76-umJ" id="yAJ-bm-orq"/>
                                             <outlet property="timeLabel" destination="kVE-GG-fyZ" id="5VK-qZ-cHI"/>
                                         </connections>
@@ -1301,22 +1301,16 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="DeO-U7-tle"/>
                                 </constraints>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" red="0.94901960784313721" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem id="7W3-w2-oaC">
-                                        <barButtonItem key="leftBarButtonItem" title="SIGN OUT" id="fpd-1c-qXK">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="signOut:" destination="Sbj-M7-Dem" id="ELR-NF-VsE"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Thx-zf-Xv7">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <segue destination="dkk-RC-hQk" kind="show" id="mYy-g3-0NK"/>
-                                            </connections>
-                                        </barButtonItem>
+                                    <navigationItem id="xfK-8J-8Gk">
+                                        <barButtonItem key="leftBarButtonItem" image="signoutButton.png" id="x0T-Zf-YhS"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Fkq-tF-OD0"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -1371,13 +1365,12 @@
         <image name="backarrow.png" width="13" height="21"/>
         <image name="friendicon.png" width="229" height="175"/>
         <image name="friendsBar.png" width="522" height="50"/>
-        <image name="homebutton.png" width="58" height="14"/>
+        <image name="homebutton.png" width="20" height="20"/>
         <image name="redCircle.png" width="18" height="18"/>
+        <image name="signoutButton.png" width="23" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8P3-0Z-2dL"/>
-        <segue reference="mYy-g3-0NK"/>
-        <segue reference="bKs-z4-sh3"/>
         <segue reference="Ydj-Wb-J0w"/>
         <segue reference="AQ8-Fh-Ode"/>
     </inferredMetricsTieBreakers>

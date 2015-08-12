@@ -22,23 +22,22 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     var groupAlarmDate : String!
     var groupAlarmTime : NSDate!
     var groupAlarmObject : PFObject!
-    var editAlarmObject : PFObject!
-    var newGroupAlarmObject :PFObject!
+    //var editAlarmObject : PFObject!
+    //var newGroupAlarmObject :PFObject!
     @IBOutlet weak var alarmLabel : UILabel!
     @IBOutlet weak var alarmDate : UILabel!
     @IBOutlet weak var alarmTime : UILabel!
     var dateFormatterTime = NSDateFormatter()
     var dateFormatterDate = NSDateFormatter()
-
     @IBOutlet var tableView : UITableView!
     var usersFriends : NSMutableArray = NSMutableArray()
     let queryUserAlarm = PFQuery(className: "UserAlarmRole")
     var currentUser = PFUser.currentUser()
-    var editControllerAlarmLabel : String!
-    var editControllerAlarmTime : String!
-    var editControllerAlarmDate : String!
-    var editControllerAsPrevious : Bool = false
-    var appdelControllerAsPrevious : Bool = false
+   // var editControllerAlarmLabel : String!
+    //var editControllerAlarmTime : String!
+    //var editControllerAlarmDate : String!
+    //var editControllerAsPrevious : Bool = false
+    //var appdelControllerAsPrevious : Bool = false
     override func didReceiveMemoryWarning() {
         
     }
@@ -53,57 +52,50 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        var alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
 
         tableView.delegate = self
         tableView.dataSource = self
         dateFormatterTime.dateFormat = "h:mm a"
         dateFormatterDate.dateFormat = "EEEE, MMMM d"
-        if editControllerAsPrevious == true {
-            alarmDate.text = editControllerAlarmDate
-            alarmTime.text = editControllerAlarmTime
-            alarmLabel.text = editControllerAlarmLabel
-        }
-        else if appdelControllerAsPrevious == true {
+//        if editControllerAsPrevious == true {
+//            alarmDate.text = editControllerAlarmDate
+//            alarmTime.text = editControllerAlarmTime
+//            alarmLabel.text = editControllerAlarmLabel
+//        }
+//        else {
+        var alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
 
-            alarmDate.text = groupAlarmDate
-            alarmTime.text = alarmTimeString
-            alarmLabel.text = groupAlarmLabel
-            
-            
-        }
-        else {
-
-            alarmDate.text = groupAlarmDate
-            alarmTime.text = alarmTimeString
-            alarmLabel.text = groupAlarmLabel
-        }
+        alarmDate.text = groupAlarmDate
+        alarmTime.text = alarmTimeString
+        alarmLabel.text = groupAlarmLabel
+       // }
 
         println(groupAlarmObject)
-        newGroupAlarmObject = groupAlarmObject
+        //newGroupAlarmObject = groupAlarmObject
         
     }
     
     func querying(query : PFQuery) {
-        if editControllerAsPrevious == true {
-            var alarmObject = editAlarmObject
-            query.whereKey("alarm", equalTo: alarmObject)
-            query.selectKeys(["user"])
-            query.includeKey("user")
-            query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-                if error == nil {
-                    for result in objects! {
-                        var userObject = result["user"] as! PFObject
-                        userObject.fetchIfNeeded()
-                        self.usersFriends.addObject(userObject)
-                    }
-                    self.tableView.reloadData()
-                }
-            }
-        }
-        else {
+//        if editControllerAsPrevious == true {
+//            var alarmObject = editAlarmObject
+//            query.whereKey("alarm", equalTo: alarmObject)
+//            query.selectKeys(["user"])
+//            query.includeKey("user")
+//            query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+//                if error == nil {
+//                    for result in objects! {
+//                        var userObject = result["user"] as! PFObject
+//                        userObject.fetchIfNeeded()
+//                        self.usersFriends.addObject(userObject)
+//                    }
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
+//        else {
          var alarmObject = groupAlarmObject
          query.whereKey("alarm", equalTo: alarmObject)
+        query.whereKey("alarmActivated", equalTo: true)
          query.selectKeys(["user"])
          query.includeKey("user")
          query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
@@ -116,7 +108,7 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
                 self.tableView.reloadData()
             }
         }
-        }
+        //}
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -146,16 +138,7 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
 
     }
     
-    @IBAction func editButton(sender : AnyObject) {
-        self.performSegueWithIdentifier("groupAlarmToEdit", sender: self)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "groupAlarmToEdit" {
-            var editAlarmViewController = segue.destinationViewController as! EditAlarmViewController
-            editAlarmViewController.alarmObject = newGroupAlarmObject
-        }
-    }
+   
     
     
 }
