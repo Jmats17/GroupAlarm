@@ -32,12 +32,16 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     let currentUser = PFUser.currentUser()
     var dateFormatterTime = NSDateFormatter()
     var dateFormatterDate = NSDateFormatter()
-    var alarmDate : NSDate!
-    var corrAlarm : PFObject!
+    var dateFormatter = NSDateFormatter()
+
     var users : PFObject!
      var currentUserAlarms: NSMutableArray = NSMutableArray()
     var userAlarmRoleObjectIds: [String] = []
     override func viewDidLoad() {
+        
+       
+        
+        
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -54,6 +58,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         queryForUsersAlarms(queryUserAlarm)
 
         tableView.reloadData()
+      
   
     }
     
@@ -97,6 +102,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             groupAlarmViewController.groupAlarmTime = alarmTimeToAlarm
             groupAlarmViewController.groupAlarmDate = alarmDateToAlarm
             groupAlarmViewController.groupAlarmObject = alarmPfObjectToAlarm
+            groupAlarmViewController.cameFromAppDel = false
         }
         
     }
@@ -145,7 +151,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
                     
                 }
                 self.tableView.reloadData()
-                
+        
             }
         }
         

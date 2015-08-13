@@ -149,6 +149,15 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         search(searchTextUsername: searchText)
     }
     
+    func fixNotificationDate(dateToFix: NSDate) -> NSDate {
+        var dateComponets: NSDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit , fromDate: dateToFix)
+        
+        dateComponets.second = 0
+        
+        var fixedDate: NSDate! = NSCalendar.currentCalendar().dateFromComponents(dateComponets)
+        
+        return fixedDate
+    }
     
     @IBAction func cancelButton(sender : AnyObject) {
         self.performSegueWithIdentifier("friendToAlarmPick", sender: self)
@@ -157,8 +166,9 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
 
         //alarmClass.setObject(self.selectedIndexPaths.count, forKey: "numOfUsers")
         selectedIndexPaths.addObject(currentUser!)
+        var fixedDate = fixNotificationDate(createdDate)
 
-        alarmClass.setValue(createdDate, forKeyPath: "alarmTime")
+        alarmClass.setValue(fixedDate, forKeyPath: "alarmTime")
         alarmClass.setValue(alarmLabel, forKeyPath: "alarmLabel")
         alarmClass.setValue(0, forKey: "numOfUsers")
         
@@ -197,6 +207,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         }
         
         self.performSegueWithIdentifier("friendToCurrent", sender: self)
+
 
     }
 }

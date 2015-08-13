@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>64141DDA-B4FD-44D5-9893-F2AF1AF1A796</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>GroupAlarm</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F2B3C55639EF3DC97890BDAB4143DEA65F0068B6</key>
 		<string>https://github.com/Jmats17/GroupAlarm.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>GroupAlarm.xcodeproj/project.xcworkspace</string>
+	<string>GroupAlarm.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F2B3C55639EF3DC97890BDAB4143DEA65F0068B6</key>

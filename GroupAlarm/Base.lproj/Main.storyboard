@@ -5,6 +5,11 @@
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="LeckerliOne-Regular.ttf">
+            <string>LeckerliOne-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--StartViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -22,12 +27,12 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Alarm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLE-3Y-QxK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wakey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLE-3Y-QxK">
                                 <rect key="frame" x="36" y="212" width="528" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="83" id="nR3-Xj-Aul"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="46"/>
+                                <fontDescription key="fontDescription" name="LeckerliOne-Regular" family="Leckerli One" pointSize="64"/>
                                 <color key="textColor" red="0.94901960784313721" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -127,7 +132,7 @@
                                     <constraint firstAttribute="height" constant="46" id="oFb-Ca-rXa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USERNAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDB-mh-vQ3" userLabel="USERNAMELabel">
                                 <rect key="frame" x="16" y="216" width="139" height="50"/>
@@ -333,10 +338,10 @@
                                 </constraints>
                                 <items>
                                     <navigationItem id="yb7-zb-F2M">
-                                        <barButtonItem key="leftBarButtonItem" image="homebutton.png" id="k9Z-Mm-1X9">
+                                        <barButtonItem key="leftBarButtonItem" image="home60.png" id="k9Z-Mm-1X9">
                                             <color key="tintColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="Sbj-M7-Dem" kind="show" identifier="pendingToHome" id="8P3-0Z-2dL"/>
+                                                <segue destination="Sbj-M7-Dem" kind="show" id="WEX-wi-Tsv"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -425,6 +430,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="KyX-54-rgj" id="2EZ-XL-mv2"/>
+                        <segue destination="Sbj-M7-Dem" kind="show" identifier="pendingToHome" id="iqc-Zh-pev"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mkw-ti-jje" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -478,7 +484,7 @@
                                     <constraint firstAttribute="height" constant="46" id="2jJ-Lg-TOU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="justin@gmail.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CiU-c5-UWW" userLabel="EmailTextfield">
                                 <rect key="frame" x="16" y="235" width="568" height="46"/>
@@ -487,7 +493,7 @@
                                     <constraint firstAttribute="height" constant="46" id="Gbw-jz-zHN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*******" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bCG-sk-Crl" userLabel="PasswordTextfield">
                                 <rect key="frame" x="16" y="417" width="568" height="46"/>
@@ -543,7 +549,7 @@
                                     <constraint firstAttribute="height" constant="46" id="c2d-Sq-bJW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnq-wi-Xbi">
                                 <rect key="frame" x="16" y="189" width="568" height="1"/>
@@ -785,24 +791,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jy-as-wjI">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="75H-K3-020"/>
-                                    <constraint firstAttribute="width" constant="600" id="mib-dY-nNT"/>
-                                </constraints>
-                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <items>
-                                    <navigationItem id="Dvv-pz-gQO">
-                                        <barButtonItem key="leftBarButtonItem" image="home60.png" style="plain" id="ssc-0u-wWG">
-                                            <color key="tintColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <segue destination="Sbj-M7-Dem" kind="show" id="C5O-1U-Usj"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Going Hiking Tomorrow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKk-MD-j3m" userLabel="FullnameLabel">
                                 <rect key="frame" x="16" y="86" width="568" height="48"/>
                                 <constraints>
@@ -902,6 +890,25 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jy-as-wjI">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="75H-K3-020"/>
+                                    <constraint firstAttribute="width" constant="600" id="mib-dY-nNT"/>
+                                </constraints>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem id="Dvv-pz-gQO">
+                                        <barButtonItem key="leftBarButtonItem" image="home60.png" style="plain" id="ssc-0u-wWG">
+                                            <color key="tintColor" red="0.94901960780000005" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="dismissGroupController:" destination="y9h-cR-f07" id="WRL-um-T9o"/>
+                                                <segue destination="Sbj-M7-Dem" kind="show" id="8tC-cZ-Zg4"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1374,14 +1381,13 @@
         <image name="friendicon2.png" width="29" height="24"/>
         <image name="friendsImage.png" width="600" height="64"/>
         <image name="home60.png" width="40" height="40"/>
-        <image name="homebutton.png" width="20" height="20"/>
         <image name="redstatusbutton.png" width="16" height="16"/>
         <image name="signoutbutton.png" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="C5O-1U-Usj"/>
-        <segue reference="oC5-JO-oDj"/>
+        <segue reference="8tC-cZ-Zg4"/>
         <segue reference="Ydj-Wb-J0w"/>
         <segue reference="AQ8-Fh-Ode"/>
+        <segue reference="ga4-Bn-BTT"/>
     </inferredMetricsTieBreakers>
 </document>

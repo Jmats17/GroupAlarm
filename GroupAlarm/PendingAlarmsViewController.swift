@@ -179,6 +179,8 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
         return [accept,decline]
     }
     
+    
+    
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // the cells you would like the actions to appear needs to be editable
         return true

@@ -22,8 +22,8 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     var groupAlarmDate : String!
     var groupAlarmTime : NSDate!
     var groupAlarmObject : PFObject!
-    //var editAlarmObject : PFObject!
-    //var newGroupAlarmObject :PFObject!
+    var groupObjId : String!
+    var cameFromAppDel : Bool = false
     @IBOutlet weak var alarmLabel : UILabel!
     @IBOutlet weak var alarmDate : UILabel!
     @IBOutlet weak var alarmTime : UILabel!
@@ -32,21 +32,15 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     @IBOutlet var tableView : UITableView!
     var usersFriends : NSMutableArray = NSMutableArray()
     let queryUserAlarm = PFQuery(className: "UserAlarmRole")
+    let queryAlarm = PFQuery(className: "Alarm")
     var currentUser = PFUser.currentUser()
-   // var editControllerAlarmLabel : String!
-    //var editControllerAlarmTime : String!
-    //var editControllerAlarmDate : String!
-    //var editControllerAsPrevious : Bool = false
-    //var appdelControllerAsPrevious : Bool = false
+    var queryAlarmObject : PFObject!
     override func didReceiveMemoryWarning() {
         
     }
     
     override func viewDidAppear(animated: Bool) {
-        querying(queryUserAlarm)
-
-        tableView.reloadData()
-
+   
     }
     
     override func viewDidLoad() {
@@ -57,42 +51,64 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
         tableView.dataSource = self
         dateFormatterTime.dateFormat = "h:mm a"
         dateFormatterDate.dateFormat = "EEEE, MMMM d"
-//        if editControllerAsPrevious == true {
-//            alarmDate.text = editControllerAlarmDate
-//            alarmTime.text = editControllerAlarmTime
-//            alarmLabel.text = editControllerAlarmLabel
-//        }
-//        else {
-        var alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
-
-        alarmDate.text = groupAlarmDate
-        alarmTime.text = alarmTimeString
-        alarmLabel.text = groupAlarmLabel
-       // }
-
-        println(groupAlarmObject)
-        //newGroupAlarmObject = groupAlarmObject
+       
+        querying(queryUserAlarm)
+        
+        tableView.reloadData()
+        if cameFromAppDel == true {
+            var objectTime = queryAlarmObject["alarmTime"] as! NSDate
+            let stringTime = dateFormatterTime.stringFromDate(objectTime).lowercaseString
+            let stringDate = dateFormatterDate.stringFromDate(objectTime).lowercaseString
+            var objectLabel = queryAlarmObject["alarmLabel"] as! String
+            alarmDate.text = stringDate
+            alarmTime.text = stringTime
+            alarmLabel.text = objectLabel
+        }
+        if cameFromAppDel == false {
+            var alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
+            
+            alarmDate.text = groupAlarmDate
+            alarmTime.text = alarmTimeString
+            alarmLabel.text = groupAlarmLabel
+        }
         
     }
     
+    func queryingAlarmClass(query : PFQuery) {
+        if cameFromAppDel == true {
+
+        query.whereKey("objectId", equalTo: groupObjId)
+        queryAlarmObject = query.getFirstObject()
+            
+        }
+        if cameFromAppDel == false {
+                                                                                                    
+        }
+    }
+    
     func querying(query : PFQuery) {
-//        if editControllerAsPrevious == true {
-//            var alarmObject = editAlarmObject
-//            query.whereKey("alarm", equalTo: alarmObject)
-//            query.selectKeys(["user"])
-//            query.includeKey("user")
-//            query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-//                if error == nil {
-//                    for result in objects! {
-//                        var userObject = result["user"] as! PFObject
-//                        userObject.fetchIfNeeded()
-//                        self.usersFriends.addObject(userObject)
-//                    }
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }
-//        else {
+        queryingAlarmClass(queryAlarm)
+
+        if cameFromAppDel == true {
+
+                query.whereKey("alarm", equalTo: queryAlarmObject)
+                query.whereKey("alarmActivated", equalTo: true)
+                query.selectKeys(["user"])
+                query.includeKey("user")
+                query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+                    if error == nil {
+                        for result in objects! {
+                            var userObject = result["user"] as! PFObject
+                            userObject.fetchIfNeeded()
+                            self.usersFriends.addObject(userObject)
+                        }
+                        self.tableView.reloadData()
+                    }
+                }
+            
+            
+        }
+        if cameFromAppDel == false {
          var alarmObject = groupAlarmObject
          query.whereKey("alarm", equalTo: alarmObject)
         query.whereKey("alarmActivated", equalTo: true)
@@ -104,11 +120,15 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
                     var userObject = result["user"] as! PFObject
                     userObject.fetchIfNeeded()
                     self.usersFriends.addObject(userObject)
-                }
+                    }
                 self.tableView.reloadData()
+                }
             }
         }
-        //}
+    }
+    
+    @IBAction func dismissGroupController(sender : AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -123,22 +143,34 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FriendTableViewCell
         let object = self.usersFriends[indexPath.row] as! PFObject
-        if object.objectId == currentUser?.objectId {
+        if cameFromAppDel == true {
+            if object.objectId == currentUser?.objectId  {
             var userFullName = object["FullName"]! as? String
             cell.friendName.text = userFullName! + " (me)"
+            cell.statusCircle.image = UIImage(named: "greenstatusButton.png")
+            }
+            else {
+                var userFullName = object["FullName"]! as? String
+                cell.friendName.text = userFullName
+            }
         }
-        else {
-            
+        if cameFromAppDel == false {
+            if object.objectId == currentUser?.objectId  {
             var userFullName = object["FullName"]! as? String
-            cell.friendName.text = userFullName
+            cell.friendName.text = userFullName! + " (me)"
+            }
+            else {
+                
+                var userFullName = object["FullName"]! as? String
+                cell.friendName.text = userFullName
+            }
         }
+       
         
       
         return cell
 
     }
-    
-   
     
     
 }

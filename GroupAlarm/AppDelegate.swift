@@ -1,4 +1,4 @@
-    //
+     //
 //  AppDelegate.swift
 //  GroupAlarm
 //
@@ -120,19 +120,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         PFPush.handlePush(userInfo)
+        var dateFormatter = NSDateFormatter()
+        
         if application.applicationState == UIApplicationState.Inactive {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
-            
-            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-            
-            var storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! UIViewController
-            
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
+            if let timeDictionary = userInfo["time"] as? NSDictionary, objID = timeDictionary["objectId"] as? String {
+//                println(userInfo)
+//                println("obj id = \(objID)")
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                
+                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! GroupCurrentAlarmViewController
+                initialViewController.groupObjId = objID
+                initialViewController.cameFromAppDel = true
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            } else {
+                println("ERROR: should never get here")
+            }
         }
+        else if application.applicationState == UIApplicationState.Active {
+            
+            if let timeDictionary = userInfo["time"] as? NSDictionary, objID = timeDictionary["objectId"] as? String {
+//                println(userInfo)
+//                println("obj id = \(objID)")
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                
+                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! GroupCurrentAlarmViewController
+                initialViewController.groupObjId = objID
+                initialViewController.cameFromAppDel = true
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            } else {
+                println("ERROR: should never get here")
+            }
+        }
+        else {
+            if let timeDictionary = userInfo["time"] as? NSDictionary, objID = timeDictionary["objectId"] as? String {
+                //println(userInfo)
+                //println("obj id = \(objID)")
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                
+                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! GroupCurrentAlarmViewController
+                initialViewController.groupObjId = objID
+                initialViewController.cameFromAppDel = true
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+            } else {
+                println("ERROR: should never get here")
+            }
     }
+    
+    
+    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -157,5 +202,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    }
 }
-

@@ -36,6 +36,7 @@ Parse.Cloud.define('schedulePushNotification', function (request, response) {
 
         var dateToSent = alarm.get('alarmTime');
         var labelToSent = alarm.get('alarmLabel');
+		
         var query = new Parse.Query(Parse.Installation);
         query.containedIn('user', users);
 
@@ -45,7 +46,8 @@ Parse.Cloud.define('schedulePushNotification', function (request, response) {
             where: query,
             data: {
                 alert: labelToSent,
-                 sound: 'sound.m4a'
+				sound: 'sound.m4a',
+				time: alarm
             },
             push_time: dateToSent,
         });
