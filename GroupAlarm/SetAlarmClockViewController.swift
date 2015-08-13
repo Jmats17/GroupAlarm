@@ -60,6 +60,9 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @IBAction func cancelButton(sender : AnyObject) {
+        self.performSegueWithIdentifier("setAlarmToCurrent", sender: self)
+    }
     
     
     @IBAction func addButton(sender : AnyObject) {

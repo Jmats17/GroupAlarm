@@ -742,8 +742,7 @@
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="t3y-19-n39">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <action selector="cancel:" destination="dkk-RC-hQk" id="pA3-6p-Mja"/>
-                                                <segue destination="atT-it-dmF" kind="unwind" unwindAction="unwindToCurrentAlarmViewController:sender:" id="dnc-kE-HdL"/>
+                                                <action selector="cancelButton:" destination="dkk-RC-hQk" id="Qq7-kl-YIX"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="friendadd.png" id="sRC-Sf-sRJ">
@@ -772,10 +771,10 @@
                         <outlet property="myDatePicker" destination="EFy-bB-91M" id="zru-tj-Dme"/>
                         <outlet property="saveButton" destination="sRC-Sf-sRJ" id="fse-VV-5vW"/>
                         <segue destination="Rjn-w9-aYD" kind="show" identifier="alarmToFriend" id="hFL-to-xG8"/>
+                        <segue destination="Sbj-M7-Dem" kind="show" identifier="setAlarmToCurrent" id="M62-1l-72k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w66-mb-2BB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="atT-it-dmF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2168" y="1355"/>
         </scene>
@@ -1385,9 +1384,9 @@
         <image name="signoutbutton.png" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8tC-cZ-Zg4"/>
         <segue reference="Ydj-Wb-J0w"/>
         <segue reference="AQ8-Fh-Ode"/>
         <segue reference="ga4-Bn-BTT"/>
+        <segue reference="M62-1l-72k"/>
     </inferredMetricsTieBreakers>
 </document>

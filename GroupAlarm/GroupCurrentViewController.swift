@@ -24,6 +24,7 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     var groupAlarmObject : PFObject!
     var groupObjId : String!
     var cameFromAppDel : Bool = false
+    @IBOutlet weak var statusImage : UIImageView!
     @IBOutlet weak var alarmLabel : UILabel!
     @IBOutlet weak var alarmDate : UILabel!
     @IBOutlet weak var alarmTime : UILabel!
@@ -63,14 +64,46 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
             alarmDate.text = stringDate
             alarmTime.text = stringTime
             alarmLabel.text = objectLabel
+//            if objectTime.timeIntervalSinceNow.isSignMinus {
+//                for userAlarmObj in usersFriends {
+//                    if userAlarmObj as! PFObject == currentUser! {
+//                        userAlarmObj.setValue(true, forKey: "checkIn")
+//                        userAlarmObj.saveInBackgroundWithBlock({ (success, error) -> Void in
+//                            
+//                        })
+//                    }
+//                }
+//            }
+//            else {
+//                
+//                for userAlarmObj in usersFriends {
+//                    if userAlarmObj as! PFObject == currentUser! {
+//                        userAlarmObj.setValue(false, forKey: "checkIn")
+//                        userAlarmObj.saveInBackgroundWithBlock({ (success, error) -> Void in
+//                            
+//                        })
+//                    }
+//                }
+//            }
         }
         if cameFromAppDel == false {
             var alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
-            
             alarmDate.text = groupAlarmDate
             alarmTime.text = alarmTimeString
             alarmLabel.text = groupAlarmLabel
+//            if groupAlarmTime.timeIntervalSinceNow.isSignMinus {
+//                for userAlarmObj in usersFriends {
+//                    if userAlarmObj as! PFObject == currentUser! {
+//                        userAlarmObj.setValue(false, forKey: "checkIn")
+//                    }
+//                }
+//            }
+//            else {
+//                
+//            }
+
         }
+        
         
     }
     
@@ -90,17 +123,15 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
         queryingAlarmClass(queryAlarm)
 
         if cameFromAppDel == true {
-
+                var alarmObjectTime = queryAlarmObject["alarmTime"] as! NSDate
                 query.whereKey("alarm", equalTo: queryAlarmObject)
                 query.whereKey("alarmActivated", equalTo: true)
-                query.selectKeys(["user"])
-                query.includeKey("user")
                 query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
                     if error == nil {
                         for result in objects! {
-                            var userObject = result["user"] as! PFObject
-                            userObject.fetchIfNeeded()
-                            self.usersFriends.addObject(userObject)
+                            var userAlarmObject = result as! PFObject
+                            self.usersFriends.addObject(result)
+
                         }
                         self.tableView.reloadData()
                     }
@@ -112,14 +143,12 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
          var alarmObject = groupAlarmObject
          query.whereKey("alarm", equalTo: alarmObject)
         query.whereKey("alarmActivated", equalTo: true)
-         query.selectKeys(["user"])
-         query.includeKey("user")
          query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
                 for result in objects! {
-                    var userObject = result["user"] as! PFObject
-                    userObject.fetchIfNeeded()
-                    self.usersFriends.addObject(userObject)
+                        var userAlarmObject = result as! PFObject
+
+                        self.usersFriends.addObject(result)
                     }
                 self.tableView.reloadData()
                 }
@@ -143,29 +172,35 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FriendTableViewCell
         let object = self.usersFriends[indexPath.row] as! PFObject
-        if cameFromAppDel == true {
-            if object.objectId == currentUser?.objectId  {
-            var userFullName = object["FullName"]! as? String
-            cell.friendName.text = userFullName! + " (me)"
-            cell.statusCircle.image = UIImage(named: "greenstatusButton.png")
+        var checkedIn = object["checkIn"] as! Bool
+        var userObject = object["user"] as! PFObject
+        userObject.fetchIfNeeded()
+        var userFullName = userObject["FullName"] as! String
+        if userObject.objectId == currentUser?.objectId   {
+            
+            cell.friendName.text = userFullName + " (me)"
+            if checkedIn == true {
+                cell.statusCircle.image = UIImage(named: "greenstatusButton.png")
+
             }
             else {
-                var userFullName = object["FullName"]! as? String
-                cell.friendName.text = userFullName
+                cell.statusCircle.image = UIImage(named: "redstatusbutton.png")
+
             }
+            self.tableView.reloadData()
         }
-        if cameFromAppDel == false {
-            if object.objectId == currentUser?.objectId  {
-            var userFullName = object["FullName"]! as? String
-            cell.friendName.text = userFullName! + " (me)"
-            }
-            else {
+        else {
+            cell.friendName.text = userFullName
+            if checkedIn == true {
+                cell.statusCircle.image = UIImage(named: "greenstatusButton.png")
                 
-                var userFullName = object["FullName"]! as? String
-                cell.friendName.text = userFullName
             }
+            else {
+                cell.statusCircle.image = UIImage(named: "redstatusbutton.png")
+                
+            }
+            self.tableView.reloadData()
         }
-       
         
       
         return cell

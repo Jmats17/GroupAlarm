@@ -126,6 +126,8 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         
     }
     
+
+    
     
     
     func queryForUsersAlarms(query : PFQuery) {
@@ -137,18 +139,10 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             (objects, error) -> Void in
             if error == nil {
                 for row in objects! {
-                    var boolRow = row.objectForKey("alarmActivated") as! Bool
-                    if boolRow == true {
-                        var objId = row.objectId!
-                        var alarmInfo = row["alarm"] as! PFObject
-                        self.currentUserAlarms.addObject(alarmInfo)
-                    }
-                    else {
-                        
-                    }
-                    
-                    
-                    
+                    var userAlarmObject = row as! PFObject
+                 //   var alarmInfo = row["alarm"] as! PFObject
+                    self.currentUserAlarms.addObject(userAlarmObject)
+
                 }
                 self.tableView.reloadData()
         
@@ -157,9 +151,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    @IBAction func unwindToCurrentAlarmViewController(segue : UIStoryboardSegue, sender : AnyObject) {
-        
-    }
+   
     
     @IBAction func pendingAlarmButton(sender : AnyObject) {
         self.performSegueWithIdentifier("currentToPending", sender: self)
@@ -174,22 +166,32 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
 
 
             let object = self.currentUserAlarms[indexPath.row] as! PFObject
-        
-            var alarmLabelString  = object["alarmLabel"]! as? String
-            var timeLabelString = object["alarmTime"]! as? NSDate
-            var numOfUsers = object["numOfUsers"] as? NSNumber
-            let stringTime = dateFormatterTime.stringFromDate(timeLabelString!).lowercaseString
-            let stringDate = dateFormatterDate.stringFromDate(timeLabelString!).lowercaseString
+            var alarmObject = object["alarm"] as! PFObject
+            var alarmLabelString  = alarmObject["alarmLabel"]! as? String
+            var time = alarmObject["alarmTime"]! as? NSDate
+            var numOfUsers = alarmObject["numOfUsers"] as? NSNumber
+            let stringTime = dateFormatterTime.stringFromDate(time!).lowercaseString
+            let stringDate = dateFormatterDate.stringFromDate(time!).lowercaseString
             cell.alarmLabel.text = alarmLabelString
             cell.timeLabel.text = stringTime
             cell.dateLabel.text = stringDate
-            cell.alarmObject = object
+            cell.alarmObject = alarmObject
 
                 var numOfUsersString : String? = String(format: "%i", numOfUsers!.integerValue)
 
                 cell.numOfUsersLabel.text = numOfUsersString
 
             //}
+        
+            if time!.timeIntervalSinceNow.isSignMinus {
+                object.setObject(true, forKey: "checkIn")
+                object.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    
+                })
+            }
+            else {
+                
+            }
     
             return cell
     }
@@ -201,7 +203,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         var alarmDate = object["alarmTime"]! as! NSDate
         if alarmDate.timeIntervalSinceNow.isSignMinus {
             cell.deleteAlarmArrow.hidden = false
-            
+
             let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
                 
                 let alertController = UIAlertController(title: "Delete Alarm", message:
