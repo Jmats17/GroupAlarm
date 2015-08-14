@@ -29,6 +29,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var pendingAlarmButton : UIButton!
     let queryUser = PFQuery(className: "_User")
     let queryUserAlarm = PFQuery(className: "UserAlarmRole")
+    let queryAlarm = PFQuery(className: "Alarm")
     let currentUser = PFUser.currentUser()
     var dateFormatterTime = NSDateFormatter()
     var dateFormatterDate = NSDateFormatter()
@@ -107,14 +108,22 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    func queryToDelete(query : PFQuery, object : PFObject) {
-        query.whereKey("alarm", equalTo: object)
+    func queryToDelete(query : PFQuery, queryAlarm : PFQuery, userAlarmObject : PFObject) {
+        query.whereKey("alarm", equalTo: userAlarmObject["alarm"]!)
         query.findObjectsInBackgroundWithBlock {
-            (objects, error) -> Void in
+            (userAlarmObjects, error) -> Void in
             if error == nil {
-                for row in objects! {
-                    let result = row as! PFObject
-                    result.deleteInBackgroundWithBlock({ (success, error) -> Void in
+                for userAlarmObject in userAlarmObjects! {
+                    let valuesOfUserAlarmObjects = userAlarmObject as! PFObject
+                    let alarmPointer = userAlarmObject["alarm"] as! PFObject
+                    
+                    alarmPointer.deleteInBackgroundWithBlock({ (success, error) -> Void in
+                        if error == nil {
+                            println("success")
+                        }
+                    })
+
+                    valuesOfUserAlarmObjects.deleteInBackgroundWithBlock({ (success, error) -> Void in
                         if error == nil {
                             println("success")
                         }
@@ -123,6 +132,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
                 
             }
         }
+        
         
     }
     
@@ -199,27 +209,43 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         let object = self.currentUserAlarms[indexPath.row] as! PFObject
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
-
-        var alarmDate = object["alarmTime"]! as! NSDate
+        let alarmObject = object["alarm"] as! PFObject
+        var alarmDate = alarmObject["alarmTime"]! as! NSDate
         if alarmDate.timeIntervalSinceNow.isSignMinus {
             cell.deleteAlarmArrow.hidden = false
 
-            let delete = UITableViewRowAction(style: .Normal, title: "Delete") { action, index in
+            let delete = UITableViewRowAction(style: .Normal, title: "Leave") { action, index in
                 
                 let alertController = UIAlertController(title: "Delete Alarm", message:
                     "Are you sure you want to delete the alarm?", preferredStyle: UIAlertControllerStyle.Alert)
                 self.presentViewController(alertController, animated: true, completion: nil)
                 
                 alertController.addAction(UIAlertAction(title: "yes", style: .Default, handler: { action in
-                    self.queryToDelete(self.queryUserAlarm, object: object)
+                    self.queryToDelete(self.queryUserAlarm, queryAlarm : self.queryAlarm, userAlarmObject: object)
 
-                    object.deleteInBackgroundWithBlock({ (success, error) -> Void in
+//                    object.deleteInBackgroundWithBlock({ (success, error) -> Void in
+//                        
+//                    })
+                    let alarmPointer = object["alarm"] as! PFObject
+                    let alarmActivatedBool = object["checkIn"] as! Bool
+                    if self.currentUserAlarms.count == 1 && alarmActivatedBool == false {
+                        alarmPointer.deleteInBackgroundWithBlock({ (success, error) -> Void in
+                            if error == nil {
+                                println("success")
+                            }
+                        })
+                        self.currentUserAlarms.removeObjectAtIndex(indexPath.row)
+                        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                         
-                    })
-                    self.currentUserAlarms.removeObjectAtIndex(indexPath.row)
-                    self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                   
-                    self.tableView.reloadData()
+                        self.tableView.reloadData()
+                    }
+                    else {
+                        self.currentUserAlarms.removeObjectAtIndex(indexPath.row)
+                        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                        
+                        self.tableView.reloadData()
+                    }
+                    
                     
                 }))
                 alertController.addAction(UIAlertAction(title: "no", style: .Default, handler: { action in

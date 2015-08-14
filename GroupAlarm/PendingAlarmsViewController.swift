@@ -157,11 +157,10 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
             println("Decline button tapped")
             let object = self.boolArray[indexPath.row] as! PFObject
             var alarmObject = object["alarm"] as! PFObject
-            object.setObject(false, forKey: "alarmActivated")
-            object.setObject(false, forKey: "toShowRow")
-            object.saveInBackgroundWithBlock({ (success, error) -> Void in
+
+            object.deleteInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    "hooray"
+                    println("horray")
                 }
             })
             self.boolArray.removeObjectAtIndex(indexPath.row)

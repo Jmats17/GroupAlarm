@@ -38,7 +38,10 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         textFieldShouldReturn(passwordTextField)
         textFieldDidBeginEditing(passwordTextField)
         textFieldDidEndEditing(passwordTextField)
+      
     }
+   
+   
     
     
     
@@ -102,7 +105,8 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         user.password = passEntered
         user.email = emailEntered
         var savedUser = PFUser(className: "_User")
-        
+        var logininviewcontroller = LoginViewController()
+
         
         
         func userSignUp() {
@@ -130,7 +134,9 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
                     var currentInstallation = PFInstallation.currentInstallation()
                     currentInstallation["user"] = PFUser.currentUser()!
                     currentInstallation.saveInBackground()
+                 
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        
                         self.performSegueWithIdentifier("signUpToLogIn", sender: self)
                     })
                     
@@ -179,6 +185,8 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         
         if userEntered != "" && passEntered != "" && emailEntered != "" && fullNameEntered != ""  {
             missingField.hidden = true
+            logininviewcontroller.userEnteredFromSignup = userEntered!
+            logininviewcontroller.passEnteredFromSignup = passEntered!
             userSignUp()
             
         }

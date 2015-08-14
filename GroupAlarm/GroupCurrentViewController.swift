@@ -55,7 +55,6 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
        
         querying(queryUserAlarm)
         
-        tableView.reloadData()
         if cameFromAppDel == true {
             var objectTime = queryAlarmObject["alarmTime"] as! NSDate
             let stringTime = dateFormatterTime.stringFromDate(objectTime).lowercaseString
@@ -64,47 +63,19 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
             alarmDate.text = stringDate
             alarmTime.text = stringTime
             alarmLabel.text = objectLabel
-//            if objectTime.timeIntervalSinceNow.isSignMinus {
-//                for userAlarmObj in usersFriends {
-//                    if userAlarmObj as! PFObject == currentUser! {
-//                        userAlarmObj.setValue(true, forKey: "checkIn")
-//                        userAlarmObj.saveInBackgroundWithBlock({ (success, error) -> Void in
-//                            
-//                        })
-//                    }
-//                }
-//            }
-//            else {
-//                
-//                for userAlarmObj in usersFriends {
-//                    if userAlarmObj as! PFObject == currentUser! {
-//                        userAlarmObj.setValue(false, forKey: "checkIn")
-//                        userAlarmObj.saveInBackgroundWithBlock({ (success, error) -> Void in
-//                            
-//                        })
-//                    }
-//                }
-//            }
+
         }
         if cameFromAppDel == false {
             var alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
             alarmDate.text = groupAlarmDate
             alarmTime.text = alarmTimeString
             alarmLabel.text = groupAlarmLabel
-//            if groupAlarmTime.timeIntervalSinceNow.isSignMinus {
-//                for userAlarmObj in usersFriends {
-//                    if userAlarmObj as! PFObject == currentUser! {
-//                        userAlarmObj.setValue(false, forKey: "checkIn")
-//                    }
-//                }
-//            }
-//            else {
-//                
-//            }
+
 
         }
         
-        
+        tableView.reloadData()
+
     }
     
     func queryingAlarmClass(query : PFQuery) {
@@ -184,10 +155,9 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
 
             }
             else {
-                cell.statusCircle.image = UIImage(named: "redstatusbutton.png")
+                cell.statusCircle.image = UIImage(named: "greystatusButton.png")
 
             }
-            self.tableView.reloadData()
         }
         else {
             cell.friendName.text = userFullName
@@ -196,10 +166,9 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
                 
             }
             else {
-                cell.statusCircle.image = UIImage(named: "redstatusbutton.png")
+                cell.statusCircle.image = UIImage(named: "greystatusButton.png")
                 
             }
-            self.tableView.reloadData()
         }
         
       

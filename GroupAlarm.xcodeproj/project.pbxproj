@@ -14,8 +14,6 @@
 		D00BA7F01B7B157E0099C616 /* signoutbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7EF1B7B157E0099C616 /* signoutbutton@2x.png */; };
 		D00BA7F21B7B16750099C616 /* friendicon2.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7F11B7B16750099C616 /* friendicon2.png */; };
 		D00BA7F41B7B16980099C616 /* friendicon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7F31B7B16980099C616 /* friendicon2@2x.png */; };
-		D00BA7F71B7B174B0099C616 /* redstatusbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7F51B7B174B0099C616 /* redstatusbutton@2x.png */; };
-		D00BA7F81B7B174B0099C616 /* redstatusbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7F61B7B174B0099C616 /* redstatusbutton.png */; };
 		D00BA7FA1B7B19960099C616 /* backarrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7F91B7B19960099C616 /* backarrow@2x.png */; };
 		D00BA7FD1B7B231E0099C616 /* friendsImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7FB1B7B231E0099C616 /* friendsImage@2x.png */; };
 		D00BA7FE1B7B231E0099C616 /* friendsImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA7FC1B7B231E0099C616 /* friendsImage.png */; };
@@ -48,6 +46,10 @@
 		D0B51F631B5EC42000B277B5 /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */; };
 		D0B51F651B5EC62000B277B5 /* CurrentAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */; };
 		D0D5404C1B7A920400233946 /* backarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D5404B1B7A920400233946 /* backarrow.png */; };
+		D0D6504E1B7D1FEB00A52478 /* greystatusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D6504C1B7D1FEB00A52478 /* greystatusButton.png */; };
+		D0D6504F1B7D1FEB00A52478 /* greystatusButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D6504D1B7D1FEB00A52478 /* greystatusButton@2x.png */; };
+		D0D6505A1B7D423900A52478 /* wakeyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D650581B7D423900A52478 /* wakeyLogo.png */; };
+		D0D6505B1B7D423900A52478 /* wakeyLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D650591B7D423900A52478 /* wakeyLogo@2x.png */; };
 		D0DD4FCE1B788E7F00C2A217 /* GroupCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */; };
 		D0DD4FDC1B791BEE00C2A217 /* EditAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FDB1B791BEE00C2A217 /* EditAlarmViewController.swift */; };
 		D0DD4FE01B79681800C2A217 /* PendingAlarmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FDF1B79681800C2A217 /* PendingAlarmsViewController.swift */; };
@@ -73,8 +75,6 @@
 		D00BA7EF1B7B157E0099C616 /* signoutbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signoutbutton@2x.png"; sourceTree = "<group>"; };
 		D00BA7F11B7B16750099C616 /* friendicon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendicon2.png; sourceTree = "<group>"; };
 		D00BA7F31B7B16980099C616 /* friendicon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friendicon2@2x.png"; sourceTree = "<group>"; };
-		D00BA7F51B7B174B0099C616 /* redstatusbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redstatusbutton@2x.png"; sourceTree = "<group>"; };
-		D00BA7F61B7B174B0099C616 /* redstatusbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redstatusbutton.png; sourceTree = "<group>"; };
 		D00BA7F91B7B19960099C616 /* backarrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backarrow@2x.png"; sourceTree = "<group>"; };
 		D00BA7FB1B7B231E0099C616 /* friendsImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friendsImage@2x.png"; sourceTree = "<group>"; };
 		D00BA7FC1B7B231E0099C616 /* friendsImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendsImage.png; sourceTree = "<group>"; };
@@ -113,6 +113,10 @@
 		D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
 		D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAlarmViewController.swift; sourceTree = "<group>"; };
 		D0D5404B1B7A920400233946 /* backarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backarrow.png; sourceTree = "<group>"; };
+		D0D6504C1B7D1FEB00A52478 /* greystatusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greystatusButton.png; sourceTree = "<group>"; };
+		D0D6504D1B7D1FEB00A52478 /* greystatusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greystatusButton@2x.png"; sourceTree = "<group>"; };
+		D0D650581B7D423900A52478 /* wakeyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wakeyLogo.png; sourceTree = "<group>"; };
+		D0D650591B7D423900A52478 /* wakeyLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wakeyLogo@2x.png"; sourceTree = "<group>"; };
 		D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCurrentViewController.swift; sourceTree = "<group>"; };
 		D0DD4FDB1B791BEE00C2A217 /* EditAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAlarmViewController.swift; sourceTree = "<group>"; };
 		D0DD4FDF1B79681800C2A217 /* PendingAlarmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingAlarmsViewController.swift; sourceTree = "<group>"; };
@@ -221,14 +225,16 @@
 			isa = PBXGroup;
 			children = (
 				D00BA7E51B7B10F70099C616 /* notifButton.png */,
-				D00BA7F51B7B174B0099C616 /* redstatusbutton@2x.png */,
-				D00BA7F61B7B174B0099C616 /* redstatusbutton.png */,
 				D00BA7EF1B7B157E0099C616 /* signoutbutton@2x.png */,
 				D00BA7E91B7B13830099C616 /* signoutbutton.png */,
 				D00BA7F91B7B19960099C616 /* backarrow@2x.png */,
 				D0D5404B1B7A920400233946 /* backarrow.png */,
 				D0306C271B7B29D500EA8D57 /* GochiHand-Regular.ttf */,
 				D0306C281B7B29DC00EA8D57 /* LeckerliOne-Regular.ttf */,
+				D0D6504C1B7D1FEB00A52478 /* greystatusButton.png */,
+				D0D650581B7D423900A52478 /* wakeyLogo.png */,
+				D0D650591B7D423900A52478 /* wakeyLogo@2x.png */,
+				D0D6504D1B7D1FEB00A52478 /* greystatusButton@2x.png */,
 				D00BA7F11B7B16750099C616 /* friendicon2.png */,
 				D00BA7F31B7B16980099C616 /* friendicon2@2x.png */,
 				D00BA8031B7B24CD0099C616 /* friendadd@2x.png */,
@@ -351,21 +357,23 @@
 				D00BA7FD1B7B231E0099C616 /* friendsImage@2x.png in Resources */,
 				D0E155F11B73EACA005D6640 /* sound.m4a in Resources */,
 				D00BA7F21B7B16750099C616 /* friendicon2.png in Resources */,
+				D0D6505A1B7D423900A52478 /* wakeyLogo.png in Resources */,
 				D0A2C9B41B55B6A500D7F7EA /* Main.storyboard in Resources */,
 				D00BA8061B7B24CD0099C616 /* friendadd.png in Resources */,
-				D00BA7F81B7B174B0099C616 /* redstatusbutton.png in Resources */,
 				D0A2C9B91B55B6A500D7F7EA /* LaunchScreen.xib in Resources */,
 				D00BA7EC1B7B145E0099C616 /* home60.png in Resources */,
 				D00BA7FE1B7B231E0099C616 /* friendsImage.png in Resources */,
-				D00BA7F71B7B174B0099C616 /* redstatusbutton@2x.png in Resources */,
+				D0D6504F1B7D1FEB00A52478 /* greystatusButton@2x.png in Resources */,
 				D00BA8051B7B24CD0099C616 /* friendadd@2x.png in Resources */,
 				D0D5404C1B7A920400233946 /* backarrow.png in Resources */,
 				D00BA8011B7B23760099C616 /* greenstatusButton@2x.png in Resources */,
+				D0D6505B1B7D423900A52478 /* wakeyLogo@2x.png in Resources */,
 				D0A2C9B61B55B6A500D7F7EA /* Images.xcassets in Resources */,
 				D00BA7EA1B7B13830099C616 /* signoutbutton.png in Resources */,
 				D00BA7FA1B7B19960099C616 /* backarrow@2x.png in Resources */,
 				D00BA7EE1B7B14FF0099C616 /* home60@2x.png in Resources */,
 				D00BA7F01B7B157E0099C616 /* signoutbutton@2x.png in Resources */,
+				D0D6504E1B7D1FEB00A52478 /* greystatusButton.png in Resources */,
 				D0E39B7E1B7552AE0083A46B /* alarmclocklogo.png in Resources */,
 				D00BA7E61B7B10F70099C616 /* notifButton.png in Resources */,
 			);

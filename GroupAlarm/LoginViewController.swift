@@ -15,9 +15,9 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet var passwordTextField : UITextField!
     @IBOutlet var invalidCreds : UILabel!
     @IBOutlet var missingUsername : UILabel!
-    @IBOutlet var missingPassword : UILabel!
-    
-    
+    var userEnteredFromSignup : String!
+    var passEnteredFromSignup : String!
+
    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -33,15 +33,24 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidLoad() {
+      
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         invalidCreds.hidden = true
-        missingPassword.hidden = true
         missingUsername.hidden = true
         textFieldShouldReturn(usernameTextField)
         textFieldShouldReturn(passwordTextField)
         textFieldDidBeginEditing(passwordTextField)
         textFieldDidEndEditing(passwordTextField)
+            if let userNameField = userEnteredFromSignup, passNameField = passEnteredFromSignup {
+                usernameTextField.text = userNameField
+                passwordTextField.text = passNameField
+            }
+            else {
+                usernameTextField.text = usernameTextField.text
+                passwordTextField.text = passwordTextField.text
+            }
+
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -100,38 +109,32 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
                 
                 if userCreds != getUserName && passCreds == getUserPass && getAuthentication == false {
                     self.missingUsername.hidden = true
-                    self.missingPassword.hidden = true
                     self.invalidCreds.hidden = false
                     
                 }
                 else if userCreds == getUserName && passCreds != getUserPass {
                     self.invalidCreds.hidden = false
                     self.missingUsername.hidden = true
-                    self.missingPassword.hidden = true
                 }
                 else {
                     self.invalidCreds.hidden = false
                     self.missingUsername.hidden = true
-                    self.missingPassword.hidden = true
                 }
                 /////////////////////
             }
             else if self.usernameTextField.text == "" && self.passwordTextField.text != "" {
                 self.missingUsername.hidden = false
-                self.missingPassword.hidden = true
                 self.invalidCreds.hidden = true
                 
             }
             else if  self.usernameTextField.text != "" && self.passwordTextField.text == "" {
-                self.missingPassword.hidden = false
-                self.missingUsername.hidden = true
+                self.missingUsername.hidden = false
                 self.invalidCreds.hidden = true
                 
             }
             else  {
                 
                 self.missingUsername.hidden = false
-                self.missingPassword.hidden = false
                 self.invalidCreds.hidden = true
             }
             
