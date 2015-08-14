@@ -90,6 +90,7 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         }
         if textField == self.passwordTextField {
             textField.resignFirstResponder()
+            Mixpanel.sharedInstance().track("MadeToSignUpPasswordTextfield")
         }
         return true
     }
@@ -188,7 +189,7 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
             logininviewcontroller.userEnteredFromSignup = userEntered!
             logininviewcontroller.passEnteredFromSignup = passEntered!
             userSignUp()
-            
+            Mixpanel.sharedInstance().track("Signed Up")
         }
         else {
             missingField.hidden = false

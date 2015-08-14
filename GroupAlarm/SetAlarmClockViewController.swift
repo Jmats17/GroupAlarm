@@ -29,7 +29,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
     @IBAction func dateAction(sender : AnyObject) {
         dateFormatter.dateFormat = "MM-dd-yyyy hh:mm a"
     }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         let date : NSDate = NSDate()
         textFieldShouldReturn(alarmLabelTextField)
         myDatePicker.minimumDate = date
-        
+        Mixpanel.sharedInstance().track("User made it to set alarm")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -55,12 +55,13 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         }
         else {
             saveButton.enabled = true
-
+            Mixpanel.sharedInstance().track("User got far enough to enable save button")
         }
         return true
     }
     
     @IBAction func cancelButton(sender : AnyObject) {
+        Mixpanel.sharedInstance().track("User clicked cancel on set alarm")
         self.performSegueWithIdentifier("setAlarmToCurrent", sender: self)
     }
     

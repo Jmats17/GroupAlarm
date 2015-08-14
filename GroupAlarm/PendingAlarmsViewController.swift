@@ -33,7 +33,7 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
     let alarmClass = PFObject(className: "Alarm")
     let queryUser = PFQuery(className: "_User")
     let queryUserAlarm = PFQuery(className: "UserAlarmRole")
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -41,7 +41,7 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
         dateFormatterTime.dateFormat = "h:mm a"
         dateFormatterDate.dateFormat = "EEEE, MMMM d"
         queryForUsersAlarms(queryUserAlarm)
-
+        Mixpanel.sharedInstance().track("user made it to pending")
     }
     
     
@@ -116,12 +116,14 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         let accept = UITableViewRowAction(style: .Normal, title: "Accept") { action, index in
             println("accept button tapped")
+            Mixpanel.sharedInstance().track("User accepted alarms")
             let object = self.boolArray[indexPath.row] as! PFObject
             var alarmObject = object["alarm"] as! PFObject
             object.setObject(true, forKey: "alarmActivated")
             object.setObject(false, forKey: "toShowRow")
             var numOfUsers = alarmObject["numOfUsers"] as! Int
-            alarmObject.setObject(numOfUsers + 1, forKey: "numOfUsers")
+            var addOneToUsers = (numOfUsers + 1)
+            alarmObject.setObject(addOneToUsers, forKey: "numOfUsers")
             alarmObject.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     println("success")
@@ -155,6 +157,7 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
         
         let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
             println("Decline button tapped")
+            Mixpanel.sharedInstance().track("User declined alarm")
             let object = self.boolArray[indexPath.row] as! PFObject
             var alarmObject = object["alarm"] as! PFObject
 

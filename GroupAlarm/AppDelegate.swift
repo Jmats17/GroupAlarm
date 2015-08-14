@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 import Bolts
-
+     
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -20,12 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+        Mixpanel.sharedInstanceWithToken("a37320af793c6e93fbf32e0b549b79cd")
+
+        var appOpened : Int = Int()
         Parse.enableLocalDatastore()
         Parse.setApplicationId("13N3EMnXOVFVOVAGQB6vuax1u7dNqVX3PFj0us96",
             clientKey: "f7EqC7dH3rxXCLOYRSyvZX4JcKvrLboLXdc3uxTk")
                 var currentUser = PFUser.currentUser()
                 if currentUser != nil {
-        
+                    Mixpanel.sharedInstance().track("App Opened", properties: ["Existing User": appOpened])
+                    
                     let currentInstallation = PFInstallation.currentInstallation()
                     
                     if currentInstallation["user"] == nil {
@@ -47,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window?.makeKeyAndVisible()
                 }
                 else {
+                    Mixpanel.sharedInstance().track("App Opened", properties: ["New user": appOpened])
+
                     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
                     var storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -78,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                var statusCircle = destVC.statusCircle
 //                var statusImage = UIImage(named: "greenCircle.png")
 //                statusCircle = UIImageView(image: statusImage!)
-                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! UIViewController
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! UIViewController
                
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
@@ -127,6 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let timeDictionary = userInfo["time"] as? NSDictionary, objID = timeDictionary["objectId"] as? String {
 //                println(userInfo)
 //                println("obj id = \(objID)")
+
                 self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 
                 var storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -134,6 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! GroupCurrentAlarmViewController
                 initialViewController.groupObjId = objID
                 initialViewController.cameFromAppDel = true
+                Mixpanel.sharedInstance().trackPushNotification(["NotificationWentOff": userInfo])
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
             } else {
@@ -148,10 +156,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 
                 var storyboard = UIStoryboard(name: "Main", bundle: nil)
-                
+
                 var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! GroupCurrentAlarmViewController
                 initialViewController.groupObjId = objID
                 initialViewController.cameFromAppDel = true
+                Mixpanel.sharedInstance().trackPushNotification(["NotificationWentOff": userInfo])
+
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
             } else {
@@ -165,10 +175,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 
                 var storyboard = UIStoryboard(name: "Main", bundle: nil)
-                
+
                 var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! GroupCurrentAlarmViewController
                 initialViewController.groupObjId = objID
                 initialViewController.cameFromAppDel = true
+                Mixpanel.sharedInstance().trackPushNotification(["NotificationWentOff": userInfo])
+
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
             } else {

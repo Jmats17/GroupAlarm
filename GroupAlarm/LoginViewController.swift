@@ -99,7 +99,7 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
         PFUser.logInWithUsernameInBackground(userCreds, password: passCreds) {
             (user ,error) -> Void in
             if user != nil {
-               
+                Mixpanel.sharedInstance().track("User Logged In")
                 self.performSegueWithIdentifier("loginViewSegue", sender: self)
                 user?.save()
                 

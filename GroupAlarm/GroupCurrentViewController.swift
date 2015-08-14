@@ -36,18 +36,20 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     let queryAlarm = PFQuery(className: "Alarm")
     var currentUser = PFUser.currentUser()
     var queryAlarmObject : PFObject!
+
     override func didReceiveMemoryWarning() {
         
     }
     
     override func viewDidAppear(animated: Bool) {
-   
+        tableView.reloadData()
+
     }
     
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
+        Mixpanel.sharedInstance().track("user made it to Group current alarm")
         tableView.delegate = self
         tableView.dataSource = self
         dateFormatterTime.dateFormat = "h:mm a"
@@ -63,18 +65,17 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
             alarmDate.text = stringDate
             alarmTime.text = stringTime
             alarmLabel.text = objectLabel
-
+            Mixpanel.sharedInstance().track("user came from notification")
         }
         if cameFromAppDel == false {
             var alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
             alarmDate.text = groupAlarmDate
             alarmTime.text = alarmTimeString
             alarmLabel.text = groupAlarmLabel
-
+            Mixpanel.sharedInstance().track("user came from current alarms page")
 
         }
         
-        tableView.reloadData()
 
     }
     
@@ -152,22 +153,24 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
             cell.friendName.text = userFullName + " (me)"
             if checkedIn == true {
                 cell.statusCircle.image = UIImage(named: "greenstatusButton.png")
-
+                Mixpanel.sharedInstance().track("user turned green")
             }
             else {
                 cell.statusCircle.image = UIImage(named: "greystatusButton.png")
-
+                Mixpanel.sharedInstance().track("user turned red")
             }
         }
         else {
             cell.friendName.text = userFullName
             if checkedIn == true {
                 cell.statusCircle.image = UIImage(named: "greenstatusButton.png")
-                
+                Mixpanel.sharedInstance().track("user turned green")
+
             }
             else {
                 cell.statusCircle.image = UIImage(named: "greystatusButton.png")
-                
+                Mixpanel.sharedInstance().track("user turned red")
+
             }
         }
         

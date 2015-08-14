@@ -35,7 +35,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     var currentUserFullName : String = String()
     //let userAlarmClass = PFObject(className: "UserAlarmRole")
     let numOfUsers : Int = 0
-    
+
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -46,6 +46,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         alarmLabel = alarmVar?.alarmLabel
         currentUserId = currentUser?.objectId
         currentUserFullName = currentUser?.objectForKey("FullName") as! String
+        Mixpanel.sharedInstance().track("User made it to PickFriends")
     }
     
 
@@ -95,11 +96,12 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         let obj = self.data[indexPath.row]
         cell.fullNameLabel.text = obj["FullName"] as? String
         cell.usernameLabel.text = "@" + (obj["username"] as? String)!
-        
+        Mixpanel.sharedInstance().track("Times Array of Users popped up", properties: ["#" : self.data.count])
         
         
         if selectedIndexPaths.containsObject(obj) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            Mixpanel.sharedInstance().track("# of users checked")
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
         }
@@ -130,6 +132,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         searchActive = true
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 216.0, 0)
         tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 216.0, 0)
+        Mixpanel.sharedInstance().track("User clicked on search bar")
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
@@ -160,6 +163,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func cancelButton(sender : AnyObject) {
+        Mixpanel.sharedInstance().track("cancel button hit on pickfriends")
         self.performSegueWithIdentifier("friendToAlarmPick", sender: self)
     }
     @IBAction func doneButton(sender : AnyObject) {
@@ -205,7 +209,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
 //                println(error)
 //            })
         }
-        
+        Mixpanel.sharedInstance().track("Alarm Created")
         self.performSegueWithIdentifier("friendToCurrent", sender: self)
 
 

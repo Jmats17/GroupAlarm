@@ -24,7 +24,7 @@ class AlarmViewCell : UITableViewCell {
 }
 
 
-class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView : UITableView!
     @IBOutlet var pendingAlarmButton : UIButton!
     let queryUser = PFQuery(className: "_User")
@@ -39,13 +39,14 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
      var currentUserAlarms: NSMutableArray = NSMutableArray()
     var userAlarmRoleObjectIds: [String] = []
     override func viewDidLoad() {
-        
        
-        
-        
+
+        Mixpanel.sharedInstance().track("user made it to current alarms")
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+
         dateFormatterTime.dateFormat = "h:mm a"
         dateFormatterDate.dateFormat = "EEEE, MMMM d"
         pendingAlarmButton.layer.borderWidth = 1.0
@@ -205,7 +206,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     
             return cell
     }
-    
+
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         let object = self.currentUserAlarms[indexPath.row] as! PFObject
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
@@ -215,17 +216,19 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             cell.deleteAlarmArrow.hidden = false
 
             let delete = UITableViewRowAction(style: .Normal, title: "Leave") { action, index in
+
+                let alertController = UIAlertController(title: "Leave Alarm", message:
+                    "Are you sure you want to leave this alarm?", preferredStyle: UIAlertControllerStyle.Alert)
                 
-                let alertController = UIAlertController(title: "Delete Alarm", message:
-                    "Are you sure you want to delete the alarm?", preferredStyle: UIAlertControllerStyle.Alert)
                 self.presentViewController(alertController, animated: true, completion: nil)
                 
-                alertController.addAction(UIAlertAction(title: "yes", style: .Default, handler: { action in
+                alertController.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { action in
                     self.queryToDelete(self.queryUserAlarm, queryAlarm : self.queryAlarm, userAlarmObject: object)
 
 //                    object.deleteInBackgroundWithBlock({ (success, error) -> Void in
 //                        
 //                    })
+                    Mixpanel.sharedInstance().track("user left the alarm")
                     let alarmPointer = object["alarm"] as! PFObject
                     let alarmActivatedBool = object["checkIn"] as! Bool
                     if self.currentUserAlarms.count == 1 && alarmActivatedBool == false {
@@ -248,7 +251,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
                     
                     
                 }))
-                alertController.addAction(UIAlertAction(title: "no", style: .Default, handler: { action in
+                alertController.addAction(UIAlertAction(title: "No", style: .Default, handler: { action in
                     tableView.editing = false
                     
                 }))
