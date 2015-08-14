@@ -36,9 +36,18 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         textFieldShouldReturn(emailTextField)
         textFieldShouldReturn(usernameTextField)
         textFieldShouldReturn(passwordTextField)
+        
         textFieldDidBeginEditing(passwordTextField)
         textFieldDidEndEditing(passwordTextField)
-      
+        
+        textFieldDidBeginEditing(usernameTextField)
+        textFieldDidEndEditing(usernameTextField)
+        
+        textFieldDidBeginEditing(emailTextField)
+        textFieldDidEndEditing(emailTextField)
+        
+        textFieldDidBeginEditing(fulLNameTextField)
+        textFieldDidEndEditing(fulLNameTextField)
     }
    
    

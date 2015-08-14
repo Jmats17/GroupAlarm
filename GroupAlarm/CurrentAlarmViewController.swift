@@ -281,9 +281,17 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     }
     
     @IBAction func signOut(sender : AnyObject) {
-        PFUser.logOut()
-        var currentUser = PFUser.currentUser()
-        self.performSegueWithIdentifier("currentToStart", sender: self)
+        let alertView = UIAlertController(title: "Sign out", message: "Are you sure you want to sign out?", preferredStyle: UIAlertControllerStyle.Alert)
+        self.presentViewController(alertView, animated: true, completion: nil)
+        alertView.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { action in
+            PFUser.logOut()
+            var currentUser = PFUser.currentUser()
+            self.performSegueWithIdentifier("currentToStart", sender: self)
+        }))
+        alertView.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: {  action in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+       
     }
 
     

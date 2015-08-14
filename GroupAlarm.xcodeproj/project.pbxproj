@@ -959,7 +959,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fcce36a6-7b28-40d3-b499-295a19324bf2";
+				PROVISIONING_PROFILE = "adcc2dee-3943-48b8-b873-fdb9509c81c7";
 				SWIFT_OBJC_BRIDGING_HEADER = "GroupAlarm/Mixpanel-Bridging-Header.h";
 			};
 			name = Debug;
@@ -978,7 +978,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fcce36a6-7b28-40d3-b499-295a19324bf2";
+				PROVISIONING_PROFILE = "adcc2dee-3943-48b8-b873-fdb9509c81c7";
 				SWIFT_OBJC_BRIDGING_HEADER = "GroupAlarm/Mixpanel-Bridging-Header.h";
 			};
 			name = Release;

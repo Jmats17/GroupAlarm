@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                var statusCircle = destVC.statusCircle
 //                var statusImage = UIImage(named: "greenCircle.png")
 //                statusCircle = UIImageView(image: statusImage!)
-                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! UIViewController
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! UIViewController
                
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
@@ -168,7 +168,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println("ERROR: should never get here")
             }
         }
-        else {
+        else if application.applicationState == UIApplicationState.Background {
             if let timeDictionary = userInfo["time"] as? NSDictionary, objID = timeDictionary["objectId"] as? String {
                 //println(userInfo)
                 //println("obj id = \(objID)")

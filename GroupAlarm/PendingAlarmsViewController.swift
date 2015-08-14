@@ -122,6 +122,7 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
             object.setObject(true, forKey: "alarmActivated")
             object.setObject(false, forKey: "toShowRow")
             var numOfUsers = alarmObject["numOfUsers"] as! Int
+            
             var addOneToUsers = (numOfUsers + 1)
             alarmObject.setObject(addOneToUsers, forKey: "numOfUsers")
             alarmObject.saveInBackgroundWithBlock({ (success, error) -> Void in
