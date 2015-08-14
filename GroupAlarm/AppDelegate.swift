@@ -80,11 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 
                 var storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                var destVC = FriendTableViewCell()
-//                var statusCircle = destVC.statusCircle
-//                var statusImage = UIImage(named: "greenCircle.png")
-//                statusCircle = UIImageView(image: statusImage!)
-                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("GroupCurrentAlarm") as! UIViewController
+
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! UIViewController
                
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
@@ -146,6 +143,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.makeKeyAndVisible()
             } else {
                 println("ERROR: should never get here")
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                
+                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! GroupCurrentAlarmViewController
+              
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
             }
         }
         else if application.applicationState == UIApplicationState.Active {
@@ -166,6 +171,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.makeKeyAndVisible()
             } else {
                 println("ERROR: should never get here")
+                println("ERROR: should never get here")
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                
+                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! GroupCurrentAlarmViewController
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
             }
         }
         else if application.applicationState == UIApplicationState.Background {
@@ -185,6 +199,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.makeKeyAndVisible()
             } else {
                 println("ERROR: should never get here")
+                println("ERROR: should never get here")
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                
+                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! GroupCurrentAlarmViewController
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
             }
     }
     
