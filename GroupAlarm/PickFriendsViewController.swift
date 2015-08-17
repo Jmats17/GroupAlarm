@@ -195,11 +195,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
                         println(success)
                         println(error)
                     })
-                    PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": self.alarmClass.objectId!], block: { success, error in
-                        
-                        println(success)
-                        println(error)
-                    })
+                    
                 }
                 else {
                     newUserAlarm.setObject(true, forKey: "toShowRow")

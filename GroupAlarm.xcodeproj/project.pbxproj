@@ -21,6 +21,14 @@
 		D00BA8021B7B23760099C616 /* greenstatusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA8001B7B23760099C616 /* greenstatusButton.png */; };
 		D00BA8051B7B24CD0099C616 /* friendadd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA8031B7B24CD0099C616 /* friendadd@2x.png */; };
 		D00BA8061B7B24CD0099C616 /* friendadd.png in Resources */ = {isa = PBXBuildFile; fileRef = D00BA8041B7B24CD0099C616 /* friendadd.png */; };
+		D048C0FB1B817D7D008D0D8E /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D048C0FA1B817D7D008D0D8E /* GetStartedViewController.swift */; };
+		D04EBFF81B829FBE0092EA46 /* friendadd@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF01B829FBE0092EA46 /* friendadd@3x.png */; };
+		D04EBFF91B829FBE0092EA46 /* friendsImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF11B829FBE0092EA46 /* friendsImage@3x.png */; };
+		D04EBFFB1B829FBE0092EA46 /* backarrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF31B829FBE0092EA46 /* backarrow@3x.png */; };
+		D04EBFFC1B829FBE0092EA46 /* friendicon2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF41B829FBE0092EA46 /* friendicon2@3x.png */; };
+		D04EBFFD1B829FBE0092EA46 /* greenStatusButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF51B829FBE0092EA46 /* greenStatusButton@3x.png */; };
+		D04EBFFE1B829FBE0092EA46 /* greyStatusButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF61B829FBE0092EA46 /* greyStatusButton@3x.png */; };
+		D04EBFFF1B829FBE0092EA46 /* signoutbutton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF71B829FBE0092EA46 /* signoutbutton@3x.png */; };
 		D092307E1B7DC0BC0050536F /* _MPTweakBindObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D09230041B7DC0BC0050536F /* _MPTweakBindObserver.m */; };
 		D092307F1B7DC0BC0050536F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D09230051B7DC0BC0050536F /* Media.xcassets */; };
 		D09230801B7DC0BC0050536F /* Mixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = D09230071B7DC0BC0050536F /* Mixpanel.m */; };
@@ -158,6 +166,14 @@
 		D00BA8041B7B24CD0099C616 /* friendadd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friendadd.png; sourceTree = "<group>"; };
 		D0306C271B7B29D500EA8D57 /* GochiHand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GochiHand-Regular.ttf"; sourceTree = "<group>"; };
 		D0306C281B7B29DC00EA8D57 /* LeckerliOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LeckerliOne-Regular.ttf"; sourceTree = "<group>"; };
+		D048C0FA1B817D7D008D0D8E /* GetStartedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
+		D04EBFF01B829FBE0092EA46 /* friendadd@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friendadd@3x.png"; sourceTree = "<group>"; };
+		D04EBFF11B829FBE0092EA46 /* friendsImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friendsImage@3x.png"; sourceTree = "<group>"; };
+		D04EBFF31B829FBE0092EA46 /* backarrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backarrow@3x.png"; sourceTree = "<group>"; };
+		D04EBFF41B829FBE0092EA46 /* friendicon2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friendicon2@3x.png"; sourceTree = "<group>"; };
+		D04EBFF51B829FBE0092EA46 /* greenStatusButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenStatusButton@3x.png"; sourceTree = "<group>"; };
+		D04EBFF61B829FBE0092EA46 /* greyStatusButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyStatusButton@3x.png"; sourceTree = "<group>"; };
+		D04EBFF71B829FBE0092EA46 /* signoutbutton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signoutbutton@3x.png"; sourceTree = "<group>"; };
 		D09230031B7DC0BC0050536F /* _MPTweakBindObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MPTweakBindObserver.h; sourceTree = "<group>"; };
 		D09230041B7DC0BC0050536F /* _MPTweakBindObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MPTweakBindObserver.m; sourceTree = "<group>"; };
 		D09230051B7DC0BC0050536F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -522,6 +538,7 @@
 				D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */,
 				D0DD4FDF1B79681800C2A217 /* PendingAlarmsViewController.swift */,
 				D09230CD1B7DC28F0050536F /* Mixpanel-Bridging-Header.h */,
+				D048C0FA1B817D7D008D0D8E /* GetStartedViewController.swift */,
 				D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */,
 				D0DD4FDB1B791BEE00C2A217 /* EditAlarmViewController.swift */,
 				D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */,
@@ -563,6 +580,13 @@
 		D0A2C9CE1B55BC9C00D7F7EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D04EBFF01B829FBE0092EA46 /* friendadd@3x.png */,
+				D04EBFF11B829FBE0092EA46 /* friendsImage@3x.png */,
+				D04EBFF31B829FBE0092EA46 /* backarrow@3x.png */,
+				D04EBFF41B829FBE0092EA46 /* friendicon2@3x.png */,
+				D04EBFF51B829FBE0092EA46 /* greenStatusButton@3x.png */,
+				D04EBFF61B829FBE0092EA46 /* greyStatusButton@3x.png */,
+				D04EBFF71B829FBE0092EA46 /* signoutbutton@3x.png */,
 				D00BA7E51B7B10F70099C616 /* notifButton.png */,
 				D00BA7EF1B7B157E0099C616 /* signoutbutton@2x.png */,
 				D00BA7E91B7B13830099C616 /* signoutbutton.png */,
@@ -704,6 +728,8 @@
 				D0E155F11B73EACA005D6640 /* sound.m4a in Resources */,
 				D00BA7F21B7B16750099C616 /* friendicon2.png in Resources */,
 				D092307F1B7DC0BC0050536F /* Media.xcassets in Resources */,
+				D04EBFF81B829FBE0092EA46 /* friendadd@3x.png in Resources */,
+				D04EBFFB1B829FBE0092EA46 /* backarrow@3x.png in Resources */,
 				D0D6505A1B7D423900A52478 /* wakeyLogo.png in Resources */,
 				D0A2C9B41B55B6A500D7F7EA /* Main.storyboard in Resources */,
 				D00BA8061B7B24CD0099C616 /* friendadd.png in Resources */,
@@ -715,15 +741,20 @@
 				D00BA8051B7B24CD0099C616 /* friendadd@2x.png in Resources */,
 				D0D5404C1B7A920400233946 /* backarrow.png in Resources */,
 				D00BA8011B7B23760099C616 /* greenstatusButton@2x.png in Resources */,
+				D04EBFFE1B829FBE0092EA46 /* greyStatusButton@3x.png in Resources */,
+				D04EBFFF1B829FBE0092EA46 /* signoutbutton@3x.png in Resources */,
 				D09230BD1B7DC0BC0050536F /* snapshot_config.json in Resources */,
 				D0D6505B1B7D423900A52478 /* wakeyLogo@2x.png in Resources */,
 				D0A2C9B61B55B6A500D7F7EA /* Images.xcassets in Resources */,
 				D00BA7EA1B7B13830099C616 /* signoutbutton.png in Resources */,
 				D00BA7FA1B7B19960099C616 /* backarrow@2x.png in Resources */,
+				D04EBFF91B829FBE0092EA46 /* friendsImage@3x.png in Resources */,
 				D00BA7EE1B7B14FF0099C616 /* home60@2x.png in Resources */,
 				D00BA7F01B7B157E0099C616 /* signoutbutton@2x.png in Resources */,
 				D0D6504E1B7D1FEB00A52478 /* greystatusButton.png in Resources */,
 				D0E39B7E1B7552AE0083A46B /* alarmclocklogo.png in Resources */,
+				D04EBFFC1B829FBE0092EA46 /* friendicon2@3x.png in Resources */,
+				D04EBFFD1B829FBE0092EA46 /* greenStatusButton@3x.png in Resources */,
 				D092309D1B7DC0BC0050536F /* MPNotification.storyboard in Resources */,
 				D00BA7E61B7B10F70099C616 /* notifButton.png in Resources */,
 			);
@@ -752,6 +783,7 @@
 				D09230AD1B7DC0BC0050536F /* MPSurveyQuestionViewController.m in Sources */,
 				D09230B01B7DC0BC0050536F /* MPTweakInline.m in Sources */,
 				D09230971B7DC0BC0050536F /* MPDesignerEventBindingRequestMesssage.m in Sources */,
+				D048C0FB1B817D7D008D0D8E /* GetStartedViewController.swift in Sources */,
 				D09230B81B7DC0BC0050536F /* MPUITableViewBinding.m in Sources */,
 				D092309A1B7DC0BC0050536F /* MPEnumDescription.m in Sources */,
 				D0A2C9F31B570B4C00D7F7EA /* LoginViewController.swift in Sources */,
@@ -949,7 +981,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -959,7 +991,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "adcc2dee-3943-48b8-b873-fdb9509c81c7";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GroupAlarm/Mixpanel-Bridging-Header.h";
 			};
 			name = Debug;
@@ -968,7 +1000,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -978,7 +1010,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "adcc2dee-3943-48b8-b873-fdb9509c81c7";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GroupAlarm/Mixpanel-Bridging-Header.h";
 			};
 			name = Release;

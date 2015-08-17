@@ -145,15 +145,7 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
                 }
                 
             })
-            PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": alarmObject.objectId!], block: { success, error in
-                if error == nil {
-                    println(success)
-                }
-                else {
-                    println(error)
-                }
-                
-            })
+           
             self.boolArray.removeObjectAtIndex(indexPath.row)
             
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left )

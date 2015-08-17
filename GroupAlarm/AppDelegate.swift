@@ -21,7 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
         Mixpanel.sharedInstanceWithToken("a37320af793c6e93fbf32e0b549b79cd")
-
+        var defaults : NSUserDefaults = NSUserDefaults()
+        var getStartedBool = true
+        defaults.setObject(getStartedBool, forKey: "firstTime")
+        defaults.synchronize()
         var appOpened : Int = Int()
         Parse.enableLocalDatastore()
         Parse.setApplicationId("13N3EMnXOVFVOVAGQB6vuax1u7dNqVX3PFj0us96",
@@ -51,16 +54,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window?.makeKeyAndVisible()
                 }
                 else {
-                    Mixpanel.sharedInstance().track("App Opened", properties: ["New user": appOpened])
-
-                    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-                    var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-                    var initialViewController = storyboard.instantiateViewControllerWithIdentifier("start") as! UIViewController
+                    var firstTime = defaults.objectForKey("firstTime") as! Bool
+                    if firstTime == true {
+                        Mixpanel.sharedInstance().track("App Opened", properties: ["New user": appOpened])
+                        
+                        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                        
+                        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        var initialViewController = storyboard.instantiateViewControllerWithIdentifier("onboarding") as! UIViewController
+                        getStartedBool = false
+                        defaults.setObject(getStartedBool, forKey: "firstTime")
+                        defaults.synchronize()
+                        self.window?.rootViewController = initialViewController
+                        self.window?.makeKeyAndVisible()
+                    }
+                    if firstTime == false {
+                        Mixpanel.sharedInstance().track("App Opened", properties: ["New user": appOpened])
+                        
+                        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                        
+                        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        var initialViewController = storyboard.instantiateViewControllerWithIdentifier("start") as! UIViewController
+                        
+                        self.window?.rootViewController = initialViewController
+                        self.window?.makeKeyAndVisible()
+                    }
                     
-                    self.window?.rootViewController = initialViewController
-                    self.window?.makeKeyAndVisible()
                 }
       
         

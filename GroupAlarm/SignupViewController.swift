@@ -14,26 +14,21 @@ import Bolts
 class SignupViewController : UIViewController,UITextFieldDelegate {
     @IBOutlet var passwordTextField : UITextField!
     @IBOutlet var usernameTextField : UITextField!
-    @IBOutlet var emailTextField : UITextField!
     @IBOutlet var fulLNameTextField : UITextField!
     @IBOutlet var usernameTaken : UILabel!
     @IBOutlet var missingField : UILabel!
-    @IBOutlet var invalidEmail : UILabel!
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        invalidEmail.hidden = true
         missingField.hidden = true
         usernameTaken.hidden = true
         passwordTextField.delegate = self
         usernameTextField.delegate = self
-        emailTextField.delegate = self
         fulLNameTextField.delegate = self
         fulLNameTextField.becomeFirstResponder()
         textFieldShouldReturn(fulLNameTextField)
-        textFieldShouldReturn(emailTextField)
         textFieldShouldReturn(usernameTextField)
         textFieldShouldReturn(passwordTextField)
         
@@ -42,9 +37,6 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         
         textFieldDidBeginEditing(usernameTextField)
         textFieldDidEndEditing(usernameTextField)
-        
-        textFieldDidBeginEditing(emailTextField)
-        textFieldDidEndEditing(emailTextField)
         
         textFieldDidBeginEditing(fulLNameTextField)
         textFieldDidEndEditing(fulLNameTextField)
@@ -87,10 +79,6 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == self.fulLNameTextField {
             textField.resignFirstResponder()
-            emailTextField.becomeFirstResponder()
-        }
-        if textField == self.emailTextField {
-            textField.resignFirstResponder()
             usernameTextField.becomeFirstResponder()
         }
         if textField == self.usernameTextField {
@@ -108,12 +96,10 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         
         var userEntered = usernameTextField.text
         var passEntered = passwordTextField.text
-        var emailEntered = emailTextField.text
         var fullNameEntered = fulLNameTextField.text
         var user = PFUser()
         user.username = userEntered
         user.password = passEntered
-        user.email = emailEntered
         var savedUser = PFUser(className: "_User")
         var logininviewcontroller = LoginViewController()
 
@@ -156,34 +142,13 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
                 else {
                     var errorcode = error!.code
                     
-                    if (errorcode == 125 && errorcode == 202) {
-                        self.invalidEmail.text = "Invalid Email"
-                        self.invalidEmail.hidden = false
+                    if (errorcode == 202) {
+             
                         self.usernameTaken.hidden = false
-                    }
-                    else if (errorcode == 202 && errorcode == 203) {
-                        self.invalidEmail.text = "Email in use"
-                        self.invalidEmail.hidden = false
-                        self.usernameTaken.hidden = false
-                    }
-                    else if errorcode == 125 {
-                        self.invalidEmail.text = "Invalid Email"
-                        self.invalidEmail.hidden = false
-                        self.usernameTaken.hidden = true
-                    }
-                    else if errorcode == 202 {
-                        self.invalidEmail.text = "Invalid Email"
-                        self.invalidEmail.hidden = true
-                        self.usernameTaken.hidden = false
-                    }
-                    else if errorcode == 203 {
-                        self.invalidEmail.text = "Email in use"
-                        self.invalidEmail.hidden = false
-                        self.usernameTaken.hidden = true
                     }
                         
                     else {
-                        
+                        self.usernameTaken.hidden = true
                     }
                     
                 }
@@ -193,7 +158,7 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         }
         
         
-        if userEntered != "" && passEntered != "" && emailEntered != "" && fullNameEntered != ""  {
+        if userEntered != "" && passEntered != "" && fullNameEntered != ""  {
             missingField.hidden = true
             logininviewcontroller.userEnteredFromSignup = userEntered!
             logininviewcontroller.passEnteredFromSignup = passEntered!
@@ -202,6 +167,7 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         }
         else {
             missingField.hidden = false
+            self.usernameTaken.hidden = true
         }
         
     }
