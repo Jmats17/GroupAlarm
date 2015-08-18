@@ -29,6 +29,7 @@
 		D04EBFFD1B829FBE0092EA46 /* greenStatusButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF51B829FBE0092EA46 /* greenStatusButton@3x.png */; };
 		D04EBFFE1B829FBE0092EA46 /* greyStatusButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF61B829FBE0092EA46 /* greyStatusButton@3x.png */; };
 		D04EBFFF1B829FBE0092EA46 /* signoutbutton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF71B829FBE0092EA46 /* signoutbutton@3x.png */; };
+		D04EC0011B82A42B0092EA46 /* home60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EC0001B82A42B0092EA46 /* home60@3x.png */; };
 		D092307E1B7DC0BC0050536F /* _MPTweakBindObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D09230041B7DC0BC0050536F /* _MPTweakBindObserver.m */; };
 		D092307F1B7DC0BC0050536F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D09230051B7DC0BC0050536F /* Media.xcassets */; };
 		D09230801B7DC0BC0050536F /* Mixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = D09230071B7DC0BC0050536F /* Mixpanel.m */; };
@@ -174,6 +175,7 @@
 		D04EBFF51B829FBE0092EA46 /* greenStatusButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenStatusButton@3x.png"; sourceTree = "<group>"; };
 		D04EBFF61B829FBE0092EA46 /* greyStatusButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyStatusButton@3x.png"; sourceTree = "<group>"; };
 		D04EBFF71B829FBE0092EA46 /* signoutbutton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signoutbutton@3x.png"; sourceTree = "<group>"; };
+		D04EC0001B82A42B0092EA46 /* home60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home60@3x.png"; sourceTree = "<group>"; };
 		D09230031B7DC0BC0050536F /* _MPTweakBindObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MPTweakBindObserver.h; sourceTree = "<group>"; };
 		D09230041B7DC0BC0050536F /* _MPTweakBindObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MPTweakBindObserver.m; sourceTree = "<group>"; };
 		D09230051B7DC0BC0050536F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 		D0A2C9CE1B55BC9C00D7F7EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D04EC0001B82A42B0092EA46 /* home60@3x.png */,
 				D04EBFF01B829FBE0092EA46 /* friendadd@3x.png */,
 				D04EBFF11B829FBE0092EA46 /* friendsImage@3x.png */,
 				D04EBFF31B829FBE0092EA46 /* backarrow@3x.png */,
@@ -744,6 +747,7 @@
 				D04EBFFE1B829FBE0092EA46 /* greyStatusButton@3x.png in Resources */,
 				D04EBFFF1B829FBE0092EA46 /* signoutbutton@3x.png in Resources */,
 				D09230BD1B7DC0BC0050536F /* snapshot_config.json in Resources */,
+				D04EC0011B82A42B0092EA46 /* home60@3x.png in Resources */,
 				D0D6505B1B7D423900A52478 /* wakeyLogo@2x.png in Resources */,
 				D0A2C9B61B55B6A500D7F7EA /* Images.xcassets in Resources */,
 				D00BA7EA1B7B13830099C616 /* signoutbutton.png in Resources */,
@@ -991,7 +995,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6f5477ff-4a9c-40c2-805f-e1c9b68a4b05";
 				SWIFT_OBJC_BRIDGING_HEADER = "GroupAlarm/Mixpanel-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1010,7 +1014,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6f5477ff-4a9c-40c2-805f-e1c9b68a4b05";
 				SWIFT_OBJC_BRIDGING_HEADER = "GroupAlarm/Mixpanel-Bridging-Header.h";
 			};
 			name = Release;
