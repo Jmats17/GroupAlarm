@@ -81,6 +81,7 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
         alarm.fetchIfNeeded()
         //var alrmLabel = alarm["alarmLabel"]! as? String
         var timeLabelString = alarm["alarmTime"]! as? NSDate
+        
         let stringTime = dateFormatterTime.stringFromDate(timeLabelString!).lowercaseString
         let stringDate = dateFormatterDate.stringFromDate(timeLabelString!).lowercaseString
         cell.alarmLabelandCreator.text = creator + " " + "wants to add you!"

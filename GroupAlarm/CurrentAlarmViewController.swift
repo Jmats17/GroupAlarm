@@ -263,7 +263,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             return [delete]
         } else {
             cell.deleteAlarmArrow.hidden = true
-
+            
             return []
 
         }

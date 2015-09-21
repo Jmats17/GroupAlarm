@@ -10,4 +10,5 @@
 #ifndef GroupAlarm_Mixpanel_Bridging_Header_h
 #define GroupAlarm_Mixpanel_Bridging_Header_h
 #import "MixPanel/Mixpanel.h"
+#import "SWRevealViewController.h"
 #endif

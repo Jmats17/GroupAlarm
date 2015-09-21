@@ -128,6 +128,7 @@
 		D0B51F611B5DACDE00B277B5 /* SetAlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */; };
 		D0B51F631B5EC42000B277B5 /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */; };
 		D0B51F651B5EC62000B277B5 /* CurrentAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */; };
+		D0D3B1371BAA1F550047BE64 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D3B1361BAA1F550047BE64 /* SWRevealViewController.m */; };
 		D0D5404C1B7A920400233946 /* backarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D5404B1B7A920400233946 /* backarrow.png */; };
 		D0D6504E1B7D1FEB00A52478 /* greystatusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D6504C1B7D1FEB00A52478 /* greystatusButton.png */; };
 		D0D6504F1B7D1FEB00A52478 /* greystatusButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D6504D1B7D1FEB00A52478 /* greystatusButton@2x.png */; };
@@ -333,6 +334,8 @@
 		D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAlarmClockViewController.swift; sourceTree = "<group>"; };
 		D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
 		D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAlarmViewController.swift; sourceTree = "<group>"; };
+		D0D3B1351BAA1F550047BE64 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		D0D3B1361BAA1F550047BE64 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		D0D5404B1B7A920400233946 /* backarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backarrow.png; sourceTree = "<group>"; };
 		D0D6504C1B7D1FEB00A52478 /* greystatusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greystatusButton.png; sourceTree = "<group>"; };
 		D0D6504D1B7D1FEB00A52478 /* greystatusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greystatusButton@2x.png"; sourceTree = "<group>"; };
@@ -532,6 +535,7 @@
 		D0A2C9AB1B55B6A500D7F7EA /* GroupAlarm */ = {
 			isa = PBXGroup;
 			children = (
+				D0D3B1311BAA1EF70047BE64 /* SWRevealViewController */,
 				D0A2C9AE1B55B6A500D7F7EA /* AppDelegate.swift */,
 				D0A2C9B01B55B6A500D7F7EA /* ViewController.swift */,
 				D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */,
@@ -643,6 +647,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D0D3B1311BAA1EF70047BE64 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0D3B1351BAA1F550047BE64 /* SWRevealViewController.h */,
+				D0D3B1361BAA1F550047BE64 /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -687,6 +700,7 @@
 		D0A2C9A11B55B6A500D7F7EA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Justin Matsnev";
 				TargetAttributes = {
@@ -817,6 +831,7 @@
 				D09230AF1B7DC0BC0050536F /* MPTweak.m in Sources */,
 				D09230B61B7DC0BC0050536F /* MPUIFontToNSDictionaryValueTransformer.m in Sources */,
 				D092308B1B7DC0BC0050536F /* MPABTestDesignerSnapshotResponseMessage.m in Sources */,
+				D0D3B1371BAA1F550047BE64 /* SWRevealViewController.m in Sources */,
 				D09230BF1B7DC0BC0050536F /* UIColor+MPColor.m in Sources */,
 				D09230831B7DC0BC0050536F /* MPABTestDesignerChangeResponseMessage.m in Sources */,
 				D09230BA1B7DC0BC0050536F /* MPWebSocket.m in Sources */,
@@ -995,7 +1010,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f5477ff-4a9c-40c2-805f-e1c9b68a4b05";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GroupAlarm/Mixpanel-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1014,7 +1029,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f5477ff-4a9c-40c2-805f-e1c9b68a4b05";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GroupAlarm/Mixpanel-Bridging-Header.h";
 			};
 			name = Release;
