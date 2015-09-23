@@ -58,17 +58,17 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
         querying(queryUserAlarm)
         
         if cameFromAppDel == true {
-            var objectTime = queryAlarmObject["alarmTime"] as! NSDate
+            let objectTime = queryAlarmObject["alarmTime"] as! NSDate
             let stringTime = dateFormatterTime.stringFromDate(objectTime).lowercaseString
             let stringDate = dateFormatterDate.stringFromDate(objectTime).lowercaseString
-            var objectLabel = queryAlarmObject["alarmLabel"] as! String
+            let objectLabel = queryAlarmObject["alarmLabel"] as! String
             alarmDate.text = stringDate
             alarmTime.text = stringTime
             alarmLabel.text = objectLabel
             Mixpanel.sharedInstance().track("user came from notification")
         }
         if cameFromAppDel == false {
-            var alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
+            let alarmTimeString = dateFormatterTime.stringFromDate(groupAlarmTime)
             alarmDate.text = groupAlarmDate
             alarmTime.text = alarmTimeString
             alarmLabel.text = groupAlarmLabel
@@ -95,13 +95,11 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
         queryingAlarmClass(queryAlarm)
 
         if cameFromAppDel == true {
-                var alarmObjectTime = queryAlarmObject["alarmTime"] as! NSDate
                 query.whereKey("alarm", equalTo: queryAlarmObject)
                 query.whereKey("alarmActivated", equalTo: true)
                 query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
                     if error == nil {
                         for result in objects! {
-                            var userAlarmObject = result as! PFObject
                             self.usersFriends.addObject(result)
 
                         }
@@ -112,13 +110,12 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
             
         }
         if cameFromAppDel == false {
-         var alarmObject = groupAlarmObject
+         let alarmObject = groupAlarmObject
          query.whereKey("alarm", equalTo: alarmObject)
         query.whereKey("alarmActivated", equalTo: true)
          query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
                 for result in objects! {
-                        var userAlarmObject = result as! PFObject
 
                         self.usersFriends.addObject(result)
                     }
@@ -144,10 +141,10 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FriendTableViewCell
         let object = self.usersFriends[indexPath.row] as! PFObject
-        var checkedIn = object["checkIn"] as! Bool
-        var userObject = object["user"] as! PFObject
+        let checkedIn = object["checkIn"] as! Bool
+        let userObject = object["user"] as! PFObject
         userObject.fetchIfNeeded()
-        var userFullName = userObject["FullName"] as! String
+        let userFullName = userObject["FullName"] as! String
         if userObject.objectId == currentUser?.objectId   {
             
             cell.friendName.text = userFullName + " (me)"

@@ -30,6 +30,7 @@
 		D04EBFFE1B829FBE0092EA46 /* greyStatusButton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF61B829FBE0092EA46 /* greyStatusButton@3x.png */; };
 		D04EBFFF1B829FBE0092EA46 /* signoutbutton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EBFF71B829FBE0092EA46 /* signoutbutton@3x.png */; };
 		D04EC0011B82A42B0092EA46 /* home60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D04EC0001B82A42B0092EA46 /* home60@3x.png */; };
+		D089893E1BB0BD5600291731 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089893D1BB0BD5600291731 /* TabBarViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D092307E1B7DC0BC0050536F /* _MPTweakBindObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D09230041B7DC0BC0050536F /* _MPTweakBindObserver.m */; };
 		D092307F1B7DC0BC0050536F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D09230051B7DC0BC0050536F /* Media.xcassets */; };
 		D09230801B7DC0BC0050536F /* Mixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = D09230071B7DC0BC0050536F /* Mixpanel.m */; };
@@ -128,7 +129,6 @@
 		D0B51F611B5DACDE00B277B5 /* SetAlarmClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */; };
 		D0B51F631B5EC42000B277B5 /* PickFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */; };
 		D0B51F651B5EC62000B277B5 /* CurrentAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */; };
-		D0D3B1371BAA1F550047BE64 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D3B1361BAA1F550047BE64 /* SWRevealViewController.m */; };
 		D0D5404C1B7A920400233946 /* backarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D5404B1B7A920400233946 /* backarrow.png */; };
 		D0D6504E1B7D1FEB00A52478 /* greystatusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D6504C1B7D1FEB00A52478 /* greystatusButton.png */; };
 		D0D6504F1B7D1FEB00A52478 /* greystatusButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D6504D1B7D1FEB00A52478 /* greystatusButton@2x.png */; };
@@ -177,6 +177,7 @@
 		D04EBFF61B829FBE0092EA46 /* greyStatusButton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greyStatusButton@3x.png"; sourceTree = "<group>"; };
 		D04EBFF71B829FBE0092EA46 /* signoutbutton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signoutbutton@3x.png"; sourceTree = "<group>"; };
 		D04EC0001B82A42B0092EA46 /* home60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home60@3x.png"; sourceTree = "<group>"; };
+		D089893D1BB0BD5600291731 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D09230031B7DC0BC0050536F /* _MPTweakBindObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _MPTweakBindObserver.h; sourceTree = "<group>"; };
 		D09230041B7DC0BC0050536F /* _MPTweakBindObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _MPTweakBindObserver.m; sourceTree = "<group>"; };
 		D09230051B7DC0BC0050536F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -334,8 +335,6 @@
 		D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetAlarmClockViewController.swift; sourceTree = "<group>"; };
 		D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickFriendsViewController.swift; sourceTree = "<group>"; };
 		D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentAlarmViewController.swift; sourceTree = "<group>"; };
-		D0D3B1351BAA1F550047BE64 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		D0D3B1361BAA1F550047BE64 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		D0D5404B1B7A920400233946 /* backarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backarrow.png; sourceTree = "<group>"; };
 		D0D6504C1B7D1FEB00A52478 /* greystatusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greystatusButton.png; sourceTree = "<group>"; };
 		D0D6504D1B7D1FEB00A52478 /* greystatusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greystatusButton@2x.png"; sourceTree = "<group>"; };
@@ -535,7 +534,6 @@
 		D0A2C9AB1B55B6A500D7F7EA /* GroupAlarm */ = {
 			isa = PBXGroup;
 			children = (
-				D0D3B1311BAA1EF70047BE64 /* SWRevealViewController */,
 				D0A2C9AE1B55B6A500D7F7EA /* AppDelegate.swift */,
 				D0A2C9B01B55B6A500D7F7EA /* ViewController.swift */,
 				D0A2C9F01B570B4100D7F7EA /* SignupViewController.swift */,
@@ -545,6 +543,7 @@
 				D0DD4FDF1B79681800C2A217 /* PendingAlarmsViewController.swift */,
 				D09230CD1B7DC28F0050536F /* Mixpanel-Bridging-Header.h */,
 				D048C0FA1B817D7D008D0D8E /* GetStartedViewController.swift */,
+				D089893D1BB0BD5600291731 /* TabBarViewController.swift */,
 				D0B51F641B5EC62000B277B5 /* CurrentAlarmViewController.swift */,
 				D0DD4FDB1B791BEE00C2A217 /* EditAlarmViewController.swift */,
 				D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */,
@@ -647,15 +646,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D0D3B1311BAA1EF70047BE64 /* SWRevealViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D0D3B1351BAA1F550047BE64 /* SWRevealViewController.h */,
-				D0D3B1361BAA1F550047BE64 /* SWRevealViewController.m */,
-			);
-			name = SWRevealViewController;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -700,6 +690,7 @@
 		D0A2C9A11B55B6A500D7F7EA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Justin Matsnev";
@@ -824,6 +815,7 @@
 				D092308E1B7DC0BC0050536F /* MPApplicationStateSerializer.m in Sources */,
 				D09230A11B7DC0BC0050536F /* MPObjectIdentityProvider.m in Sources */,
 				D09230B71B7DC0BC0050536F /* MPUIImageToNSDictionaryValueTransformer.m in Sources */,
+				D089893E1BB0BD5600291731 /* TabBarViewController.swift in Sources */,
 				D0A2C9B11B55B6A500D7F7EA /* ViewController.swift in Sources */,
 				D09230AB1B7DC0BC0050536F /* MPSurveyNavigationController.m in Sources */,
 				D09230B41B7DC0BC0050536F /* MPUIControlBinding.m in Sources */,
@@ -831,7 +823,6 @@
 				D09230AF1B7DC0BC0050536F /* MPTweak.m in Sources */,
 				D09230B61B7DC0BC0050536F /* MPUIFontToNSDictionaryValueTransformer.m in Sources */,
 				D092308B1B7DC0BC0050536F /* MPABTestDesignerSnapshotResponseMessage.m in Sources */,
-				D0D3B1371BAA1F550047BE64 /* SWRevealViewController.m in Sources */,
 				D09230BF1B7DC0BC0050536F /* UIColor+MPColor.m in Sources */,
 				D09230831B7DC0BC0050536F /* MPABTestDesignerChangeResponseMessage.m in Sources */,
 				D09230BA1B7DC0BC0050536F /* MPWebSocket.m in Sources */,
@@ -1001,6 +992,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1010,7 +1002,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "adcc2dee-3943-48b8-b873-fdb9509c81c7";
 				SWIFT_OBJC_BRIDGING_HEADER = "GroupAlarm/Mixpanel-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1020,6 +1012,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1029,7 +1022,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "adcc2dee-3943-48b8-b873-fdb9509c81c7";
 				SWIFT_OBJC_BRIDGING_HEADER = "GroupAlarm/Mixpanel-Bridging-Header.h";
 			};
 			name = Release;

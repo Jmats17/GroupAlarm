@@ -149,15 +149,15 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        search(searchTextUsername: searchText)
+        search(searchText)
     }
     
     func fixNotificationDate(dateToFix: NSDate) -> NSDate {
-        var dateComponets: NSDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit , fromDate: dateToFix)
+        let dateComponets: NSDateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.NSDayCalendarUnit, NSCalendarUnit.NSMonthCalendarUnit, NSCalendarUnit.NSYearCalendarUnit, NSCalendarUnit.NSHourCalendarUnit, NSCalendarUnit.NSMinuteCalendarUnit] , fromDate: dateToFix)
         
         dateComponets.second = 0
         
-        var fixedDate: NSDate! = NSCalendar.currentCalendar().dateFromComponents(dateComponets)
+        let fixedDate: NSDate! = NSCalendar.currentCalendar().dateFromComponents(dateComponets)
         
         return fixedDate
     }
@@ -170,7 +170,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
 
         //alarmClass.setObject(self.selectedIndexPaths.count, forKey: "numOfUsers")
         selectedIndexPaths.addObject(currentUser!)
-        var fixedDate = fixNotificationDate(createdDate)
+        let fixedDate = fixNotificationDate(createdDate)
 
         alarmClass.setValue(fixedDate, forKeyPath: "alarmTime")
         alarmClass.setValue(alarmLabel, forKeyPath: "alarmLabel")
@@ -182,7 +182,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         alarmClass.saveInBackgroundWithBlock {
             (result, error) -> Void in
             for objID in self.selectedIndexPaths {
-                var newUserAlarm = PFObject(className: "UserAlarmRole")
+                let newUserAlarm = PFObject(className: "UserAlarmRole")
                 newUserAlarm.setObject(objID, forKey: "user")
                 newUserAlarm.setObject(self.alarmClass, forKey: "alarm")
                 newUserAlarm.setObject(false, forKey: "checkIn")
@@ -192,8 +192,8 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
                     newUserAlarm.setObject(true, forKey: "alarmActivated")
                     PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": self.alarmClass.objectId!], block: { success, error in
                     
-                        println(success)
-                        println(error)
+                        print(success)
+                        print(error)
                     })
                     
                 }

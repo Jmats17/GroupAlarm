@@ -34,12 +34,12 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     var dateFormatterTime = NSDateFormatter()
     var dateFormatterDate = NSDateFormatter()
     var dateFormatter = NSDateFormatter()
-
     var users : PFObject!
      var currentUserAlarms: NSMutableArray = NSMutableArray()
     var userAlarmRoleObjectIds: [String] = []
     override func viewDidLoad() {
        
+        UITabBar.appearance().tintColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0)
 
         Mixpanel.sharedInstance().track("user made it to current alarms")
         super.viewDidLoad()
@@ -79,13 +79,13 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     var alarmPfObjectToAlarm : PFObject!
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let indexPath = tableView.indexPathForSelectedRow()
+        let indexPath = tableView.indexPathForSelectedRow
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath!) as! AlarmViewCell
         
         alarmLabelToAlarm = selectedCell.alarmLabel.text
         alarmDateToAlarm = selectedCell.dateLabel.text
         
-        var alarmTimeAsNsDate = dateFormatterTime.dateFromString(selectedCell.timeLabel.text!)
+        let alarmTimeAsNsDate = dateFormatterTime.dateFromString(selectedCell.timeLabel.text!)
         alarmTimeToAlarm = alarmTimeAsNsDate
         
         alarmPfObjectToAlarm = selectedCell.alarmObject
@@ -98,7 +98,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         if (segue.identifier == "alarmDashboardToAlarm") {
             
             // initialize new view controller and cast it as your view controller
-            var groupAlarmViewController = segue.destinationViewController as! GroupCurrentAlarmViewController
+            let groupAlarmViewController = segue.destinationViewController as! GroupCurrentAlarmViewController
             // your new view controller should have property that will store passed value
             groupAlarmViewController.groupAlarmLabel = alarmLabelToAlarm
             groupAlarmViewController.groupAlarmTime = alarmTimeToAlarm
@@ -120,13 +120,13 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
                     
                     alarmPointer.deleteInBackgroundWithBlock({ (success, error) -> Void in
                         if error == nil {
-                            println("success")
+                            print("success")
                         }
                     })
 
                     valuesOfUserAlarmObjects.deleteInBackgroundWithBlock({ (success, error) -> Void in
                         if error == nil {
-                            println("success")
+                            print("success")
                         }
                     })
                 }
@@ -150,7 +150,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             (objects, error) -> Void in
             if error == nil {
                 for row in objects! {
-                    var userAlarmObject = row as! PFObject
+                    let userAlarmObject = row as! PFObject
                  //   var alarmInfo = row["alarm"] as! PFObject
                     self.currentUserAlarms.addObject(userAlarmObject)
 
@@ -173,14 +173,13 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
-            let alarmString : String!
 
 
             let object = self.currentUserAlarms[indexPath.row] as! PFObject
-            var alarmObject = object["alarm"] as! PFObject
-            var alarmLabelString  = alarmObject["alarmLabel"]! as? String
-            var time = alarmObject["alarmTime"]! as? NSDate
-            var numOfUsers = alarmObject["numOfUsers"] as? NSNumber
+            let alarmObject = object["alarm"] as! PFObject
+            let alarmLabelString  = alarmObject["alarmLabel"]! as? String
+            let time = alarmObject["alarmTime"]! as? NSDate
+            let numOfUsers = alarmObject["numOfUsers"] as? NSNumber
             let stringTime = dateFormatterTime.stringFromDate(time!).lowercaseString
             let stringDate = dateFormatterDate.stringFromDate(time!).lowercaseString
             cell.alarmLabel.text = alarmLabelString
@@ -188,7 +187,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             cell.dateLabel.text = stringDate
             cell.alarmObject = alarmObject
 
-                var numOfUsersString : String? = String(format: "%i", numOfUsers!.integerValue)
+                let numOfUsersString : String? = String(format: "%i", numOfUsers!.integerValue)
 
                 cell.numOfUsersLabel.text = numOfUsersString
 
@@ -207,11 +206,11 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
             return cell
     }
 
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let object = self.currentUserAlarms[indexPath.row] as! PFObject
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
         let alarmObject = object["alarm"] as! PFObject
-        var alarmDate = alarmObject["alarmTime"]! as! NSDate
+        let alarmDate = alarmObject["alarmTime"]! as! NSDate
         if alarmDate.timeIntervalSinceNow.isSignMinus {
             cell.deleteAlarmArrow.hidden = false
 
@@ -234,7 +233,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
                     if self.currentUserAlarms.count == 1 && alarmActivatedBool == false {
                         alarmPointer.deleteInBackgroundWithBlock({ (success, error) -> Void in
                             if error == nil {
-                                println("success")
+                                print("success")
                             }
                         })
                         self.currentUserAlarms.removeObjectAtIndex(indexPath.row)
@@ -255,7 +254,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
                     tableView.editing = false
                     
                 }))
-                println("delete button tapped")
+                print("delete button tapped")
                 
             }
             delete.backgroundColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0) /* #f27c7c */
@@ -285,7 +284,6 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
         self.presentViewController(alertView, animated: true, completion: nil)
         alertView.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { action in
             PFUser.logOut()
-            var currentUser = PFUser.currentUser()
             self.performSegueWithIdentifier("currentToStart", sender: self)
         }))
         alertView.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: {  action in

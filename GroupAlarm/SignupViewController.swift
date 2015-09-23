@@ -53,7 +53,6 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         let keyboardHeight : CGFloat = 216
         
         UIView.beginAnimations( "animateView", context: nil)
-        var movementDuration:NSTimeInterval = 0.35
         var needToMove: CGFloat = 0
         
         var frame : CGRect = self.view.frame
@@ -69,7 +68,6 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         //move textfields back down
         UIView.beginAnimations( "animateView", context: nil)
-        var movementDuration:NSTimeInterval = 0.35
         var frame : CGRect = self.view.frame
         frame.origin.y = 0
         self.view.frame = frame
@@ -107,15 +105,15 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         
         func userSignUp() {
             
-            [user .setObject(fullNameEntered, forKey: "FullName")]
-            savedUser.setObject(userEntered, forKey: "username")
-            savedUser.setObject(passEntered, forKey: "password")
-            savedUser.setObject(fullNameEntered, forKey: "FullName")
+            [user .setObject(fullNameEntered!, forKey: "FullName")]
+            savedUser.setObject(userEntered!, forKey: "username")
+            savedUser.setObject(passEntered!, forKey: "password")
+            savedUser.setObject(fullNameEntered!, forKey: "FullName")
             
             
             savedUser.saveInBackgroundWithBlock { (succeeded , error) -> Void in
                 if error == nil {
-                    println("saved!")
+                    print("saved!")
                 }
                 else {
                     
@@ -126,8 +124,8 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
             user.signUpInBackgroundWithBlock {
                 (succeeded ,error) -> Void in
                 if error == nil {
-                    println("user signed up")
-                    var currentInstallation = PFInstallation.currentInstallation()
+                    print("user signed up")
+                    let currentInstallation = PFInstallation.currentInstallation()
                     currentInstallation["user"] = PFUser.currentUser()!
                     currentInstallation.saveInBackground()
                  
@@ -140,7 +138,7 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
                     
                 }
                 else {
-                    var errorcode = error!.code
+                    let errorcode = error!.code
                     
                     if (errorcode == 202) {
              

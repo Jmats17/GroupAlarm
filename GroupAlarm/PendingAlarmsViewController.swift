@@ -73,14 +73,11 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! PendingAlarmCell
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         let obj = self.boolArray[indexPath.row] as! PFObject
-        var newBool = obj["toShowRow"] as! NSNumber
-        var newNewBool = newBool.boolValue
-        var currUser = obj["user"] as! PFObject
-        var alarm = obj["alarm"] as! PFObject
-        var creator = obj["creator"] as! String
+        let alarm = obj["alarm"] as! PFObject
+        let creator = obj["creator"] as! String
         alarm.fetchIfNeeded()
         //var alrmLabel = alarm["alarmLabel"]! as? String
-        var timeLabelString = alarm["alarmTime"]! as? NSDate
+        let timeLabelString = alarm["alarmTime"]! as? NSDate
         
         let stringTime = dateFormatterTime.stringFromDate(timeLabelString!).lowercaseString
         let stringDate = dateFormatterDate.stringFromDate(timeLabelString!).lowercaseString
@@ -114,35 +111,35 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
         
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let accept = UITableViewRowAction(style: .Normal, title: "Accept") { action, index in
-            println("accept button tapped")
+            print("accept button tapped")
             Mixpanel.sharedInstance().track("User accepted alarms")
             let object = self.boolArray[indexPath.row] as! PFObject
-            var alarmObject = object["alarm"] as! PFObject
+            let alarmObject = object["alarm"] as! PFObject
             object.setObject(true, forKey: "alarmActivated")
             object.setObject(false, forKey: "toShowRow")
-            var numOfUsers = alarmObject["numOfUsers"] as! Int
+            let numOfUsers = alarmObject["numOfUsers"] as! Int
             
-            var addOneToUsers = (numOfUsers + 1)
+            let addOneToUsers = (numOfUsers + 1)
             alarmObject.setObject(addOneToUsers, forKey: "numOfUsers")
             alarmObject.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    println("success")
+                    print("success")
                 }
             })
             object.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    println("hooray")
+                    print("hooray")
                 }
                 
             })
             PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": alarmObject.objectId!], block: { success, error in
                 if error == nil {
-                println(success)
+                print(success)
                 }
                 else {
-                println(error)
+                print(error)
                 }
                 
             })
@@ -160,14 +157,13 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
 
         
         let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
-            println("Decline button tapped")
+            print("Decline button tapped")
             Mixpanel.sharedInstance().track("User declined alarm")
             let object = self.boolArray[indexPath.row] as! PFObject
-            var alarmObject = object["alarm"] as! PFObject
 
             object.deleteInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    println("horray")
+                    print("horray")
                 }
             })
             self.boolArray.removeObjectAtIndex(indexPath.row)
