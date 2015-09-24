@@ -60,10 +60,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func cancelButton(sender : AnyObject) {
-        Mixpanel.sharedInstance().track("User clicked cancel on set alarm")
-        self.performSegueWithIdentifier("setAlarmToCurrent", sender: self)
-    }
+    
     
     
     @IBAction func addButton(sender : AnyObject) {

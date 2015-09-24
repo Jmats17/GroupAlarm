@@ -26,7 +26,6 @@ class AlarmViewCell : UITableViewCell {
 
 class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tableView : UITableView!
-    @IBOutlet var pendingAlarmButton : UIButton!
     let queryUser = PFQuery(className: "_User")
     let queryUserAlarm = PFQuery(className: "UserAlarmRole")
     let queryAlarm = PFQuery(className: "Alarm")
@@ -49,15 +48,15 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
 
         dateFormatterTime.dateFormat = "h:mm a"
         dateFormatterDate.dateFormat = "EEEE, MMMM d"
-        pendingAlarmButton.layer.borderWidth = 1.0
-        pendingAlarmButton.layer.borderColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0).CGColor
-    
+        queryForUsersAlarms(queryUserAlarm)
+
+        tableView.reloadData()
     }
     
    
     
     override func viewDidAppear(animated: Bool) {
-        queryForUsersAlarms(queryUserAlarm)
+       // queryForUsersAlarms(queryUserAlarm)
 
         tableView.reloadData()
       
@@ -164,10 +163,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     
    
     
-    @IBAction func pendingAlarmButton(sender : AnyObject) {
-        self.performSegueWithIdentifier("currentToPending", sender: self)
-    }
-    
+  
    
     
     

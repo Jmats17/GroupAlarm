@@ -162,10 +162,10 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         return fixedDate
     }
     
-    @IBAction func cancelButton(sender : AnyObject) {
-        Mixpanel.sharedInstance().track("cancel button hit on pickfriends")
-        self.performSegueWithIdentifier("friendToAlarmPick", sender: self)
-    }
+//    @IBAction func cancelButton(sender : AnyObject) {
+////        Mixpanel.sharedInstance().track("cancel button hit on pickfriends")
+////        self.performSegueWithIdentifier("friendToAlarmPick", sender: self)
+//    }
     @IBAction func doneButton(sender : AnyObject) {
 
         //alarmClass.setObject(self.selectedIndexPaths.count, forKey: "numOfUsers")

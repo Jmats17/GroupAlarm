@@ -170,9 +170,7 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
             
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             self.tableView.reloadData()
-            if self.boolArray.count == 0 {
-                self.performSegueWithIdentifier("pendingToHome", sender: self)
-            }
+            
         }
         decline.backgroundColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0) /* #f27c7c */
 
