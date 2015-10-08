@@ -134,6 +134,7 @@
 		D0D6504F1B7D1FEB00A52478 /* greystatusButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D6504D1B7D1FEB00A52478 /* greystatusButton@2x.png */; };
 		D0D6505A1B7D423900A52478 /* wakeyLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D650581B7D423900A52478 /* wakeyLogo.png */; };
 		D0D6505B1B7D423900A52478 /* wakeyLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D650591B7D423900A52478 /* wakeyLogo@2x.png */; };
+		D0D903641BC724880066BBD8 /* ProfileFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D903631BC724880066BBD8 /* ProfileFriendsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D0DD4FCE1B788E7F00C2A217 /* GroupCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */; };
 		D0DD4FDC1B791BEE00C2A217 /* EditAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FDB1B791BEE00C2A217 /* EditAlarmViewController.swift */; };
 		D0DD4FE01B79681800C2A217 /* PendingAlarmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD4FDF1B79681800C2A217 /* PendingAlarmsViewController.swift */; };
@@ -340,6 +341,7 @@
 		D0D6504D1B7D1FEB00A52478 /* greystatusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greystatusButton@2x.png"; sourceTree = "<group>"; };
 		D0D650581B7D423900A52478 /* wakeyLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wakeyLogo.png; sourceTree = "<group>"; };
 		D0D650591B7D423900A52478 /* wakeyLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wakeyLogo@2x.png"; sourceTree = "<group>"; };
+		D0D903631BC724880066BBD8 /* ProfileFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFriendsViewController.swift; sourceTree = "<group>"; };
 		D0DD4FCD1B788E7F00C2A217 /* GroupCurrentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCurrentViewController.swift; sourceTree = "<group>"; };
 		D0DD4FDB1B791BEE00C2A217 /* EditAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAlarmViewController.swift; sourceTree = "<group>"; };
 		D0DD4FDF1B79681800C2A217 /* PendingAlarmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingAlarmsViewController.swift; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				D0B51F601B5DACDE00B277B5 /* SetAlarmClockViewController.swift */,
 				D0B51F621B5EC42000B277B5 /* PickFriendsViewController.swift */,
 				D0DD4FDF1B79681800C2A217 /* PendingAlarmsViewController.swift */,
+				D0D903631BC724880066BBD8 /* ProfileFriendsViewController.swift */,
 				D09230CD1B7DC28F0050536F /* Mixpanel-Bridging-Header.h */,
 				D048C0FA1B817D7D008D0D8E /* GetStartedViewController.swift */,
 				D089893D1BB0BD5600291731 /* TabBarViewController.swift */,
@@ -790,6 +793,7 @@
 				D09230851B7DC0BC0050536F /* MPABTestDesignerClearResponseMessage.m in Sources */,
 				D09230BC1B7DC0BC0050536F /* NSInvocation+MPHelpers.m in Sources */,
 				D09230AD1B7DC0BC0050536F /* MPSurveyQuestionViewController.m in Sources */,
+				D0D903641BC724880066BBD8 /* ProfileFriendsViewController.swift in Sources */,
 				D09230B01B7DC0BC0050536F /* MPTweakInline.m in Sources */,
 				D09230971B7DC0BC0050536F /* MPDesignerEventBindingRequestMesssage.m in Sources */,
 				D048C0FB1B817D7D008D0D8E /* GetStartedViewController.swift in Sources */,

@@ -74,9 +74,10 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         // Let's assume that the segue name is called playerSegue
         // This will perform the segue and pre-load the variable for you to use
         
-        self.performSegueWithIdentifier("alarmToFriend", sender: self)
-    
+//        self.performSegueWithIdentifier("alarmToFriend", sender: self)
     }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if segue.identifier == "alarmToFriend" {
