@@ -21,15 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
         Mixpanel.sharedInstanceWithToken("a37320af793c6e93fbf32e0b549b79cd")
-        var defaults : NSUserDefaults = NSUserDefaults()
+        let defaults : NSUserDefaults = NSUserDefaults()
         var getStartedBool = true
         defaults.setObject(getStartedBool, forKey: "firstTime")
         defaults.synchronize()
-        var appOpened : Int = Int()
+        let appOpened : Int = Int()
         Parse.enableLocalDatastore()
         Parse.setApplicationId("13N3EMnXOVFVOVAGQB6vuax1u7dNqVX3PFj0us96",
             clientKey: "f7EqC7dH3rxXCLOYRSyvZX4JcKvrLboLXdc3uxTk")
-                var currentUser = PFUser.currentUser()
+                let currentUser = PFUser.currentUser()
                 if currentUser != nil {
                     Mixpanel.sharedInstance().track("App Opened", properties: ["Existing User": appOpened])
                     
@@ -46,23 +46,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-                    var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     
-                    var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! UIViewController
+                    let initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") 
         
                     self.window?.rootViewController = initialViewController
                     self.window?.makeKeyAndVisible()
                 }
                 else {
-                    var firstTime = defaults.objectForKey("firstTime") as! Bool
+                    let firstTime = defaults.objectForKey("firstTime") as! Bool
                     if firstTime == true {
                         Mixpanel.sharedInstance().track("App Opened", properties: ["New user": appOpened])
                         
                         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                         
-                        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         
-                        var initialViewController = storyboard.instantiateViewControllerWithIdentifier("onboarding") as! UIViewController
+                        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("onboarding") 
                         getStartedBool = false
                         defaults.setObject(getStartedBool, forKey: "firstTime")
                         defaults.synchronize()
@@ -74,9 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                         
-                        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         
-                        var initialViewController = storyboard.instantiateViewControllerWithIdentifier("start") as! UIViewController
+                        var initialViewController = storyboard.instantiateViewControllerWithIdentifier("start") 
                         
                         self.window?.rootViewController = initialViewController
                         self.window?.makeKeyAndVisible()
@@ -93,16 +93,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // "content_available" was used to trigger a background push (introduced in iOS 7).
             // In that case, we skip tracking here to avoid double counting the app-open.
         
-            let preBackgroundPush = !application.respondsToSelector("backgroundRefreshStatus")
-            let oldPushHandlerOnly = !self.respondsToSelector("application:didReceiveRemoteNotification:fetchCompletionHandler:")
+            let preBackgroundPush = !application.respondsToSelector(Selector("backgroundRefreshStatus"))
+            let oldPushHandlerOnly = !self.respondsToSelector(#selector(UIApplicationDelegate.application(_:didReceiveRemoteNotification:fetchCompletionHandler:)))
             var pushPayload = false
             if let options = launchOptions {
                 pushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil
                 self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 
-                var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") as! UIViewController
+                var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") 
                
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
@@ -111,13 +111,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
         }
-        if application.respondsToSelector("registerUserNotificationSettings:") {
-            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        if application.respondsToSelector(#selector(UIApplication.registerUserNotificationSettings(_:))) {
+            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         } else {
-            let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
+            
+            let types : UIRemoteNotificationType = [.Alert ,.Badge ,.Sound]
             application.registerForRemoteNotificationTypes(types)
         }
         
@@ -134,9 +134,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         if error.code == 3010 {
-            println("Push notifications are not supported in the iOS Simulator.")
+            print("Push notifications are not supported in the iOS Simulator.")
         } else {
-            println("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
+            print("application:didFailToRegisterForRemoteNotificationsWithError: %@", error)
         }
     }
     
@@ -163,7 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
             } else {
-                println("ERROR: should never get here")
+                print("ERROR: should never get here")
                 self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 
                 var storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -191,8 +191,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
             } else {
-                println("ERROR: should never get here")
-                println("ERROR: should never get here")
+                print("ERROR: should never get here")
+                print("ERROR: should never get here")
                 self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 
                 var storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -219,8 +219,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
             } else {
-                println("ERROR: should never get here")
-                println("ERROR: should never get here")
+                print("ERROR: should never get here")
+                print("ERROR: should never get here")
                 self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
                 
                 var storyboard = UIStoryboard(name: "Main", bundle: nil)

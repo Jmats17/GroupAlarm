@@ -113,39 +113,39 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
         
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let accept = UITableViewRowAction(style: .Normal, title: "Accept") { action, index in
-            println("accept button tapped")
+            print("accept button tapped")
             Mixpanel.sharedInstance().track("User accepted alarms")
             let object = self.boolArray[indexPath.row] as! PFObject
-            var alarmObject = object["alarm"] as! PFObject
+            let alarmObject = object["alarm"] as! PFObject
             object.setObject(true, forKey: "alarmActivated")
             object.setObject(false, forKey: "toShowRow")
-            var numOfUsers = alarmObject["numOfUsers"] as! Int
+            let numOfUsers = alarmObject["numOfUsers"] as! Int
             
-            var addOneToUsers = (numOfUsers + 1)
+            let addOneToUsers = (numOfUsers + 1)
             alarmObject.setObject(addOneToUsers, forKey: "numOfUsers")
             alarmObject.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    println("success")
+                    print("success")
                 }
             })
             object.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    println("hooray")
+                    print("hooray")
                 }
                 
             })
             PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": alarmObject.objectId!], block: { success, error in
                 if error == nil {
-                println(success)
+                    print(success)
                 }
                 else {
-                println(error)
+                    print(error)
                 }
                 
             })
-           
+            
             self.boolArray.removeObjectAtIndex(indexPath.row)
             
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left )
@@ -154,19 +154,19 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
                 self.performSegueWithIdentifier("pendingToHome", sender: self)
             }
         }
-        accept.backgroundColor = UIColor(red: 0/255, green: 204/255, blue: 102/255, alpha: 1.0) 
-
-
+        accept.backgroundColor = UIColor(red: 0/255, green: 204/255, blue: 102/255, alpha: 1.0)
+        
+        
         
         let decline = UITableViewRowAction(style: .Normal, title: "Decline") { action, index in
-            println("Decline button tapped")
+            print("Decline button tapped")
             Mixpanel.sharedInstance().track("User declined alarm")
             let object = self.boolArray[indexPath.row] as! PFObject
-            var alarmObject = object["alarm"] as! PFObject
-
+            let alarmObject = object["alarm"] as! PFObject
+            
             object.deleteInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
-                    println("horray")
+                    print("horray")
                 }
             })
             self.boolArray.removeObjectAtIndex(indexPath.row)
@@ -178,11 +178,13 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
             }
         }
         decline.backgroundColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0) /* #f27c7c */
-
-
+        
+        
         
         return [accept,decline]
     }
+    
+    
     
     
     

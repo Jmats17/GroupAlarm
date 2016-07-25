@@ -144,10 +144,10 @@ class GroupCurrentAlarmViewController : UIViewController, UITableViewDelegate, U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FriendTableViewCell
         let object = self.usersFriends[indexPath.row] as! PFObject
-        var checkedIn = object["checkIn"] as! Bool
-        var userObject = object["user"] as! PFObject
+        let checkedIn = object["checkIn"] as! Bool
+        let userObject = object["user"] as! PFObject
         userObject.fetchIfNeeded()
-        var userFullName = userObject["FullName"] as! String
+        let userFullName = userObject["FullName"] as! String
         if userObject.objectId == currentUser?.objectId   {
             
             cell.friendName.text = userFullName + " (me)"

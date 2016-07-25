@@ -79,7 +79,7 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     var alarmPfObjectToAlarm : PFObject!
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let indexPath = tableView.indexPathForSelectedRow()
+        let indexPath = tableView.indexPathForSelectedRow
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath!) as! AlarmViewCell
         
         alarmLabelToAlarm = selectedCell.alarmLabel.text
@@ -120,13 +120,13 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
                     
                     alarmPointer.deleteInBackgroundWithBlock({ (success, error) -> Void in
                         if error == nil {
-                            println("success")
+                            print("success")
                         }
                     })
 
                     valuesOfUserAlarmObjects.deleteInBackgroundWithBlock({ (success, error) -> Void in
                         if error == nil {
-                            println("success")
+                            print("success")
                         }
                     })
                 }
@@ -206,17 +206,17 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
     
             return cell
     }
-
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let object = self.currentUserAlarms[indexPath.row] as! PFObject
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AlarmViewCell
         let alarmObject = object["alarm"] as! PFObject
         var alarmDate = alarmObject["alarmTime"]! as! NSDate
         if alarmDate.timeIntervalSinceNow.isSignMinus {
             cell.deleteAlarmArrow.hidden = false
-
+            
             let delete = UITableViewRowAction(style: .Normal, title: "Leave") { action, index in
-
+                
                 let alertController = UIAlertController(title: "Leave Alarm", message:
                     "Are you sure you want to leave this alarm?", preferredStyle: UIAlertControllerStyle.Alert)
                 
@@ -224,17 +224,17 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
                 
                 alertController.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { action in
                     self.queryToDelete(self.queryUserAlarm, queryAlarm : self.queryAlarm, userAlarmObject: object)
-
-//                    object.deleteInBackgroundWithBlock({ (success, error) -> Void in
-//                        
-//                    })
+                    
+                    //                    object.deleteInBackgroundWithBlock({ (success, error) -> Void in
+                    //
+                    //                    })
                     Mixpanel.sharedInstance().track("user left the alarm")
                     let alarmPointer = object["alarm"] as! PFObject
                     let alarmActivatedBool = object["checkIn"] as! Bool
                     if self.currentUserAlarms.count == 1 && alarmActivatedBool == false {
                         alarmPointer.deleteInBackgroundWithBlock({ (success, error) -> Void in
                             if error == nil {
-                                println("success")
+                                print("success")
                             }
                         })
                         self.currentUserAlarms.removeObjectAtIndex(indexPath.row)
@@ -255,21 +255,24 @@ class CurrentAlarmViewController : UIViewController, UITableViewDelegate, UITabl
                     tableView.editing = false
                     
                 }))
-                println("delete button tapped")
+                print("delete button tapped")
                 
             }
             delete.backgroundColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0) /* #f27c7c */
-
+            
             return [delete]
         } else {
             cell.deleteAlarmArrow.hidden = true
-
+            
             return []
-
+            
         }
-      
+        
+        
 
     }
+
+    
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         

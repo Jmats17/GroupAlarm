@@ -87,16 +87,15 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
     
     
     @IBAction func login(sender : AnyObject) {
-        var userCreds = usernameTextField.text
-        var passCreds = passwordTextField.text
-        var getUser = PFQuery(className:"_User")
+        let userCreds = usernameTextField.text
+        let passCreds = passwordTextField.text
+        let getUser = PFQuery(className:"_User")
         //        var queryForUser : PFQuery = PFUser .query()
         //        var usernamee = [queryForUser .getObjectWithId("FullName")]
-        var getUserName = getUser.getObjectWithId("username")
-        var getUserPass = getUser.getObjectWithId("password")
-        var getAuthentication = getUser.getObjectWithId("Authenticated")
-        var user : PFUser
-        PFUser.logInWithUsernameInBackground(userCreds, password: passCreds) {
+        let getUserName = getUser.getObjectWithId("username")
+        let getUserPass = getUser.getObjectWithId("password")
+        let getAuthentication = getUser.getObjectWithId("Authenticated")
+        PFUser.logInWithUsernameInBackground(userCreds!, password: passCreds!) {
             (user ,error) -> Void in
             if user != nil {
                 Mixpanel.sharedInstance().track("User Logged In")

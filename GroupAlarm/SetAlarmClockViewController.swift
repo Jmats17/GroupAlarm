@@ -85,7 +85,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         if segue.identifier == "alarmToFriend" {
             let myAlarm =  dateFormatter.dateFromString(strDate)!
             
-            var newVarAlarm = alarmLabelDate(alarmLabel: alarmTextLabel, alarmDate: myAlarm)
+            let newVarAlarm = alarmLabelDate(alarmLabel: alarmTextLabel, alarmDate: myAlarm)
             
             // Create a new variable to store the instance of PlayerTableViewController
             let destinationVC = segue.destinationViewController as! PickFriendsViewController
