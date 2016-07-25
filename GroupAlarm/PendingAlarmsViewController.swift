@@ -73,14 +73,12 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! PendingAlarmCell
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         let obj = self.boolArray[indexPath.row] as! PFObject
-        var newBool = obj["toShowRow"] as! NSNumber
-        var newNewBool = newBool.boolValue
-        var currUser = obj["user"] as! PFObject
-        var alarm = obj["alarm"] as! PFObject
-        var creator = obj["creator"] as! String
+        let alarm = obj["alarm"] as! PFObject
+        let creator = obj["creator"] as! String
         alarm.fetchIfNeeded()
         //var alrmLabel = alarm["alarmLabel"]! as? String
-        var timeLabelString = alarm["alarmTime"]! as? NSDate
+        let timeLabelString = alarm["alarmTime"]! as? NSDate
+        
         let stringTime = dateFormatterTime.stringFromDate(timeLabelString!).lowercaseString
         let stringDate = dateFormatterDate.stringFromDate(timeLabelString!).lowercaseString
         cell.alarmLabelandCreator.text = creator + " " + "wants to add you!"
@@ -138,10 +136,17 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
             })
             PFCloud.callFunctionInBackground("schedulePushNotification", withParameters: ["alarmObjectId": alarmObject.objectId!], block: { success, error in
                 if error == nil {
+<<<<<<< HEAD
                     print(success)
                 }
                 else {
                     print(error)
+=======
+                print(success)
+                }
+                else {
+                print(error)
+>>>>>>> 48ab17fd49076e4c768c2b50b4cf1d83df1bc764
                 }
                 
             })
@@ -162,8 +167,12 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
             print("Decline button tapped")
             Mixpanel.sharedInstance().track("User declined alarm")
             let object = self.boolArray[indexPath.row] as! PFObject
+<<<<<<< HEAD
             let alarmObject = object["alarm"] as! PFObject
             
+=======
+
+>>>>>>> 48ab17fd49076e4c768c2b50b4cf1d83df1bc764
             object.deleteInBackgroundWithBlock({ (success, error) -> Void in
                 if error == nil {
                     print("horray")
@@ -173,9 +182,7 @@ class PendingAlarmsViewController : UIViewController,UITableViewDelegate, UITabl
             
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             self.tableView.reloadData()
-            if self.boolArray.count == 0 {
-                self.performSegueWithIdentifier("pendingToHome", sender: self)
-            }
+            
         }
         decline.backgroundColor = UIColor(red: 242/255, green: 124/255, blue: 124/255, alpha: 1.0) /* #f27c7c */
         

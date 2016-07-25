@@ -76,7 +76,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         
+<<<<<<< HEAD
                         var initialViewController = storyboard.instantiateViewControllerWithIdentifier("start") 
+=======
+                        let initialViewController = storyboard.instantiateViewControllerWithIdentifier("start") 
+>>>>>>> 48ab17fd49076e4c768c2b50b4cf1d83df1bc764
                         
                         self.window?.rootViewController = initialViewController
                         self.window?.makeKeyAndVisible()
@@ -102,7 +106,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
+<<<<<<< HEAD
                 var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") 
+=======
+                let initialViewController = storyboard.instantiateViewControllerWithIdentifier("Main") 
+>>>>>>> 48ab17fd49076e4c768c2b50b4cf1d83df1bc764
                
                 self.window?.rootViewController = initialViewController
                 self.window?.makeKeyAndVisible()
@@ -111,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
         }
+<<<<<<< HEAD
         if application.respondsToSelector(#selector(UIApplication.registerUserNotificationSettings(_:))) {
             let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
             application.registerUserNotificationSettings(settings)
@@ -118,6 +127,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             
             let types : UIRemoteNotificationType = [.Alert ,.Badge ,.Sound]
+=======
+        if application.respondsToSelector("registerUserNotificationSettings:") {
+            let userNotificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+        } else {
+            let types: UIRemoteNotificationType = [UIRemoteNotificationType.Badge, UIRemoteNotificationType.Alert, UIRemoteNotificationType.Sound]
+>>>>>>> 48ab17fd49076e4c768c2b50b4cf1d83df1bc764
             application.registerForRemoteNotificationTypes(types)
         }
         

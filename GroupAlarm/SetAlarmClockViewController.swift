@@ -60,10 +60,7 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func cancelButton(sender : AnyObject) {
-        Mixpanel.sharedInstance().track("User clicked cancel on set alarm")
-        self.performSegueWithIdentifier("setAlarmToCurrent", sender: self)
-    }
+    
     
     
     @IBAction func addButton(sender : AnyObject) {
@@ -77,9 +74,10 @@ class SetAlarmViewController : UIViewController, UITextFieldDelegate {
         // Let's assume that the segue name is called playerSegue
         // This will perform the segue and pre-load the variable for you to use
         
-        self.performSegueWithIdentifier("alarmToFriend", sender: self)
-    
+//        self.performSegueWithIdentifier("alarmToFriend", sender: self)
     }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if segue.identifier == "alarmToFriend" {

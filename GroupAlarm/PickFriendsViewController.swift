@@ -153,19 +153,27 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
     }
     
     func fixNotificationDate(dateToFix: NSDate) -> NSDate {
+<<<<<<< HEAD
+=======
+        let dateComponets: NSDateComponents = NSCalendar.currentCalendar().components([NSCalendarUnit.NSDayCalendarUnit, NSCalendarUnit.NSMonthCalendarUnit, NSCalendarUnit.NSYearCalendarUnit, NSCalendarUnit.NSHourCalendarUnit, NSCalendarUnit.NSMinuteCalendarUnit] , fromDate: dateToFix)
+>>>>>>> 48ab17fd49076e4c768c2b50b4cf1d83df1bc764
         
         let dateComp : NSDateComponents = NSCalendar.currentCalendar().components([.Day, .Month, .Year, .Hour , .Minute], fromDate: dateToFix)
         dateComp.second = 0
         
+<<<<<<< HEAD
         let fixedDate: NSDate! = NSCalendar.currentCalendar().dateFromComponents(dateComp)
+=======
+        let fixedDate: NSDate! = NSCalendar.currentCalendar().dateFromComponents(dateComponets)
+>>>>>>> 48ab17fd49076e4c768c2b50b4cf1d83df1bc764
         
         return fixedDate
     }
     
-    @IBAction func cancelButton(sender : AnyObject) {
-        Mixpanel.sharedInstance().track("cancel button hit on pickfriends")
-        self.performSegueWithIdentifier("friendToAlarmPick", sender: self)
-    }
+//    @IBAction func cancelButton(sender : AnyObject) {
+////        Mixpanel.sharedInstance().track("cancel button hit on pickfriends")
+////        self.performSegueWithIdentifier("friendToAlarmPick", sender: self)
+//    }
     @IBAction func doneButton(sender : AnyObject) {
 
         //alarmClass.setObject(self.selectedIndexPaths.count, forKey: "numOfUsers")
@@ -182,7 +190,7 @@ class PickFriendsViewController : UIViewController, UITableViewDataSource, UITab
         alarmClass.saveInBackgroundWithBlock {
             (result, error) -> Void in
             for objID in self.selectedIndexPaths {
-                var newUserAlarm = PFObject(className: "UserAlarmRole")
+                let newUserAlarm = PFObject(className: "UserAlarmRole")
                 newUserAlarm.setObject(objID, forKey: "user")
                 newUserAlarm.setObject(self.alarmClass, forKey: "alarm")
                 newUserAlarm.setObject(false, forKey: "checkIn")

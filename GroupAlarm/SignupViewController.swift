@@ -53,7 +53,6 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
         let keyboardHeight : CGFloat = 216
         
         UIView.beginAnimations( "animateView", context: nil)
-        var movementDuration:NSTimeInterval = 0.35
         var needToMove: CGFloat = 0
         
         var frame : CGRect = self.view.frame
@@ -69,7 +68,6 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         //move textfields back down
         UIView.beginAnimations( "animateView", context: nil)
-        var movementDuration:NSTimeInterval = 0.35
         var frame : CGRect = self.view.frame
         frame.origin.y = 0
         self.view.frame = frame
@@ -127,7 +125,11 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
                 (succeeded ,error) -> Void in
                 if error == nil {
                     print("user signed up")
+<<<<<<< HEAD
                     var currentInstallation = PFInstallation.currentInstallation()
+=======
+                    let currentInstallation = PFInstallation.currentInstallation()
+>>>>>>> 48ab17fd49076e4c768c2b50b4cf1d83df1bc764
                     currentInstallation["user"] = PFUser.currentUser()!
                     currentInstallation.saveInBackground()
                  
@@ -140,7 +142,7 @@ class SignupViewController : UIViewController,UITextFieldDelegate {
                     
                 }
                 else {
-                    var errorcode = error!.code
+                    let errorcode = error!.code
                     
                     if (errorcode == 202) {
              

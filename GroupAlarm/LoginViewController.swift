@@ -60,7 +60,6 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
         let keyboardHeight : CGFloat = 216
         
         UIView.beginAnimations( "animateView", context: nil)
-        var movementDuration:NSTimeInterval = 0.35
         var needToMove: CGFloat = 0
         
         var frame : CGRect = self.view.frame
@@ -76,7 +75,6 @@ class LoginViewController : UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         //move textfields back down
         UIView.beginAnimations( "animateView", context: nil)
-        var movementDuration:NSTimeInterval = 0.35
         var frame : CGRect = self.view.frame
         frame.origin.y = 0
         self.view.frame = frame
